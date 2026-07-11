@@ -9,10 +9,13 @@ class CompanySerializer(serializers.ModelSerializer):
 
         model = Company
 
-        fields = "__all__"
-
-        read_only_fields = (
+        fields = (
             "id",
-            "created_at",
-            "updated_at",
+            "company_name",
+            "logo",
+            "location",
+            "industry",
+            "company_size",
+            "website",
+            "is_verified",
         )
