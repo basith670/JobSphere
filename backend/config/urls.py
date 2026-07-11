@@ -26,4 +26,5 @@ urlpatterns = [
     path("api/applications/", include("applications.urls")),
     path("api/core/", include("core.urls")),
     path("api/resumes/", include("resume_manager.urls")),
+    path("api/analytics/", include("analytics.urls")),
 ]
