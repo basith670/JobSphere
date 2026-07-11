@@ -28,4 +28,5 @@ urlpatterns = [
     path("api/resumes/", include("resume_manager.urls")),
     path("api/analytics/", include("analytics.urls")),
     path("api/notifications/", include("notifications.urls")),
+    path("api/ai-resume/",include("ai_resume.urls"),),
 ]

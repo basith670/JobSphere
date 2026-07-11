@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "resume_manager",
     "analytics",
     "notifications",
+    "ai_resume",
 
 ]
 
