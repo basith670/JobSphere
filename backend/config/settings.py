@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     "notifications",
     "ai_resume",
     "recommendations",
+    "interviews",
 
 ]
 
