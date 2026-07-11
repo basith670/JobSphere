@@ -41,3 +41,55 @@ class JobSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         )
+
+from rest_framework import serializers
+from .models import SavedJob, Job
+from .serializers import JobSerializer
+
+
+class SavedJobSerializer(serializers.ModelSerializer):
+
+    # Read (GET)
+    job = JobSerializer(read_only=True)
+
+    # Write (POST)
+    job_id = serializers.PrimaryKeyRelatedField(
+        queryset=Job.objects.all(),
+        source="job",
+        write_only=True,
+    )
+
+    class Meta:
+        model = SavedJob
+        fields = (
+            "id",
+            "job",
+            "job_id",
+            "saved_at",
+        )
+
+        read_only_fields = (
+            "id",
+            "saved_at",
+        )
+
+    def create(self, validated_data):
+        return SavedJob.objects.create(
+            user=self.context["request"].user,
+            **validated_data,
+        )
+
+    def validate(self, attrs):
+
+        user = self.context["request"].user
+        job = attrs["job"]
+
+        if SavedJob.objects.filter(
+            user=user,
+            job=job,
+        ).exists():
+            raise serializers.ValidationError(
+                "Job already saved."
+            )
+
+        return attrs

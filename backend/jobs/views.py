@@ -5,6 +5,12 @@ from .models import Job
 from .serializers import JobSerializer
 from .permissions import IsRecruiterOrReadOnly
 
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+
+from .models import Job, SavedJob
+from .serializers import JobSerializer, SavedJobSerializer
+
 
 class JobListCreateAPIView(generics.ListCreateAPIView):
 
@@ -54,3 +60,38 @@ class JobDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Job.objects.select_related("company").all()
 
     serializer_class = JobSerializer
+
+
+class SavedJobListCreateAPIView(generics.ListCreateAPIView):
+
+    serializer_class = SavedJobSerializer
+
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+
+        return SavedJob.objects.filter(
+            user=self.request.user
+        ).select_related(
+            "job",
+            "job__company",
+        )
+
+    def perform_create(self, serializer):
+
+        serializer.save(
+            user=self.request.user
+        )
+
+
+class SavedJobDeleteAPIView(generics.DestroyAPIView):
+
+    serializer_class = SavedJobSerializer
+
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+
+        return SavedJob.objects.filter(
+            user=self.request.user
+        )
