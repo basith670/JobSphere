@@ -31,4 +31,5 @@ urlpatterns = [
     path("api/ai-resume/",include("ai_resume.urls"),),
     path("api/recommendations/",include("recommendations.urls"),),
     path("api/interviews/",include("interviews.urls"),),
+    path("api/email/",include("email_service.urls"),),
 ]
