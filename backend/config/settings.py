@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "jobs",
     "applications",
     "core",
+    "resume_manager",
 
 ]
 

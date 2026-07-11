@@ -7,11 +7,10 @@ from jobs.models import Job
 class Application(models.Model):
 
     STATUS_CHOICES = (
-        ("Applied", "Applied"),
-        ("Shortlisted", "Shortlisted"),
-        ("Interview", "Interview"),
-        ("Selected", "Selected"),
-        ("Rejected", "Rejected"),
+    ("Pending", "Pending"),
+    ("Reviewed", "Reviewed"),
+    ("Shortlisted", "Shortlisted"),
+    ("Rejected", "Rejected"),
     )
 
     applicant = models.ForeignKey(
@@ -43,12 +42,12 @@ class Application(models.Model):
     null=True,
     )
 
-    
+
 
     status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default="Applied",
+    max_length=20,
+    choices=STATUS_CHOICES,
+    default="Pending",
     )
 
     applied_at = models.DateTimeField(

@@ -12,12 +12,11 @@ class Job(models.Model):
         ("Remote", "Remote"),
     )
 
-    EXPERIENCE_CHOICES = (
-        ("Fresher", "Fresher"),
-        ("1-2 Years", "1-2 Years"),
-        ("3-5 Years", "3-5 Years"),
-        ("5+ Years", "5+ Years"),
-    )
+    EXPERIENCE_CHOICES = [
+    ("0-1 Years", "0-1 Years"),
+    ("1-2 Years", "1-2 Years"),
+    ("3-5 Years", "3-5 Years"),
+    ]
 
     title = models.CharField(max_length=200)
 

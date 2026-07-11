@@ -9,3 +9,14 @@ class IsJobSeeker(BasePermission):
             return False
 
         return request.user.role == "jobseeker"
+
+
+class IsRecruiterOwner(BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+
+        return (
+            request.user.is_authenticated
+            and request.user.role == "recruiter"
+            and obj.job.company.owner == request.user
+        )
