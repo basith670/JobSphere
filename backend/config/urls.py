@@ -32,4 +32,5 @@ urlpatterns = [
     path("api/recommendations/",include("recommendations.urls"),),
     path("api/interviews/",include("interviews.urls"),),
     path("api/email/",include("email_service.urls"),),
+    path("api/reviews/",include("reviews.urls"),),
 ]

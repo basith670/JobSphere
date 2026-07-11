@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     "recommendations",
     "interviews",
     "email_service",
+    "reviews",
 
 ]
 
