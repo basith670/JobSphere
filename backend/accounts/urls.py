@@ -6,6 +6,14 @@ from .views import (
     LoginAPIView,
     ProfileAPIView,
 )
+
+from .password_views import (
+
+    ForgotPasswordAPIView,
+     ResetPasswordAPIView,
+
+)
+
 from .dashboard import RecruiterDashboardAPIView
 
 urlpatterns = [
@@ -13,6 +21,7 @@ urlpatterns = [
     path("login/", LoginAPIView.as_view(), name="login"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("me/", ProfileAPIView.as_view(), name="profile"),
-    path("dashboard/",RecruiterDashboardAPIView.as_view(),name="recruiter-dashboard",
-),
+    path("dashboard/",RecruiterDashboardAPIView.as_view(),name="recruiter-dashboard",),
+    path("forgot-password/",ForgotPasswordAPIView.as_view(),name="forgot-password",),
+    path("reset-password/",ResetPasswordAPIView.as_view(),name="reset-password",),
 ]
