@@ -3,9 +3,12 @@ from rest_framework import filters, generics
 
 from .models import Job
 from .serializers import JobSerializer
+from .permissions import IsRecruiterOrReadOnly
 
 
 class JobListCreateAPIView(generics.ListCreateAPIView):
+
+    permission_classes = [IsRecruiterOrReadOnly]
 
     queryset = Job.objects.select_related("company").all()
 
@@ -45,6 +48,8 @@ class JobListCreateAPIView(generics.ListCreateAPIView):
 
 
 class JobDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+
+    permission_classes = [IsRecruiterOrReadOnly]
 
     queryset = Job.objects.select_related("company").all()
 
