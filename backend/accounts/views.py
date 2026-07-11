@@ -1,9 +1,8 @@
 from rest_framework import status
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.permissions import IsAuthenticated
 
 from .serializers import (
     RegisterSerializer,
@@ -20,16 +19,16 @@ class RegisterAPIView(APIView):
 
         serializer = RegisterSerializer(data=request.data)
 
-        if serializer.is_valid():
+        serializer.is_valid(raise_exception=True)
 
-            serializer.save()
+        serializer.save()
 
-            return Response(
-                {"message": "User registered successfully."},
-                status=status.HTTP_201_CREATED,
-            )
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            {
+                "message": "User registered successfully."
+            },
+            status=status.HTTP_201_CREATED,
+        )
 
 
 class LoginAPIView(APIView):
@@ -40,28 +39,27 @@ class LoginAPIView(APIView):
 
         serializer = LoginSerializer(data=request.data)
 
-        if serializer.is_valid():
+        serializer.is_valid(raise_exception=True)
 
-            user = serializer.validated_data["user"]
+        user = serializer.validated_data["user"]
 
-            refresh = RefreshToken.for_user(user)
+        refresh = RefreshToken.for_user(user)
 
-            return Response(
-                {
-                    "refresh": str(refresh),
-                    "access": str(refresh.access_token),
-                    "user": {
-                        "id": user.id,
-                        "username": user.username,
-                        "email": user.email,
-                        "role": user.role,
-                    },
+        return Response(
+            {
+                "refresh": str(refresh),
+                "access": str(refresh.access_token),
+                "user": {
+                    "id": user.id,
+                    "username": user.username,
+                    "email": user.email,
+                    "role": user.role,
                 },
-                status=status.HTTP_200_OK,
-            )
+            },
+            status=status.HTTP_200_OK,
+        )
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
 class ProfileAPIView(APIView):
 
     permission_classes = [IsAuthenticated]
@@ -80,13 +78,8 @@ class ProfileAPIView(APIView):
             partial=True,
         )
 
-        if serializer.is_valid():
+        serializer.is_valid(raise_exception=True)
 
-            serializer.save()
+        serializer.save()
 
-            return Response(serializer.data)
-
-        return Response(
-            serializer.errors,
-            status=status.HTTP_400_BAD_REQUEST,
-        )
+        return Response(serializer.data)

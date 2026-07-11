@@ -8,7 +8,9 @@ from .models import User
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
+
         model = User
+
         exclude = (
             "password",
             "groups",
@@ -23,10 +25,14 @@ class RegisterSerializer(serializers.ModelSerializer):
         validators=[validate_password],
     )
 
-    password2 = serializers.CharField(write_only=True)
+    password2 = serializers.CharField(
+        write_only=True,
+    )
 
     class Meta:
+
         model = User
+
         fields = (
             "username",
             "email",
@@ -37,13 +43,19 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
 
     def validate(self, attrs):
+
         if attrs["password"] != attrs["password2"]:
+
             raise serializers.ValidationError(
-                {"password": "Passwords do not match."}
+                {
+                    "password": "Passwords do not match."
+                }
             )
+
         return attrs
 
     def create(self, validated_data):
+
         validated_data.pop("password2")
 
         user = User.objects.create_user(
@@ -61,7 +73,9 @@ class LoginSerializer(serializers.Serializer):
 
     username = serializers.CharField()
 
-    password = serializers.CharField(write_only=True)
+    password = serializers.CharField(
+        write_only=True,
+    )
 
     def validate(self, attrs):
 
@@ -74,6 +88,7 @@ class LoginSerializer(serializers.Serializer):
         )
 
         if user is None:
+
             raise serializers.ValidationError(
                 "Invalid username or password."
             )
