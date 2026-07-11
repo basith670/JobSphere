@@ -1,17 +1,17 @@
 from rest_framework import serializers
+from .models import Application
 
-from .models import Resume
 
-
-class ResumeSerializer(serializers.ModelSerializer):
+class ApplicationSerializer(serializers.ModelSerializer):
 
     class Meta:
 
-        model = Resume
+        model = Application
 
         fields = "__all__"
 
         read_only_fields = (
             "id",
-            "uploaded_at",
+            "applied_at",
+            "updated_at",
         )
