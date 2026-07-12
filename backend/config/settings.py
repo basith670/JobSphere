@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     "reviews",
     "candidate_dashboard",
     "homepage",
+    "admin_dashboard",
 
 ]
 

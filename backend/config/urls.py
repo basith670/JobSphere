@@ -46,4 +46,5 @@ urlpatterns = [
 
     path("api/candidate-dashboard/",include("candidate_dashboard.urls"),),
     path("api/home/", include("homepage.urls")),
+    path("api/admin-dashboard/", include("admin_dashboard.urls")),
 ]
