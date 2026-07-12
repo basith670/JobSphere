@@ -11,12 +11,16 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Job, SavedJob
 from .serializers import JobSerializer, SavedJobSerializer
 
+from .filters import JobFilter
+
 
 class JobListCreateAPIView(generics.ListCreateAPIView):
 
     permission_classes = [IsRecruiterOrReadOnly]
 
-    queryset = Job.objects.select_related("company").all()
+    queryset = Job.objects.select_related(
+        "company"
+    ).all()
 
     serializer_class = JobSerializer
 
@@ -26,19 +30,16 @@ class JobListCreateAPIView(generics.ListCreateAPIView):
         filters.OrderingFilter,
     ]
 
-    filterset_fields = [
-        "job_type",
-        "experience",
-        "location",
-        "is_active",
-        "is_featured",
-    ]
+    # Use the custom FilterSet
+    filterset_class = JobFilter
 
     search_fields = [
         "title",
+        "description",
+        "requirements",
+        "skills_required",
         "company__company_name",
         "location",
-        "skills_required",
     ]
 
     ordering_fields = [
@@ -46,6 +47,7 @@ class JobListCreateAPIView(generics.ListCreateAPIView):
         "salary_max",
         "created_at",
         "deadline",
+        "title",
     ]
 
     ordering = [
