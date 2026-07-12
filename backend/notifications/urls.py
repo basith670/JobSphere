@@ -10,11 +10,13 @@ urlpatterns = [
     path(
         "",
         NotificationListAPIView.as_view(),
+        name="notification-list",
     ),
 
     path(
         "<int:pk>/",
         NotificationDetailAPIView.as_view(),
+        name="notification-detail",
     ),
 
 ]

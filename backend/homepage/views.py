@@ -1,4 +1,5 @@
 from django.db.models import Count
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -34,12 +35,13 @@ class HomepageAPIView(APIView):
 
         top_companies = (
             Company.objects.annotate(
-                total_jobs=Count("jobs")
+                total_jobs=Count("jobs"),
             )
             .order_by("-total_jobs")[:6]
         )
 
         statistics = {
+
             "jobs": Job.objects.filter(
                 is_active=True,
             ).count(),
@@ -47,17 +49,18 @@ class HomepageAPIView(APIView):
             "companies": Company.objects.count(),
 
             "candidates": User.objects.filter(
-                role="Applicant",
+                role="jobseeker",
             ).count(),
 
             "recruiters": User.objects.filter(
-                role="Recruiter",
+                role="recruiter",
             ).count(),
 
             "applications": Application.objects.count(),
         }
 
         data = {
+
             "featured_jobs": [
                 {
                     "id": job.id,

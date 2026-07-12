@@ -7,6 +7,7 @@ urlpatterns = [
     path(
         "",
         JobRecommendationAPIView.as_view(),
+        name="job-recommendations",
     ),
 
 ]

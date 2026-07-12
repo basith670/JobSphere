@@ -7,6 +7,7 @@ urlpatterns = [
     path(
         "test/",
         SendTestEmailAPIView.as_view(),
+        name="send-test-email",
     ),
 
 ]
