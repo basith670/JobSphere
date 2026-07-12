@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.http import JsonResponse
 from django.urls import include, path
 
 from drf_spectacular.views import (
@@ -23,7 +24,18 @@ from drf_spectacular.views import (
     SpectacularRedocView,
 )
 
+def health(request):
+    return JsonResponse(
+        {
+            "status": "ok",
+            "application": "JobSphere API",
+            "version": "1.0.0",
+        }
+    )
+
 urlpatterns = [
+
+    path("", health),
     path("admin/", admin.site.urls),
 
     path("api/accounts/", include("accounts.urls")),
