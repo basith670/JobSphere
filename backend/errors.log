@@ -1,0 +1,2 @@
+[ERROR] 2026-07-12 19:15:58,357 django.request: Internal Server Error: /api/core/error-test/
+[ERROR] 2026-07-12 19:15:58,420 django.request: Internal Server Error: /api/core/error-test/
