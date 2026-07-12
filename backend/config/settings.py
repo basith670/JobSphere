@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     "email_service",
     "reviews",
     "recruiter_dashboard",
+    "candidate_dashboard",
 
 ]
 
@@ -172,7 +173,7 @@ REST_FRAMEWORK = {
     ),
 
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-    
+
     "EXCEPTION_HANDLER": "core.exception_handler.custom_exception_handler",
 
     "DEFAULT_FILTER_BACKENDS": (
