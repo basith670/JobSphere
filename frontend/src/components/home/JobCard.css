@@ -1,0 +1,94 @@
+.job-card {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 24px;
+    padding: 28px;
+    transition: 0.35s ease;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  
+  .job-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+  }
+  
+  .job-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .job-top h3 {
+    font-size: 1.35rem;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  
+  .job-top p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+  
+  .job-type {
+    background: rgba(18, 136, 127, 0.1);
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  
+  .job-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  
+  .job-info span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+  }
+  
+  .job-info svg {
+    color: var(--primary);
+  }
+  
+  .job-card button {
+    margin-top: auto;
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    background: var(--primary);
+    color: white;
+    padding: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .job-card button:hover {
+    background: var(--primary-dark);
+  }
+  
+  @media (max-width: 768px) {
+    .job-top {
+      flex-direction: column;
+    }
+  
+    .job-type {
+      align-self: flex-start;
+    }
+  
+    .job-info {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }

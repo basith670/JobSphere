@@ -1,0 +1,47 @@
+.featured {
+    padding: 120px 0;
+  }
+  
+  .featured-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .featured-header h2 {
+    font-size: 2.6rem;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+  
+  .featured-header p {
+    max-width: 620px;
+    margin: auto;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  
+  .jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  
+  @media (max-width: 1100px) {
+    .jobs-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .featured {
+      padding: 80px 0;
+    }
+  
+    .featured-header h2 {
+      font-size: 2rem;
+    }
+  
+    .jobs-grid {
+      grid-template-columns: 1fr;
+    }
+  }

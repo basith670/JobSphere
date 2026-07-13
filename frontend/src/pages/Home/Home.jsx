@@ -1,9 +1,16 @@
-function Home() {
-    return (
-      <h1 className="text-5xl font-bold text-center mt-20">
-        Home Page
-      </h1>
-    );
-  }
-  
-  export default Home;
+import Hero from "../../components/home/Hero";
+import TrustedCompanies from "../../components/home/TrustedCompanies";
+import FeaturedJobs from "../../components/home/FeaturedJobs";
+
+const Home = () => {
+  return (
+    <>
+      <Hero />
+      <TrustedCompanies />
+      <FeaturedJobs/>
+
+    </>
+  );
+};
+
+export default Home;

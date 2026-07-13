@@ -1,0 +1,51 @@
+:root{
+
+    /* Background */
+
+    --bg:#F5F7F9;
+    --surface:#FFFFFF;
+
+    /* Text */
+
+    --text:#111827;
+    --text-light:#6B7280;
+
+    /* Brand */
+
+    --primary:#111827;
+    --accent:#0F766E;
+
+    /* Status */
+
+    --success:#16A34A;
+    --warning:#D97706;
+    --danger:#DC2626;
+
+    /* Border */
+
+    --border:#E5E7EB;
+
+    /* Radius */
+
+    --radius-sm:10px;
+    --radius-md:18px;
+    --radius-lg:26px;
+
+    /* Shadow */
+
+    --shadow:
+    0 12px 40px rgba(17,24,39,.08);
+
+    --primary:#0F766E;
+
+    --primary-dark:#115E59;
+
+    --background:#F8FAF8;
+
+    --heading:#111827;
+
+    --text:#475569;
+
+    --border:#E5E7EB;
+
+}
