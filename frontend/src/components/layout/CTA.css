@@ -1,0 +1,67 @@
+.cta{
+    padding:120px 0;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+}
+
+.cta-container{
+    width:min(900px,90%);
+    margin:auto;
+    text-align:center;
+}
+
+.cta span{
+    color:#5eead4;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.cta h2{
+    margin:24px 0;
+    font-size:3rem;
+    line-height:1.2;
+}
+
+.cta p{
+    color:#cbd5e1;
+    line-height:1.8;
+    max-width:650px;
+    margin:auto;
+}
+
+.cta-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.cta-primary,
+.cta-secondary{
+    padding:15px 30px;
+    border-radius:14px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:.3s;
+}
+
+.cta-primary{
+    background:var(--primary);
+    color:white;
+}
+
+.cta-secondary{
+    background:white;
+    color:var(--heading);
+}
+
+.cta-primary:hover,
+.cta-secondary:hover{
+    transform:translateY(-3px);
+}
