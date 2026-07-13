@@ -1,0 +1,112 @@
+.job-card{
+    background:#fff;
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+    transition:.35s;
+    display:flex;
+    flex-direction:column;
+}
+
+.job-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(0,0,0,.10);
+}
+
+.job-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:24px;
+}
+
+.job-company-logo{
+    width:60px;
+    height:60px;
+    border-radius:18px;
+    background:var(--primary-light);
+    color:var(--primary);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:26px;
+    font-weight:700;
+}
+
+.featured-badge{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:#fff7e6;
+    color:#f59e0b;
+    font-size:.85rem;
+    font-weight:600;
+}
+
+.job-card h3{
+    font-size:1.45rem;
+    color:var(--heading);
+    margin-bottom:8px;
+}
+
+.job-card h4{
+    color:var(--text-light);
+    margin-bottom:24px;
+}
+
+.job-info{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.job-info div{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--text-light);
+}
+
+.experience-pill{
+    margin-top:22px;
+    display:inline-flex;
+    width:max-content;
+    padding:8px 18px;
+    border-radius:999px;
+    background:var(--primary-light);
+    color:var(--primary);
+    font-weight:600;
+    font-size:.9rem;
+}
+
+.salary{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:24px 0;
+    font-weight:700;
+    color:var(--heading);
+    font-size:1.05rem;
+}
+
+.apply-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:var(--primary);
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.apply-btn:hover{
+    opacity:.92;
+}
