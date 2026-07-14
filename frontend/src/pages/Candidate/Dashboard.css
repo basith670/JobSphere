@@ -1,0 +1,39 @@
+.dashboard-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:24px;
+    margin-bottom:35px;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:24px;
+}
+
+.dashboard-section{
+    background:#fff;
+    padding:28px;
+    border-radius:18px;
+    box-shadow:var(--shadow-sm);
+}
+
+.dashboard-section h2{
+    margin-bottom:18px;
+    color:var(--heading);
+}
+
+.dashboard-section p{
+    color:var(--text);
+    line-height:1.7;
+}
+
+@media(max-width:900px){
+
+.dashboard-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}

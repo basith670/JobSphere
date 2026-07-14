@@ -2,16 +2,46 @@ import { Link } from "react-router-dom";
 import { FaBriefcase } from "react-icons/fa";
 
 import Button from "../ui/Button";
+import useAuth from "../../hooks/useAuth";
 
-const navLinks = [
+const visitorLinks = [
   { name: "Home", path: "/" },
   { name: "Jobs", path: "/jobs" },
   { name: "Companies", path: "/companies" },
-  { name: "Resumes", path: "/resumes" },
+];
+
+const candidateLinks = [
+  { name: "Dashboard", path: "/dashboard" },
+  { name: "Jobs", path: "/jobs" },
+  { name: "Companies", path: "/companies" },
+  { name: "Resume", path: "/resumes" },
   { name: "Profile", path: "/profile" },
 ];
 
+const recruiterLinks = [
+  { name: "Dashboard", path: "/recruiter/dashboard" },
+  { name: "Jobs", path: "/recruiter/jobs" },
+  { name: "Candidates", path: "/recruiter/candidates" },
+  { name: "Company", path: "/recruiter/company" },
+  { name: "Profile", path: "/recruiter/profile" },
+];
+
 export default function Navbar() {
+  const {
+    user,
+    isAuthenticated,
+    logout,
+  } = useAuth();
+
+  let navLinks = visitorLinks;
+
+  if (isAuthenticated) {
+    navLinks =
+      user?.role === "recruiter"
+        ? recruiterLinks
+        : candidateLinks;
+  }
+
   return (
     <header
       style={{
@@ -69,6 +99,7 @@ export default function Navbar() {
           style={{
             display: "flex",
             gap: "30px",
+            alignItems: "center",
           }}
         >
           {navLinks.map((link) => (
@@ -79,6 +110,7 @@ export default function Navbar() {
                 textDecoration: "none",
                 color: "var(--text)",
                 fontWeight: 600,
+                transition: "0.3s",
               }}
             >
               {link.name}
@@ -86,35 +118,54 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Actions */}
+        {/* Right Side */}
 
         <div
           style={{
             display: "flex",
             gap: "12px",
+            alignItems: "center",
           }}
         >
-          <Link
-            to="/login"
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            <Button variant="secondary">
-              Login
-            </Button>
-          </Link>
+          {!isAuthenticated ? (
+            <>
+              <Link
+                to="/login"
+                style={{ textDecoration: "none" }}
+              >
+                <Button variant="secondary">
+                  Login
+                </Button>
+              </Link>
 
-          <Link
-            to="/register"
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            <Button>
-              Get Started
-            </Button>
-          </Link>
+              <Link
+                to="/register"
+                style={{ textDecoration: "none" }}
+              >
+                <Button>
+                  Get Started
+                </Button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <span
+                style={{
+                  fontWeight: 600,
+                  color: "var(--primary)",
+                }}
+              >
+                {user?.username}
+              </span>
+
+              <Button
+                variant="secondary"
+                onClick={logout}
+              >
+                Logout
+              </Button>
+            </>
+          )}
         </div>
       </nav>
     </header>

@@ -2,9 +2,12 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import { loginUser } from "../../services/authService";
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     username: "",
@@ -12,6 +15,7 @@ const Login = () => {
   });
 
   const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -23,33 +27,35 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     setLoading(true);
     setError("");
-  
+
     try {
-      console.log("Submitting...", formData);
-  
       const data = await loginUser(formData);
-  
-      console.log("Login response:", data);
-  
-      console.log("Access Token:", localStorage.getItem("access"));
-  
-      navigate("/profile");
+
+      // Update Auth Context
+      login(data.user);
+
+      // Redirect based on role
+      if (data.user.role === "recruiter") {
+        navigate("/recruiter/dashboard");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (err) {
-      console.error("LOGIN ERROR:", err);
-      console.error(err.response);
-  
+      console.error(err);
+
       setError(
         err.response?.data?.detail ||
-        err.response?.data?.non_field_errors ||
-        "Invalid username or password."
+          err.response?.data?.non_field_errors ||
+          "Invalid username or password."
       );
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <div
       style={{
@@ -58,12 +64,12 @@ const Login = () => {
         padding: "30px",
         border: "1px solid #ddd",
         borderRadius: "12px",
+        background: "#fff",
       }}
     >
       <h2>Login</h2>
 
       <form onSubmit={handleSubmit}>
-
         <div style={{ marginBottom: "15px" }}>
           <label>Username</label>
 
@@ -115,7 +121,6 @@ const Login = () => {
         >
           {loading ? "Logging in..." : "Login"}
         </button>
-
       </form>
 
       <p style={{ marginTop: "20px" }}>
@@ -124,7 +129,6 @@ const Login = () => {
           Register
         </Link>
       </p>
-
     </div>
   );
 };
