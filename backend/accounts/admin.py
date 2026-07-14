@@ -57,7 +57,6 @@ class CustomUserAdmin(UserAdmin):
                     "skills",
                     "experience",
                     "portfolio",
-                    "resume_file",
                     "linkedin",
                     "github",
                     "preferred_role",
