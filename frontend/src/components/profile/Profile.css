@@ -1,0 +1,37 @@
+.profile-page {
+    padding: var(--space-xl) 0;
+  }
+  
+  .profile-title {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+  
+  .profile-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-label {
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .profile-value {
+    color: var(--heading);
+    font-size: 16px;
+    word-break: break-word;
+  }
+  
+  @media (max-width: 768px) {
+    .profile-grid {
+      grid-template-columns: 1fr;
+    }
+  }
