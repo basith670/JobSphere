@@ -1,14 +1,9 @@
 import json
+import re
 from pathlib import Path
-
-import spacy
-
-nlp = spacy.load("en_core_web_sm")
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SKILLS_FILE = BASE_DIR / "data" / "skills.json"
-
 
 with open(SKILLS_FILE, "r") as file:
     SKILLS_DATABASE = json.load(file)
@@ -16,24 +11,25 @@ with open(SKILLS_FILE, "r") as file:
 
 def extract_skills(text):
     """
-    Extract technical skills from resume text.
+    Extract technical skills from resume text without spaCy.
     """
 
-    doc = nlp(text.lower())
+    text = text.lower()
 
-    tokens = {
-        token.text
-        for token in doc
-    }
+    tokens = set(
+        re.findall(r"\b[a-zA-Z0-9+#.]+\b", text)
+    )
 
     found = []
 
     for skill in SKILLS_DATABASE:
 
-        if skill.lower() in text.lower():
+        skill_lower = skill.lower()
+
+        if skill_lower in text:
             found.append(skill)
 
-        elif skill.lower() in tokens:
+        elif skill_lower in tokens:
             found.append(skill)
 
-    return sorted(list(set(found)))
+    return sorted(set(found))
