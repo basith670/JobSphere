@@ -10,6 +10,11 @@ import Register from "../pages/Register/Register";
 import Profile from "../pages/Candidate/Profile";
 import NotFound from "../pages/NotFound/NotFound";
 import ResumeManager from "../pages/Resume/ResumeManager";
+import ResumeAnalysis from "../pages/AIResume/ResumeAnalysis";
+import JobMatch from "../pages/AIResume/JobMatch";
+import CoverLetter from "../pages/AIResume/CoverLetter";
+import Interview from "../pages/AIResume/Interview";
+import MockInterview from "../pages/AIResume/MockInterview";
 
 function AppRoutes() {
   return (
@@ -28,7 +33,18 @@ function AppRoutes() {
         <Route path="/register" element={<Register />} />
 
         <Route path="*" element={<NotFound />} />
+
         <Route path="/resumes" element={<ResumeManager />}/>
+
+        <Route path="/ai-resume/:resumeId" element={<ResumeAnalysis />}/>
+
+        <Route path="/job-match" element={<JobMatch />}/>
+
+        <Route path="/cover-letter" element={<CoverLetter />}/>
+
+        <Route path="/interview"element={<Interview />}/>
+
+        <Route path="/mock-interview" element={<MockInterview />}/>
 
       </Routes>
     </BrowserRouter>

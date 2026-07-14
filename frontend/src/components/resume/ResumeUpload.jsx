@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { toast } from "react-toastify";
+
 import { createResume } from "../../services/resumeService";
 
 export default function ResumeUpload({ onResumeAdded }) {
@@ -52,7 +54,7 @@ export default function ResumeUpload({ onResumeAdded }) {
 
       await createResume(data);
 
-      alert("Resume uploaded successfully.");
+      toast.success("Resume uploaded successfully!");
 
       if (onResumeAdded) {
         await onResumeAdded();
@@ -78,7 +80,7 @@ export default function ResumeUpload({ onResumeAdded }) {
       });
     } catch (err) {
       console.error(err);
-      alert("Unable to upload resume.");
+      toast.error("Unable to upload resume.");
     } finally {
       setLoading(false);
     }
