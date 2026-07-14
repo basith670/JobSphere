@@ -7,15 +7,66 @@ from .models import User
 
 class UserSerializer(serializers.ModelSerializer):
 
+    profile_completion = serializers.SerializerMethodField()
+
     class Meta:
 
         model = User
 
-        exclude = (
-            "password",
-            "groups",
-            "user_permissions",
+        fields = (
+            "id",
+            "username",
+            "email",
+            "role",
+            "phone",
+            "profile_image",
+            "bio",
+            "linkedin",
+            "github",
+            "portfolio",
+            "location",
+            "preferred_role",
+            "preferred_location",
+            "expected_salary",
+            "years_of_experience",
+            "skills",
+            "education",
+            "profile_completion",
+            "created_at",
+            "updated_at",
         )
+
+        read_only_fields = (
+            "id",
+            "username",
+            "email",
+            "role",
+            "created_at",
+            "updated_at",
+            "profile_completion",
+        )
+
+    def get_profile_completion(self, obj):
+
+        fields = [
+            obj.phone,
+            obj.bio,
+            obj.profile_image,
+            obj.linkedin,
+            obj.github,
+            obj.portfolio,
+            obj.location,
+            obj.preferred_role,
+            obj.preferred_location,
+            obj.expected_salary,
+            obj.years_of_experience,
+            obj.skills,
+            obj.education,
+        ]
+
+        completed = sum(bool(field) for field in fields)
+
+        return round((completed / len(fields)) * 100)
 
 
 class RegisterSerializer(serializers.ModelSerializer):

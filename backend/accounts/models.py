@@ -43,6 +43,79 @@ class User(AbstractUser):
         null=True,
     )
 
+    # ---------- NEW PROFESSIONAL FIELDS ----------
+
+    headline = models.CharField(
+        max_length=120,
+        blank=True,
+        null=True,
+    )
+
+    location = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+    )
+
+    education = models.CharField(
+        max_length=200,
+        blank=True,
+        null=True,
+    )
+
+    skills = models.TextField(
+        blank=True,
+        null=True,
+        help_text="Comma separated skills",
+    )
+
+    experience = models.TextField(
+        blank=True,
+        null=True,
+    )
+
+    portfolio = models.URLField(
+        blank=True,
+        null=True,
+    )
+
+    resume_file = models.FileField(
+    upload_to="resumes/",
+    blank=True,
+    null=True,
+    )
+
+    preferred_role = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+    )
+
+    preferred_location = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+    )
+
+    expected_salary = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+    )
+
+    years_of_experience = models.PositiveIntegerField(
+        default=0,
+    )
+
+    profile_completion = models.PositiveIntegerField(
+        default=0,
+    )
+
+    ai_resume_score = models.PositiveIntegerField(
+        default=0,
+    )
+
+    # ---------- TIMESTAMPS ----------
+
     created_at = models.DateTimeField(
         auto_now_add=True,
     )
