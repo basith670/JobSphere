@@ -1,3 +1,6 @@
 [ERROR] 2026-07-12 19:15:58,357 django.request: Internal Server Error: /api/core/error-test/
 [ERROR] 2026-07-12 19:15:58,420 django.request: Internal Server Error: /api/core/error-test/
 [ERROR] 2026-07-12 19:50:19,297 django.request: Internal Server Error: /api/companies/
+[ERROR] 2026-07-14 11:18:32,260 django.request: Internal Server Error: /api/accounts/me/
+[ERROR] 2026-07-14 11:19:15,779 django.request: Internal Server Error: /api/accounts/me/
+[ERROR] 2026-07-14 11:22:38,630 django.request: Internal Server Error: /api/accounts/me/

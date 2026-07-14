@@ -79,12 +79,6 @@ class User(AbstractUser):
         null=True,
     )
 
-    resume_file = models.FileField(
-    upload_to="resumes/",
-    blank=True,
-    null=True,
-    )
-
     preferred_role = models.CharField(
         max_length=100,
         blank=True,

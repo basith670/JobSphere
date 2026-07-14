@@ -1,4 +1,15 @@
+import { Link } from "react-router-dom";
 import { FaBriefcase } from "react-icons/fa";
+
+import Button from "../ui/Button";
+
+const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "Jobs", path: "/jobs" },
+  { name: "Companies", path: "/companies" },
+  { name: "Resumes", path: "/resumes" },
+  { name: "Profile", path: "/profile" },
+];
 
 export default function Navbar() {
   return (
@@ -21,7 +32,7 @@ export default function Navbar() {
           WebkitBackdropFilter: "blur(16px)",
           border: "1px solid rgba(255,255,255,.45)",
           borderRadius: "18px",
-          boxShadow: "0 10px 35px rgba(15,23,42,.08)",
+          boxShadow: "var(--shadow-md)",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -30,75 +41,80 @@ export default function Navbar() {
       >
         {/* Logo */}
 
-        <div
+        <Link
+          to="/"
           style={{
             display: "flex",
             alignItems: "center",
             gap: "12px",
+            textDecoration: "none",
             fontWeight: 700,
             fontSize: "22px",
-            color: "#0F172A",
+            color: "var(--heading)",
           }}
         >
           <FaBriefcase
             style={{
-              color: "#2563EB",
+              color: "var(--primary)",
               fontSize: "24px",
             }}
           />
 
           JobSphere
-        </div>
+        </Link>
 
-        {/* Links */}
-
-        <div
-          style={{
-            display: "flex",
-            gap: "36px",
-            color: "#475569",
-            fontWeight: 500,
-          }}
-        >
-          <span>Home</span>
-          <span>Jobs</span>
-          <span>Companies</span>
-          <span>About</span>
-        </div>
-
-        {/* Buttons */}
+        {/* Navigation */}
 
         <div
           style={{
             display: "flex",
-            gap: "14px",
+            gap: "30px",
           }}
         >
-          <button
-            style={{
-              border: "none",
-              background: "transparent",
-              fontWeight: 600,
-              cursor: "pointer",
-              color: "#475569",
-            }}
-          >
-            Login
-          </button>
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              style={{
+                textDecoration: "none",
+                color: "var(--text)",
+                fontWeight: 600,
+              }}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
 
-          <button
+        {/* Actions */}
+
+        <div
+          style={{
+            display: "flex",
+            gap: "12px",
+          }}
+        >
+          <Link
+            to="/login"
             style={{
-              background: "#2563EB",
-              color: "#fff",
-              border: "none",
-              padding: "12px 22px",
-              borderRadius: "12px",
-              fontWeight: 600,
-              cursor: "pointer",
+              textDecoration: "none",
             }}
           >
-            Get Started
-          </button>
+            <Button variant="secondary">
+              Login
+            </Button>
+          </Link>
+
+          <Link
+            to="/register"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <Button>
+              Get Started
+            </Button>
+          </Link>
         </div>
       </nav>
     </header>

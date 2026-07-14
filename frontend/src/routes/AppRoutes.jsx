@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Profile from "../pages/Candidate/Profile";
 import NotFound from "../pages/NotFound/NotFound";
+import ResumeManager from "../pages/Resume/ResumeManager";
 
 function AppRoutes() {
   return (
@@ -27,6 +28,7 @@ function AppRoutes() {
         <Route path="/register" element={<Register />} />
 
         <Route path="*" element={<NotFound />} />
+        <Route path="/resumes" element={<ResumeManager />}/>
 
       </Routes>
     </BrowserRouter>

@@ -21,9 +21,11 @@ class UserSerializer(serializers.ModelSerializer):
             "phone",
             "profile_image",
             "bio",
+            "headline",
             "linkedin",
             "github",
             "portfolio",
+            "experience",
             "location",
             "preferred_role",
             "preferred_location",
@@ -50,11 +52,13 @@ class UserSerializer(serializers.ModelSerializer):
 
         fields = [
             obj.phone,
-            obj.bio,
             obj.profile_image,
+            obj.bio,
+            obj.headline,
             obj.linkedin,
             obj.github,
             obj.portfolio,
+            obj.resumes.exists(),
             obj.location,
             obj.preferred_role,
             obj.preferred_location,
@@ -62,6 +66,7 @@ class UserSerializer(serializers.ModelSerializer):
             obj.years_of_experience,
             obj.skills,
             obj.education,
+            obj.experience,
         ]
 
         completed = sum(bool(field) for field in fields)

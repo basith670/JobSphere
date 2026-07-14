@@ -4,12 +4,16 @@ import { getProfile } from "../../services/profileService";
 
 import ProfileAvatar from "../../components/profile/ProfileAvatar";
 import ProfileProgress from "../../components/profile/ProfileProgress";
+import ProfileForm from "../../components/profile/ProfileForm";
+
+import Button from "../../components/ui/Button";
 
 import "../../components/profile/Profile.css";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     loadProfile();
@@ -47,9 +51,23 @@ const Profile = () => {
         percentage={profile.profile_completion}
       />
 
-        <div className="card">
+      {/* Header */}
+
+      <div className="flex-between mb-3">
 
         <h2>Personal Information</h2>
+
+        <Button
+          onClick={() => setIsEditing(!isEditing)}
+        >
+          {isEditing ? "Cancel" : "Edit Profile"}
+        </Button>
+
+      </div>
+
+      {/* Information Card */}
+
+      <div className="card">
 
         <div className="profile-grid">
 
@@ -168,6 +186,20 @@ const Profile = () => {
         </div>
 
       </div>
+
+      {/* Edit Form */}
+
+      {isEditing && (
+
+        <ProfileForm
+          profile={profile}
+          onProfileUpdated={(updatedProfile) => {
+            setProfile(updatedProfile);
+            setIsEditing(false);
+          }}
+        />
+
+      )}
 
     </div>
   );
