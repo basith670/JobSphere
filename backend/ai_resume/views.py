@@ -1,10 +1,18 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics
 
 from resume_manager.models import Resume
+
 from .models import ResumeAnalysis
 from .serializers import ResumeAnalysisSerializer
+
+from .services.pdf_parser import extract_resume_text
+from .services.skill_extractor import extract_skills
+from .services.ats_calculator import calculate_ats_score
+from .services.suggestion_engine import generate_suggestions
+from .services.jd_matcher import match_resume_with_jd
 
 
 class ResumeAnalysisAPIView(APIView):
@@ -18,60 +26,45 @@ class ResumeAnalysisAPIView(APIView):
             user=request.user,
         )
 
-        text = " ".join([
-            resume.summary or "",
-            resume.skills or "",
-            resume.experience or "",
-            resume.projects or "",
-            resume.certifications or "",
-        ]).lower()
+        text = extract_resume_text(
+            resume.resume_file.path
+        )
+
+        skills = extract_skills(text)
+
+        ats_score = calculate_ats_score(skills)
+
+        suggestions = generate_suggestions(
+            skills,
+            text,
+        )
 
         required_skills = [
-            "python",
-            "django",
-            "rest",
-            "postgresql",
-            "git",
-            "docker",
-            "aws",
-            "react",
+            "Python",
+            "Django",
+            "Django REST Framework",
+            "React",
+            "JavaScript",
+            "PostgreSQL",
+            "Git",
+            "Docker",
+            "AWS",
         ]
 
         found = []
+
         missing = []
+
+        lower_skills = [
+            s.lower() for s in skills
+        ]
 
         for skill in required_skills:
 
-            if skill in text:
-                found.append(skill.title())
+            if skill.lower() in lower_skills:
+                found.append(skill)
             else:
-                missing.append(skill.title())
-
-        ats_score = int(
-            len(found) / len(required_skills) * 100
-        )
-
-        suggestions = []
-
-        if "docker" not in text:
-            suggestions.append(
-                "Add Docker experience."
-            )
-
-        if "aws" not in text:
-            suggestions.append(
-                "Mention AWS or Cloud skills."
-            )
-
-        if len(resume.summary or "") < 100:
-            suggestions.append(
-                "Write a stronger professional summary."
-            )
-
-        if len(resume.projects or "") < 50:
-            suggestions.append(
-                "Describe projects with measurable achievements."
-            )
+                missing.append(skill)
 
         analysis = ResumeAnalysis.objects.create(
             user=request.user,
@@ -82,14 +75,16 @@ class ResumeAnalysisAPIView(APIView):
             suggestions=suggestions,
         )
 
-        serializer = ResumeAnalysisSerializer(analysis)
+        serializer = ResumeAnalysisSerializer(
+            analysis
+        )
 
         return Response(serializer.data)
-    
-from rest_framework import generics
 
 
-class ResumeAnalysisHistoryAPIView(generics.ListAPIView):
+class ResumeAnalysisHistoryAPIView(
+    generics.ListAPIView
+):
 
     serializer_class = ResumeAnalysisSerializer
 
@@ -102,3 +97,31 @@ class ResumeAnalysisHistoryAPIView(generics.ListAPIView):
         ).order_by(
             "-analyzed_at",
         )
+
+
+class ResumeJobMatchAPIView(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, resume_id):
+
+        job_description = request.data.get(
+            "job_description",
+            "",
+        )
+
+        resume = Resume.objects.get(
+            id=resume_id,
+            user=request.user,
+        )
+
+        resume_text = extract_resume_text(
+            resume.resume_file.path
+        )
+
+        result = match_resume_with_jd(
+            resume_text,
+            job_description,
+        )
+
+        return Response(result)

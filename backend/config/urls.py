@@ -59,4 +59,8 @@ urlpatterns = [
     path("api/candidate-dashboard/",include("candidate_dashboard.urls"),),
     path("api/home/", include("homepage.urls")),
     path("api/admin-dashboard/", include("admin_dashboard.urls")),
+    path("api/cover-letter/",include("ai_cover_letter.urls"),),
+
+    path("api/interview/",include("ai_interview.urls"),),
+    path("api/mock-interview/",include("mock_interview.urls"),),
 ]

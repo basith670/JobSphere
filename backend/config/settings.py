@@ -76,6 +76,9 @@ INSTALLED_APPS = [
     "candidate_dashboard",
     "homepage",
     "admin_dashboard",
+    "ai_cover_letter",
+    "ai_interview",
+    "mock_interview",
 
 ]
 
