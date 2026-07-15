@@ -63,4 +63,6 @@ urlpatterns = [
 
     path("api/interview/",include("ai_interview.urls"),),
     path("api/mock-interview/",include("mock_interview.urls"),),
+    path("api/dashboard/",include("accounts.dashboard_urls"),),
+    path("api/profile/",include("accounts.profile_urls"),),
 ]

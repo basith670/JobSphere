@@ -152,3 +152,71 @@ class LoginSerializer(serializers.Serializer):
         attrs["user"] = user
 
         return attrs
+    
+class ProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model = User
+
+        fields = [
+
+            "id",
+
+            "username",
+
+            "email",
+
+            "first_name",
+
+            "last_name",
+
+            "phone",
+
+            "profile_image",
+
+            "bio",
+
+            "headline",
+
+            "location",
+
+            "education",
+
+            "skills",
+
+            "experience",
+
+            "preferred_role",
+
+            "preferred_location",
+
+            "expected_salary",
+
+            "years_of_experience",
+
+            "linkedin",
+
+            "github",
+
+            "portfolio",
+
+            "profile_completion",
+
+            "ai_resume_score",
+
+        ]
+
+        read_only_fields = [
+
+            "id",
+
+            "username",
+
+            "email",
+
+            "profile_completion",
+
+            "ai_resume_score",
+
+        ]
