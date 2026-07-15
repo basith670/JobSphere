@@ -1,0 +1,9 @@
+.profile-page {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.profile-page h1 {
+    margin-bottom: 30px;
+    color: var(--heading);
+}
