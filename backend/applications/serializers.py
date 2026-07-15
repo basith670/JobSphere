@@ -5,6 +5,21 @@ from .models import Application
 
 class ApplicationSerializer(serializers.ModelSerializer):
 
+    job_title = serializers.CharField(
+        source="job.title",
+        read_only=True,
+    )
+
+    company_name = serializers.CharField(
+    source="job.company.company_name",
+    read_only=True,
+    )
+
+    company_logo = serializers.ImageField(
+        source="job.company.logo",
+        read_only=True,
+    )
+
     class Meta:
 
         model = Application
