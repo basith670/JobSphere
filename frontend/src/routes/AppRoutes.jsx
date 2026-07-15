@@ -25,6 +25,8 @@ import MockInterview from "../pages/AIResume/MockInterview";
 
 import NotFound from "../pages/NotFound/NotFound";
 
+import JobDetails from "../pages/Jobs/JobDetails";
+
 function AppRoutes() {
   return (
     <BrowserRouter>
@@ -34,19 +36,30 @@ function AppRoutes() {
 
         <Route element={<MainLayout />}>
 
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
-          <Route path="/jobs" element={<Jobs />} />
-
-          <Route path="/companies" element={<Companies />} />
+          {/* Public companies page */}
+          <Route
+            path="/companies"
+            element={<Companies />}
+          />
 
         </Route>
 
         {/* ================= AUTH ================= */}
 
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login />}
+        />
 
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/register"
+          element={<Register />}
+        />
 
         {/* ================= JOB SEEKER ================= */}
 
@@ -60,6 +73,19 @@ function AppRoutes() {
           <Route
             path="/dashboard"
             element={<Dashboard />}
+          />
+
+          <Route
+            path="/jobs"
+            element={<Jobs />}
+          />
+
+          <Route
+
+          path="/jobs/details/:id"
+
+          element={<JobDetails />}
+
           />
 
           <Route

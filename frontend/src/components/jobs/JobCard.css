@@ -110,3 +110,14 @@
 .apply-btn:hover{
     opacity:.92;
 }
+
+.job-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  
+  .job-card-link:hover {
+    text-decoration: none;
+    color: inherit;
+  }

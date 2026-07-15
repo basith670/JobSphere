@@ -1,0 +1,142 @@
+.job-details-page {
+    max-width: 1100px;
+    margin: 30px auto;
+  }
+  
+  .job-header {
+    background: #fff;
+    border-radius: 18px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    margin-bottom: 25px;
+  }
+  
+  .company-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    background: #157a6e;
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+  }
+  
+  .job-title{
+    font-size:40px;
+    font-weight:700;
+    color:#1f2937;
+    margin-bottom:8px;
+  }
+  
+  .company-name{
+    font-size:24px;
+    color:#157a6e;
+    font-weight:600;
+  }
+  
+  .job-location{
+    color:#6b7280;
+    margin-top:6px;
+  }
+  
+  .job-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:25px;
+  }
+  
+  .meta-card{
+    background:#f7f8fc;
+    border-radius:12px;
+    padding:14px 20px;
+    min-width:170px;
+  }
+  
+  .meta-card h4{
+    color:#888;
+    font-size:14px;
+    margin-bottom:6px;
+  }
+  
+  .meta-card p{
+    font-size:18px;
+    font-weight:600;
+  }
+  
+  .apply-btn{
+    margin-top:30px;
+    background:#157a6e;
+    color:white;
+    border:none;
+    padding:14px 30px;
+    border-radius:10px;
+    font-size:17px;
+    cursor:pointer;
+  }
+  
+  .apply-btn:hover{
+    background:#0f6157;
+  }
+  
+  .job-section{
+    background:white;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    margin-bottom:25px;
+  }
+  
+  .job-section h2{
+    margin-bottom:18px;
+    color:#1f2937;
+  }
+  
+  .job-section p{
+    line-height:1.8;
+    color:#555;
+    white-space:pre-line;
+  }
+  
+  .job-footer{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  
+  .footer-card{
+    background:white;
+    padding:25px;
+    border-radius:16px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+  }
+  
+  .footer-card h3{
+    color:#157a6e;
+    font-size:30px;
+  }
+  
+  .footer-card p{
+    color:#666;
+  }
+  
+  @media(max-width:768px){
+  
+  .job-title{
+  font-size:28px;
+  }
+  
+  .job-footer{
+  grid-template-columns:1fr;
+  }
+  
+  .job-meta{
+  flex-direction:column;
+  }
+  
+  }

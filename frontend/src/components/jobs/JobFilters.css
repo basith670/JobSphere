@@ -1,0 +1,11 @@
+.job-filters {
+    display: flex;
+    gap: 15px;
+    margin: 25px 0;
+  }
+  
+  .job-filters select {
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
