@@ -1,28 +1,21 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework.response import Response
+
+from rest_framework import filters
+from rest_framework import generics
 
 from .models import Job
 from .serializers import JobSerializer
-from .permissions import IsRecruiterOrReadOnly
-
-from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
-
-from .models import Job, SavedJob
-from .serializers import JobSerializer, SavedJobSerializer
-
-from .filters import JobFilter
+from django.db.models import F
 
 
-class JobListCreateAPIView(generics.ListCreateAPIView):
-
-    permission_classes = [IsRecruiterOrReadOnly]
-
-    queryset = Job.objects.select_related(
-        "company"
-    ).all()
+class JobListAPIView(generics.ListAPIView):
 
     serializer_class = JobSerializer
+
+    queryset = Job.objects.filter(
+        is_active=True,
+    ).select_related("company")
 
     filter_backends = [
         DjangoFilterBackend,
@@ -30,70 +23,49 @@ class JobListCreateAPIView(generics.ListCreateAPIView):
         filters.OrderingFilter,
     ]
 
-    # Use the custom FilterSet
-    filterset_class = JobFilter
-
     search_fields = [
-        "title",
-        "description",
-        "requirements",
-        "skills_required",
-        "company__company_name",
+    "title",
+    "company__company_name",
+    "location",
+    "skills_required",
+    ]
+
+    filterset_fields = [
+        "job_type",
+        "experience",
         "location",
+        "is_featured",
     ]
 
     ordering_fields = [
+        "created_at",
         "salary_min",
         "salary_max",
-        "created_at",
-        "deadline",
-        "title",
-    ]
-
-    ordering = [
-        "-created_at",
     ]
 
 
-class JobDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-
-    permission_classes = [IsRecruiterOrReadOnly]
-
-    queryset = Job.objects.select_related("company").all()
+class JobDetailAPIView(generics.RetrieveAPIView):
 
     serializer_class = JobSerializer
 
+    queryset = Job.objects.select_related(
 
-class SavedJobListCreateAPIView(generics.ListCreateAPIView):
+        "company",
 
-    serializer_class = SavedJobSerializer
+        "recruiter",
 
-    permission_classes = [IsAuthenticated]
+    )
 
-    def get_queryset(self):
+    def retrieve(self, request, *args, **kwargs):
 
-        return SavedJob.objects.filter(
-            user=self.request.user
-        ).select_related(
-            "job",
-            "job__company",
-        )
+        instance = self.get_object()
 
-    def perform_create(self, serializer):
+        instance.views = F("views") + 1
 
-        serializer.save(
-            user=self.request.user
-        )
+        instance.save(update_fields=["views"])
 
+        instance.refresh_from_db()
 
-class SavedJobDeleteAPIView(generics.DestroyAPIView):
+        serializer = self.get_serializer(instance)
 
-    serializer_class = SavedJobSerializer
-
-    permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-
-        return SavedJob.objects.filter(
-            user=self.request.user
-        )
+        return Response(serializer.data)

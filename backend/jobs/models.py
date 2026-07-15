@@ -1,5 +1,7 @@
 from django.db import models
+
 from companies.models import Company
+from accounts.models import User
 
 
 class Job(models.Model):
@@ -12,13 +14,18 @@ class Job(models.Model):
         ("Remote", "Remote"),
     )
 
-    EXPERIENCE_CHOICES = [
-    ("0-1 Years", "0-1 Years"),
-    ("1-2 Years", "1-2 Years"),
-    ("3-5 Years", "3-5 Years"),
-    ]
+    EXPERIENCE_CHOICES = (
+        ("0-1 Years", "0-1 Years"),
+        ("1-2 Years", "1-2 Years"),
+        ("3-5 Years", "3-5 Years"),
+        ("5+ Years", "5+ Years"),
+    )
 
-    title = models.CharField(max_length=200)
+    recruiter = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="posted_jobs",
+    )
 
     company = models.ForeignKey(
         Company,
@@ -26,7 +33,13 @@ class Job(models.Model):
         related_name="jobs",
     )
 
-    location = models.CharField(max_length=150)
+    title = models.CharField(
+        max_length=200,
+    )
+
+    location = models.CharField(
+        max_length=150,
+    )
 
     job_type = models.CharField(
         max_length=30,
@@ -39,8 +52,8 @@ class Job(models.Model):
     )
 
     salary_min = models.DecimalField(
-    max_digits=10,
-    decimal_places=2,
+        max_digits=10,
+        decimal_places=2,
     )
 
     salary_max = models.DecimalField(
@@ -52,31 +65,50 @@ class Job(models.Model):
 
     requirements = models.TextField()
 
+    responsibilities = models.TextField(
+        blank=True,
+    )
+
+    benefits = models.TextField(
+        blank=True,
+    )
+
     skills_required = models.TextField()
 
     vacancies = models.PositiveIntegerField(
-    default=1,
+        default=1,
+    )
+
+    views = models.PositiveIntegerField(
+        default=0,
     )
 
     is_featured = models.BooleanField(
-    default=False,
+        default=False,
     )
 
     deadline = models.DateField()
 
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(
+        default=True,
+    )
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
 
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(
+        auto_now=True,
+    )
 
     def __str__(self):
         return self.title
-    
+
+
 class SavedJob(models.Model):
 
     user = models.ForeignKey(
-        "accounts.User",
+        User,
         on_delete=models.CASCADE,
         related_name="saved_jobs",
     )
