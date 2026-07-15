@@ -27,6 +27,8 @@ import NotFound from "../pages/NotFound/NotFound";
 
 import JobDetails from "../pages/Jobs/JobDetails";
 
+import MyApplications from "../pages/Applications/MyApplications";
+
 function AppRoutes() {
   return (
     <BrowserRouter>
@@ -86,6 +88,11 @@ function AppRoutes() {
 
           element={<JobDetails />}
 
+          />
+
+          <Route
+            path="/applications"
+            element={<MyApplications />}
           />
 
           <Route
