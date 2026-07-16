@@ -79,6 +79,7 @@ INSTALLED_APPS = [
     "ai_cover_letter",
     "ai_interview",
     "mock_interview",
+    "ai_mock_interview",
 
 ]
 

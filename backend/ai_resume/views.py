@@ -32,13 +32,6 @@ class ResumeAnalysisAPIView(APIView):
 
         skills = extract_skills(text)
 
-        ats_score = calculate_ats_score(skills)
-
-        suggestions = generate_suggestions(
-            skills,
-            text,
-        )
-
         required_skills = [
             "Python",
             "Django",
@@ -51,20 +44,16 @@ class ResumeAnalysisAPIView(APIView):
             "AWS",
         ]
 
-        found = []
+        ats_score, found, missing = calculate_ats_score(
+            skills,
+            required_skills,
+        )
 
-        missing = []
-
-        lower_skills = [
-            s.lower() for s in skills
-        ]
-
-        for skill in required_skills:
-
-            if skill.lower() in lower_skills:
-                found.append(skill)
-            else:
-                missing.append(skill)
+        suggestions = generate_suggestions(
+            ats_score,
+            missing,
+            text,
+        )
 
         analysis = ResumeAnalysis.objects.create(
             user=request.user,

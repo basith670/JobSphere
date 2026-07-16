@@ -102,6 +102,11 @@ urlpatterns = [
         "api/profile/",
         include("accounts.profile_urls"),
     ),
+
+    path(
+    "api/mock-interview/",
+    include("ai_mock_interview.urls"),
+    ),
 ]
 
 
