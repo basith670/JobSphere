@@ -15,32 +15,38 @@ export default function ResumeSelector({
   const loadResumes = async () => {
     try {
       const data = await getResumes();
+
       setResumes(data.results || data);
+
     } catch (err) {
       console.error(err);
     }
   };
 
   return (
-    <select
-      className="resume-input"
-      value={value}
-      onChange={(e) =>
-        onChange(e.target.value)
-      }
-    >
-      <option value="">
-        Select Resume
-      </option>
+    <div className="resume-group">
 
-      {resumes.map((resume) => (
-        <option
-          key={resume.id}
-          value={resume.id}
-        >
-          {resume.title}
+      <label>Select Resume</label>
+
+      <select
+        className="resume-select"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      >
+        <option value="">
+          Choose your resume
         </option>
-      ))}
-    </select>
+
+        {resumes.map((resume) => (
+          <option
+            key={resume.id}
+            value={resume.id}
+          >
+            {resume.title}
+          </option>
+        ))}
+      </select>
+
+    </div>
   );
 }

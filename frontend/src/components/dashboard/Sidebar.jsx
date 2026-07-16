@@ -36,7 +36,7 @@ const menuItems = [
   },
   {
     name: "AI Career Hub",
-    path: "/ai-hub",
+    path: "/ai-career-hub",
     icon: <FaRobot />,
   },
   {
@@ -56,7 +56,6 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar">
-
       <div className="sidebar-logo">
         <h2>JobSphere</h2>
         <span>Career Platform</span>
@@ -68,9 +67,7 @@ export default function Sidebar() {
             key={item.name}
             to={item.path}
             className={({ isActive }) =>
-              isActive
-                ? "sidebar-link active"
-                : "sidebar-link"
+              isActive ? "sidebar-link active" : "sidebar-link"
             }
           >
             <span>{item.icon}</span>
@@ -80,7 +77,6 @@ export default function Sidebar() {
       </nav>
 
       <div className="sidebar-footer">
-
         <div className="sidebar-user">
           <div className="avatar">
             {user?.first_name?.charAt(0) || "U"}
@@ -100,9 +96,8 @@ export default function Sidebar() {
           onClick={logout}
         >
           <FaSignOutAlt />
-          Logout
+          <span>Logout</span>
         </button>
-
       </div>
     </aside>
   );

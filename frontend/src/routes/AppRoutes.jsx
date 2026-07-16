@@ -29,6 +29,9 @@ import JobDetails from "../pages/Jobs/JobDetails";
 
 import MyApplications from "../pages/Applications/MyApplications";
 
+import AICareerHub from "../pages/AICareerHub/AICareerHub";
+import ATSScore from "../pages/ATSScore/ATSScore";
+
 function AppRoutes() {
   return (
     <BrowserRouter>
@@ -96,6 +99,11 @@ function AppRoutes() {
           />
 
           <Route
+              path="/ai-career-hub"
+              element={<AICareerHub />}
+          />
+
+          <Route
             path="/profile"
             element={<Profile />}
           />
@@ -130,6 +138,11 @@ function AppRoutes() {
             element={<MockInterview />}
           />
         </Route>
+
+        <Route
+    path="/ats-score"
+    element={<ATSScore />}
+/>
 
         {/* ================= 404 ================= */}
 

@@ -1,256 +1,374 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
-import {
-  startInterview,
-  submitInterviewAnswer,
-} from "../../services/mockInterviewService";
+import MockInterviewHero from "../../components/mockinterview/MockInterviewHero";
+import InterviewProgress from "../../components/mockinterview/InterviewProgress";
+import QuestionCard from "../../components/mockinterview/QuestionCard";
+import AnswerBox from "../../components/mockinterview/AnswerBox";
+import InterviewResult from "../../components/mockinterview/InterviewResult";
 
 import ResumeSelector from "../../components/resume/ResumeSelector";
+
+import { evaluateAnswer } from "../../services/mockInterviewService";
+
+import "../../components/airesume/AIResume.css";
 
 import { toast } from "react-toastify";
 
 export default function MockInterview() {
+
+  const location = useLocation();
+
+  const defaultQuestions = [
+
+    "Explain React Virtual DOM.",
+
+    "Difference between JWT and Sessions?",
+
+    "What is Django ORM?",
+
+    "Explain useEffect lifecycle.",
+
+    "How would you optimize SQL queries?",
+
+  ];
+
+  const sampleQuestions =
+    location.state?.interviewQuestions?.length > 0
+      ? location.state.interviewQuestions
+      : defaultQuestions;
+
+  const [started, setStarted] = useState(false);
+
+  const [finished, setFinished] = useState(false);
+
   const [resumeId, setResumeId] = useState("");
 
-  const [sessionId, setSessionId] = useState(null);
-
-  const [questions, setQuestions] = useState([]);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [current, setCurrent] = useState(1);
 
   const [answer, setAnswer] = useState("");
+
+  const [answers, setAnswers] = useState([]);
 
   const [result, setResult] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
-  const [completed, setCompleted] = useState(false);
+  const nextQuestion = async () => {
 
-  const [overallScore, setOverallScore] = useState(null);
+    const trimmedAnswer = answer.trim();
 
-  const handleStart = async () => {
-    if (!resumeId) {
-        toast.warning("Please enter Resume ID.");
+    if (!trimmedAnswer) {
+
+      toast.warning(
+        "Please answer this question before continuing."
+      );
+
       return;
+
     }
 
-    try {
-      setLoading(true);
+    if (trimmedAnswer.length < 10) {
 
-      const data = await startInterview({
-        resume_id: resumeId,
-      });
+      toast.warning(
+        "Please enter at least 10 characters before continuing."
+      );
 
-      setSessionId(data.session_id);
-
-      const allQuestions = [
-        ...data.questions.technical_questions,
-        ...data.questions.coding_questions,
-        ...data.questions.behavioral_questions,
-      ];
-
-      setQuestions(allQuestions);
-
-      setCurrentIndex(0);
-
-      setAnswer("");
-
-      setResult(null);
-
-      setCompleted(false);
-
-      setOverallScore(null);
-    } catch (err) {
-      console.error(err);
-      toast.error("Unable to start interview.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleSubmit = async () => {
-    if (!answer.trim()) {
-        toast.warning("Please enter your answer.");
       return;
+
     }
 
-    try {
-      setLoading(true);
+    const updatedAnswers = [...answers];
 
-      const data = await submitInterviewAnswer({
-        session_id: sessionId,
-        question: questions[currentIndex],
-        answer: answer,
-      });
+    updatedAnswers[current - 1] = trimmedAnswer;
 
-      setResult(data);
+    setAnswers(updatedAnswers);
 
-      // Interview Finished
-      if (currentIndex === questions.length - 1) {
-        setCompleted(true);
-        setOverallScore(data.overall_score);
-        return;
+    if (current === sampleQuestions.length) {
+
+      try {
+
+        setLoading(true);
+
+        const evaluation = await evaluateAnswer({
+
+          questions: sampleQuestions,
+
+          answers: updatedAnswers,
+
+        });
+
+        setResult(evaluation);
+
+        setFinished(true);
+
+      } catch (err) {
+
+        console.error(err);
+
+        toast.error(
+          "Unable to evaluate interview."
+        );
+
+      } finally {
+
+        setLoading(false);
+
       }
 
-      // Move to next question after 2 seconds
-      setTimeout(() => {
-        setCurrentIndex((prev) => prev + 1);
-        setAnswer("");
-        setResult(null);
-      }, 2000);
-    } catch (err) {
-      console.error(err);
-      toast.error("Unable to submit answer.");
-    } finally {
-      setLoading(false);
+      return;
+
     }
+
+    setCurrent((prev) => prev + 1);
+
+    setAnswer("");
+
   };
 
-  return (
-    <div className="resume-page">
+  if (finished && result) {
 
-      <div className="resume-header">
-        <h1 className="resume-title">
-          AI Mock Interview
-        </h1>
+    return (
+
+      <div className="resume-page">
+
+        <InterviewResult
+          result={result}
+        />
+
       </div>
 
-      {!sessionId && (
-        <div className="resume-card">
+    );
 
-            <ResumeSelector
-            value={resumeId}
-            onChange={setResumeId}
-            />
+  }
+  return (
 
-          <button
-            className="resume-btn"
-            onClick={handleStart}
-            disabled={loading}
-          >
-            {loading ? "Starting..." : "Start Interview"}
-          </button>
+    <div className="resume-page">
 
-        </div>
-      )}
+      <MockInterviewHero />
 
-      {sessionId && !completed && (
-        <div className="resume-card">
+      {
 
-          {/* Progress Bar */}
+        !started ? (
 
-          <div
-            style={{
-              width: "100%",
-              height: "10px",
-              background: "#e5e7eb",
-              borderRadius: "10px",
-              overflow: "hidden",
-              marginBottom: "20px",
-            }}
-          >
-            <div
-              style={{
-                width: `${((currentIndex + 1) / questions.length) * 100}%`,
-                height: "100%",
-                background: "#14b8a6",
-                transition: "0.3s",
-              }}
-            />
+          <div className="match-workspace">
+
+            <div className="workspace-card">
+
+              <h2>
+
+                Interview Setup
+
+              </h2>
+
+              <div className="form-group">
+
+                <label>
+
+                  Resume
+
+                </label>
+
+                <ResumeSelector
+                  value={resumeId}
+                  onChange={setResumeId}
+                />
+
+              </div>
+
+              <div className="form-group">
+
+                <label>
+
+                  Difficulty
+
+                </label>
+
+                <select className="resume-input">
+
+                  <option>Easy</option>
+
+                  <option>Medium</option>
+
+                  <option>Hard</option>
+
+                </select>
+
+              </div>
+
+              <div className="form-group">
+
+                <label>
+
+                  Questions
+
+                </label>
+
+                <select className="resume-input">
+
+                  <option>5 Questions</option>
+
+                  <option>10 Questions</option>
+
+                  <option>15 Questions</option>
+
+                </select>
+
+              </div>
+
+              <button
+
+                className="analyze-btn"
+
+                disabled={!resumeId}
+
+                onClick={() => setStarted(true)}
+
+              >
+
+                Start Interview
+
+              </button>
+
+            </div>
+
           </div>
 
-          <h3>
-            Question {currentIndex + 1} / {questions.length}
-          </h3>
+        ) : (
 
-          <h2>{questions[currentIndex]}</h2>
+          <>
 
-          <textarea
-            className="resume-textarea"
-            rows={10}
-            placeholder="Write your answer..."
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-          />
+            <InterviewProgress
 
-          <button
-            className="resume-btn"
-            onClick={handleSubmit}
-            disabled={loading}
-          >
-            {loading
-              ? "Evaluating..."
-              : "Submit Answer"}
-          </button>
+              current={current}
 
-        </div>
-      )}
+              total={sampleQuestions.length}
 
-      {result && !completed && (
-        <div
-          className="resume-card"
-          style={{ marginTop: "30px" }}
-        >
-          <h2>Evaluation Result</h2>
+            />
 
-          <h3>
-            Score: {result.score}/10
-          </h3>
+            <QuestionCard
 
-          <p>{result.feedback}</p>
-        </div>
-      )}
+              question={sampleQuestions[current - 1]}
 
-      {completed && (
-        <div
-          className="resume-card"
-          style={{
-            marginTop: "30px",
-            textAlign: "center",
-          }}
-        >
-          <h2>
-            🎉 Interview Completed
-          </h2>
+            />
 
-          <h1
-            style={{
-              color: "#16a34a",
-              marginTop: "20px",
-            }}
-          >
-            Overall Score: {overallScore}/100
-          </h1>
+            <AnswerBox
 
-          <p
-            style={{
-              marginTop: "20px",
-            }}
-          >
-            Congratulations! You have completed the AI Mock Interview.
-          </p>
+              answer={answer}
 
-          <button
-            className="resume-btn"
-            style={{
-              marginTop: "25px",
-            }}
-            onClick={() => {
-              setSessionId(null);
-              setQuestions([]);
-              setCurrentIndex(0);
-              setAnswer("");
-              setResult(null);
-              setCompleted(false);
-              setOverallScore(null);
-            }}
-          >
-            Start New Interview
-          </button>
+              setAnswer={setAnswer}
 
-        </div>
-      )}
+            />
+
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "12px",
+                marginBottom: "20px",
+                fontSize: "14px",
+              }}
+            >
+
+              {
+
+                answer.trim().length >= 10 ? (
+
+                  <span
+                    style={{
+                      color: "#16a34a",
+                      fontWeight: 600,
+                    }}
+                  >
+
+                    ✅ Ready to continue
+
+                  </span>
+
+                ) : (
+
+                  <span
+                    style={{
+                      color: "#dc2626",
+                      fontWeight: 600,
+                    }}
+                  >
+
+                    Need{" "}
+
+                    {
+
+                      Math.max(
+                        10 - answer.trim().length,
+                        0
+                      )
+
+                    }
+
+                    {" "}more character
+
+                    {
+
+                      Math.max(
+                        10 - answer.trim().length,
+                        0
+                      ) !== 1 && "s"
+
+                    }
+
+                  </span>
+
+                )
+
+              }
+
+              <span
+                style={{
+                  color: "#64748b",
+                }}
+              >
+
+                {answer.trim().length} characters
+
+              </span>
+
+            </div>
+
+            <button
+
+              className="analyze-btn"
+
+              onClick={nextQuestion}
+
+              disabled={loading}
+
+            >
+
+              {
+
+                loading
+
+                  ? "Evaluating..."
+
+                  : current === sampleQuestions.length
+
+                  ? "Finish Interview"
+
+                  : "Next Question"
+
+              }
+
+            </button>
+
+          </>
+
+        )
+
+      }
 
     </div>
+
   );
+
 }

@@ -20,7 +20,7 @@ export const submitInterviewAnswer = async (data) => {
   return response.data;
 };
 
-// (Optional) Keep the old API if you still use it anywhere
+// Evaluate Complete Interview
 export const evaluateAnswer = async (data) => {
   const response = await api.post(
     "/mock-interview/evaluate/",

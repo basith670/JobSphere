@@ -10,12 +10,19 @@ import ATSCard from "../../components/airesume/ATSCard";
 import SkillsCard from "../../components/airesume/SkillsCard";
 import SuggestionsCard from "../../components/airesume/SuggestionsCard";
 import HistoryCard from "../../components/airesume/HistoryCard";
+import AnalysisSummary from "../../components/airesume/AnalysisSummary";
+import ResumeHero from "../../components/airesume/ResumeHero";
+import SectionAnalysis from "../../components/airesume/SectionAnalysis";
+import KeywordAnalysis from "../../components/airesume/KeywordAnalysis";
+import ResumeInsights from "../../components/airesume/ResumeInsights";
+import NextActions from "../../components/airesume/NextActions";
 
 import "../../components/airesume/AIResume.css";
 
 import { toast } from "react-toastify";
 
 export default function ResumeAnalysis() {
+
   const { resumeId } = useParams();
 
   const [analysis, setAnalysis] = useState(null);
@@ -27,22 +34,28 @@ export default function ResumeAnalysis() {
   }, [resumeId]);
 
   const loadAnalysis = async () => {
+
     try {
+
       setLoading(true);
 
       const analysisData = await analyzeResume(resumeId);
       const historyData = await getAnalysisHistory();
 
       setAnalysis(analysisData);
-
-      // Supports both paginated and non-paginated APIs
       setHistory(historyData.results || historyData);
+
     } catch (err) {
+
       console.error(err);
       toast.error("Unable to analyze resume.");
+
     } finally {
+
       setLoading(false);
+
     }
+
   };
 
   if (loading) {
@@ -56,22 +69,37 @@ export default function ResumeAnalysis() {
   }
 
   return (
+
     <div className="resume-page">
 
-      <div className="resume-header">
-        <h1 className="resume-title">
-          AI Resume Analysis
-        </h1>
-      </div>
+      {/* ================= HERO ================= */}
+
+      <ResumeHero
+        analysis={analysis}
+      />
+
+      {/* ================= SUMMARY ================= */}
+
+      <AnalysisSummary
+        atsScore={analysis.ats_score}
+        skillsFound={analysis.skills_found.length}
+        missingSkills={analysis.missing_skills.length}
+        suggestions={analysis.suggestions.length}
+      />
+
+      {/* ================= ATS + SKILLS ================= */}
 
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px,1fr))",
+          gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
           gap: "20px",
         }}
       >
-        <ATSCard score={analysis.ats_score} />
+
+        <ATSCard
+          score={analysis.ats_score}
+        />
 
         <SkillsCard
           title="Skills Found"
@@ -84,20 +112,59 @@ export default function ResumeAnalysis() {
           skills={analysis.missing_skills}
           success={false}
         />
+
       </div>
 
+      {/* ================= AI SUGGESTIONS ================= */}
+
       <div style={{ marginTop: "20px" }}>
+
         <SuggestionsCard
           suggestions={analysis.suggestions}
         />
+
+      </div>
+
+      {/* ================= RESUME SECTION ANALYSIS ================= */}
+
+      <div style={{ marginTop: "20px" }}>
+
+        <SectionAnalysis />
+
+      </div>
+
+
+      <div style={{ marginTop: "20px" }}>
+
+    <KeywordAnalysis
+        found={analysis.skills_found}
+        missing={analysis.missing_skills}
+    />
+
       </div>
 
       <div style={{ marginTop: "20px" }}>
+          <ResumeInsights analysis={analysis} />
+        </div>
+
+        <div style={{ marginTop: "20px" }}>
+
+    <NextActions />
+
+</div>
+
+      {/* ================= HISTORY ================= */}
+
+      <div style={{ marginTop: "20px" }}>
+
         <HistoryCard
           history={history}
         />
+
       </div>
 
     </div>
+
   );
+
 }

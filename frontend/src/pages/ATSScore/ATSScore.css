@@ -1,0 +1,232 @@
+.ats-page{
+    padding:30px;
+    min-height:100vh;
+    background:#f8fafc;
+}
+
+.ats-title{
+    font-size:46px;
+    font-weight:700;
+    color:#0f172a;
+    margin-bottom:30px;
+}
+
+.ats-card{
+    background:#fff;
+    border-radius:22px;
+    padding:35px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    display:flex;
+    align-items:flex-end;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.ats-btn{
+    padding:14px 30px;
+    border:none;
+    border-radius:12px;
+    background:#0f766e;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.ats-btn:hover{
+    background:#115e59;
+    transform:translateY(-2px);
+}
+
+.ats-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+.ats-result{
+    margin-top:35px;
+
+    display:grid;
+    grid-template-columns:350px 1fr;
+    gap:30px;
+}
+
+.ats-circle{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.ats-circle h2{
+
+    font-size:72px;
+
+    color:#0f766e;
+
+    margin:0;
+
+}
+
+.ats-circle span{
+
+    color:#64748b;
+
+    font-size:18px;
+
+}
+
+.ats-details{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.ats-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+.ats-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.ats-row span{
+
+    color:#475569;
+
+    font-size:17px;
+
+}
+
+.ats-row strong{
+
+    color:#0f766e;
+
+    font-size:18px;
+
+}
+
+@media(max-width:900px){
+
+.ats-result{
+
+grid-template-columns:1fr;
+
+}
+
+.ats-card{
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+}
+
+/* ==============================
+   ATS SCORE CIRCLE
+============================== */
+
+.ats-circle-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+.ats-circle-card svg{
+
+    transform:rotate(-90deg);
+
+}
+
+.circle-bg{
+
+    fill:none;
+
+    stroke:#e5e7eb;
+
+    stroke-width:12;
+
+}
+
+.circle-progress{
+
+    fill:none;
+
+    stroke:#0f766e;
+
+    stroke-width:12;
+
+    stroke-linecap:round;
+
+    transition:stroke-dashoffset 1s ease;
+
+}
+
+.circle-content{
+
+    position:absolute;
+
+    text-align:center;
+
+}
+
+.circle-content h1{
+
+    margin:0;
+
+    font-size:54px;
+
+    color:#0f766e;
+
+}
+
+.circle-content p{
+
+    margin-top:8px;
+
+    color:#64748b;
+
+}

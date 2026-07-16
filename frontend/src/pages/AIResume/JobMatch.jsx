@@ -6,6 +6,15 @@ import ATSCard from "../../components/airesume/ATSCard";
 import SkillsCard from "../../components/airesume/SkillsCard";
 import SuggestionsCard from "../../components/airesume/SuggestionsCard";
 import ResumeSelector from "../../components/resume/ResumeSelector";
+import MatchHero from "../../components/jobmatch/MatchHero";
+import MatchWorkspace from "../../components/jobmatch/MatchWorkspace";
+import MatchSummary from "../../components/jobmatch/MatchSummary";
+import MatchScoreCircle from "../../components/jobmatch/MatchScoreCircle";
+
+import MatchedSkillsCard from "../../components/jobmatch/MatchedSkillsCard";
+import MissingSkillsCard from "../../components/jobmatch/MissingSkillsCard";
+
+import RecommendationCard from "../../components/jobmatch/RecommendationCard";
 
 import { toast } from "react-toastify";
 
@@ -52,50 +61,24 @@ export default function JobMatch() {
   return (
     <div className="resume-page">
 
-      <div className="resume-header">
-        <h1 className="resume-title">
-          AI Job Match
-        </h1>
-      </div>
+      <MatchHero />
 
-      <div className="resume-card">
-
-      <ResumeSelector
-            value={resumeId}
-            onChange={setResumeId}
-            />
-
-        <br />
-        <br />
-
-        <textarea
-          rows="10"
-          className="resume-textarea"
-          placeholder="Paste Job Description..."
-          value={jobDescription}
-          onChange={(e) =>
-            setJobDescription(e.target.value)
-          }
-        />
-
-        <br />
-        <br />
-
-        <button
-          className="resume-btn"
-          onClick={handleAnalyze}
-          disabled={loading}
-        >
-          {loading
-            ? "Analyzing..."
-            : "Analyze Match"}
-        </button>
-
-      </div>
+      <MatchWorkspace
+    resumeId={resumeId}
+    setResumeId={setResumeId}
+    jobDescription={jobDescription}
+    setJobDescription={setJobDescription}
+    handleAnalyze={handleAnalyze}
+    loading={loading}
+/>
 
       {result && (
 
         <>
+
+          <MatchSummary
+              result={result}
+          />
           <div
             style={{
               display: "grid",
@@ -106,28 +89,24 @@ export default function JobMatch() {
             }}
           >
 
-            <ATSCard
-              score={result.match_score}
+            <MatchScoreCircle
+                score={result.match_score}
             />
 
-            <SkillsCard
-              title="Matched Skills"
-              skills={result.matched_skills}
-              success={true}
+            <MatchedSkillsCard
+                skills={result.matched_skills}
             />
 
-            <SkillsCard
-              title="Missing Skills"
-              skills={result.missing_keywords}
-              success={false}
+            <MissingSkillsCard
+                skills={result.missing_keywords}
             />
 
           </div>
 
           <div style={{ marginTop: "20px" }}>
-            <SuggestionsCard
-              suggestions={result.suggestions}
-            />
+          <RecommendationCard
+    suggestions={result.suggestions}
+/>
           </div>
         </>
 
