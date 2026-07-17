@@ -4,10 +4,10 @@ from accounts.models import User
 
 class Company(models.Model):
 
-    owner = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="companies",
+    owner = models.OneToOneField(
+    User,
+    on_delete=models.CASCADE,
+    related_name="company",
     )
 
     company_name = models.CharField(max_length=200)
@@ -20,12 +20,11 @@ class Company(models.Model):
 
     website = models.URLField(blank=True)
 
-    email = models.EmailField(
-    blank=True,
-    )
+    email = models.EmailField(blank=True)
 
-    is_verified = models.BooleanField(
-        default=False,
+    phone = models.CharField(
+        max_length=20,
+        blank=True,
     )
 
     location = models.CharField(max_length=150)
@@ -34,7 +33,20 @@ class Company(models.Model):
 
     company_size = models.CharField(max_length=50)
 
+    founded_year = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+    )
+
     description = models.TextField()
+
+    linkedin = models.URLField(blank=True)
+
+    twitter = models.URLField(blank=True)
+
+    facebook = models.URLField(blank=True)
+
+    is_verified = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
 

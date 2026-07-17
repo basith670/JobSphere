@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from .models import Application
 
 
@@ -11,12 +10,33 @@ class ApplicationSerializer(serializers.ModelSerializer):
     )
 
     company_name = serializers.CharField(
-    source="job.company.company_name",
-    read_only=True,
+        source="job.company.company_name",
+        read_only=True,
     )
 
     company_logo = serializers.ImageField(
         source="job.company.logo",
+        read_only=True,
+    )
+
+    # NEW
+    applicant_name = serializers.CharField(
+        source="applicant.username",
+        read_only=True,
+    )
+
+    applicant_email = serializers.EmailField(
+        source="applicant.email",
+        read_only=True,
+    )
+
+    applicant_first_name = serializers.CharField(
+        source="applicant.first_name",
+        read_only=True,
+    )
+
+    applicant_last_name = serializers.CharField(
+        source="applicant.last_name",
         read_only=True,
     )
 

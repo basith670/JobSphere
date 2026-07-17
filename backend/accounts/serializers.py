@@ -5,6 +5,10 @@ from rest_framework import serializers
 from .models import User
 
 
+# =====================================================
+# User Serializer
+# =====================================================
+
 class UserSerializer(serializers.ModelSerializer):
 
     profile_completion = serializers.SerializerMethodField()
@@ -14,29 +18,53 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
 
         fields = (
-            "id",
-            "username",
-            "email",
-            "role",
-            "phone",
-            "profile_image",
-            "bio",
-            "headline",
-            "linkedin",
-            "github",
-            "portfolio",
-            "experience",
-            "location",
-            "preferred_role",
-            "preferred_location",
-            "expected_salary",
-            "years_of_experience",
-            "skills",
-            "education",
-            "profile_completion",
-            "created_at",
-            "updated_at",
-        )
+                "id",
+                "username",
+                "email",
+
+                "first_name",
+                "last_name",
+
+                "phone",
+
+                "profile_image",
+                "profile_image_url",
+
+                "bio",
+
+                "headline",
+
+                "location",
+
+                "education",
+
+                "skills",
+
+                "experience",
+
+                "preferred_role",
+
+                "preferred_location",
+
+                "expected_salary",
+
+                "years_of_experience",
+
+                "linkedin",
+
+                "github",
+
+                "portfolio",
+
+                "email_new_applicant",
+                "email_job_expiry",
+                "email_weekly_report",
+                "email_marketing",
+
+                "profile_completion",
+
+                "ai_resume_score",
+            )
 
         read_only_fields = (
             "id",
@@ -73,6 +101,89 @@ class UserSerializer(serializers.ModelSerializer):
 
         return round((completed / len(fields)) * 100)
 
+
+# =====================================================
+# Profile Serializer (Settings Page)
+# =====================================================
+class ProfileSerializer(serializers.ModelSerializer):
+
+    profile_image_url = serializers.SerializerMethodField()
+
+    class Meta:
+
+        model = User
+
+        fields = (
+            "id",
+            "username",
+            "email",
+
+            "first_name",
+            "last_name",
+
+            "phone",
+
+            "profile_image",
+            "profile_image_url",
+
+            "bio",
+
+            "headline",
+
+            "location",
+
+            "education",
+
+            "skills",
+
+            "experience",
+
+            "preferred_role",
+
+            "preferred_location",
+
+            "expected_salary",
+
+            "years_of_experience",
+
+            "linkedin",
+
+            "github",
+
+            "portfolio",
+
+            "profile_completion",
+
+            "ai_resume_score",
+        )
+
+        read_only_fields = (
+            "id",
+            "username",
+            "email",
+            "profile_completion",
+            "ai_resume_score",
+        )
+
+    def get_profile_image_url(self, obj):
+
+        request = self.context.get("request")
+
+        if obj.profile_image:
+
+            if request:
+                return request.build_absolute_uri(
+                    obj.profile_image.url
+                )
+
+            return obj.profile_image.url
+
+        return None
+
+
+# =====================================================
+# Register
+# =====================================================
 
 class RegisterSerializer(serializers.ModelSerializer):
 
@@ -125,6 +236,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 
+# =====================================================
+# Login
+# =====================================================
+
 class LoginSerializer(serializers.Serializer):
 
     username = serializers.CharField()
@@ -135,12 +250,9 @@ class LoginSerializer(serializers.Serializer):
 
     def validate(self, attrs):
 
-        username = attrs.get("username")
-        password = attrs.get("password")
-
         user = authenticate(
-            username=username,
-            password=password,
+            username=attrs.get("username"),
+            password=attrs.get("password"),
         )
 
         if user is None:
@@ -152,71 +264,34 @@ class LoginSerializer(serializers.Serializer):
         attrs["user"] = user
 
         return attrs
-    
-class ProfileSerializer(serializers.ModelSerializer):
 
-    class Meta:
 
-        model = User
+# =====================================================
+# Change Password
+# =====================================================
 
-        fields = [
+class ChangePasswordSerializer(serializers.Serializer):
 
-            "id",
+    current_password = serializers.CharField(
+        write_only=True
+    )
 
-            "username",
+    new_password = serializers.CharField(
+        write_only=True,
+        validators=[validate_password],
+    )
 
-            "email",
+    def validate(self, attrs):
 
-            "first_name",
+        user = self.context["request"].user
 
-            "last_name",
+        if not user.check_password(attrs["current_password"]):
 
-            "phone",
+            raise serializers.ValidationError(
+                {
+                    "current_password":
+                        "Current password is incorrect."
+                }
+            )
 
-            "profile_image",
-
-            "bio",
-
-            "headline",
-
-            "location",
-
-            "education",
-
-            "skills",
-
-            "experience",
-
-            "preferred_role",
-
-            "preferred_location",
-
-            "expected_salary",
-
-            "years_of_experience",
-
-            "linkedin",
-
-            "github",
-
-            "portfolio",
-
-            "profile_completion",
-
-            "ai_resume_score",
-
-        ]
-
-        read_only_fields = [
-
-            "id",
-
-            "username",
-
-            "email",
-
-            "profile_completion",
-
-            "ai_resume_score",
-
-        ]
+        return attrs

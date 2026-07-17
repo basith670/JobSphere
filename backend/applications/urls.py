@@ -3,14 +3,23 @@ from .views import (
     ApplicationListCreateAPIView,
     ApplicationDetailAPIView,
     RecruiterApplicationsAPIView,
+    JobApplicantsAPIView,
 )
 
 urlpatterns = [
-    path("", ApplicationListCreateAPIView.as_view(), name="application-list"),
-    path("<int:pk>/", ApplicationDetailAPIView.as_view(), name="application-detail"),
+
+    path("", ApplicationListCreateAPIView.as_view()),
+
+    path("recruiter/", RecruiterApplicationsAPIView.as_view()),
+
     path(
-    "recruiter/",
-    RecruiterApplicationsAPIView.as_view(),
-    name="recruiter-applications",
-),
+
+        "job/<int:job_id>/",
+
+        JobApplicantsAPIView.as_view(),
+
+    ),
+
+    path("<int:pk>/", ApplicationDetailAPIView.as_view()),
+
 ]

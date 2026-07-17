@@ -1,23 +1,17 @@
 from rest_framework import generics
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import get_object_or_404
 
 from .models import Company
 from .serializers import CompanySerializer
 
 
-class CompanyListCreateAPIView(generics.ListCreateAPIView):
-
-    queryset = Company.objects.all().order_by("-created_at")
-
+class MyCompanyAPIView(generics.RetrieveUpdateAPIView):
     serializer_class = CompanySerializer
+    permission_classes = [IsAuthenticated]
 
-    permission_classes = [AllowAny]
-
-
-class CompanyDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-
-    queryset = Company.objects.all().order_by("-created_at")
-
-    serializer_class = CompanySerializer
-
-    permission_classes = [AllowAny]
+    def get_object(self):
+        return get_object_or_404(
+            Company,
+            owner=self.request.user,
+        )

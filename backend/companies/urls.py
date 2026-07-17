@@ -1,11 +1,6 @@
 from django.urls import path
-
-from .views import (
-    CompanyDetailAPIView,
-    CompanyListCreateAPIView,
-)
+from .views import MyCompanyAPIView
 
 urlpatterns = [
-    path("", CompanyListCreateAPIView.as_view(), name="company-list-create"),
-    path("<int:pk>/", CompanyDetailAPIView.as_view(), name="company-detail"),
+    path("me/", MyCompanyAPIView.as_view(), name="my-company"),
 ]

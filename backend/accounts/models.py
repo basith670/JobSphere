@@ -43,6 +43,24 @@ class User(AbstractUser):
         null=True,
     )
 
+    # ---------- EMAIL NOTIFICATIONS ----------
+
+    email_new_applicant = models.BooleanField(
+        default=True,
+    )
+
+    email_job_expiry = models.BooleanField(
+        default=True,
+    )
+
+    email_weekly_report = models.BooleanField(
+        default=True,
+    )
+
+    email_marketing = models.BooleanField(
+        default=False,
+    )
+
     # ---------- NEW PROFESSIONAL FIELDS ----------
 
     headline = models.CharField(
