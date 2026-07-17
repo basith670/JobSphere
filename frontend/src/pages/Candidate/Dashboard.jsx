@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 
 import StatsGrid from "../../components/dashboard/StatsGrid";
 import QuickActions from "../../components/dashboard/QuickActions";
-
-import { getCandidateDashboard } from "../../services/dashboardService";
+import { getCandidateDashboard } from "../../services/candidateDashboardService";
 
 import "./Dashboard.css";
 

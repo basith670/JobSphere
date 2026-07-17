@@ -1,25 +1,106 @@
 import api from "../api/api";
 
-export const getJobs = async (params = {}) => {
-  const response = await api.get("/jobs/", {
-    params,
-  });
+/* ======================================
+   PUBLIC JOB APIs
+====================================== */
 
-  return response.data.results || [];
+export const getJobs = async (params = {}) => {
+
+    const response = await api.get(
+        "/jobs/",
+        {
+            params,
+        }
+    );
+
+    return response.data.results || [];
+
 };
 
 export const getJob = async (id) => {
-  const response = await api.get(`/jobs/${id}/`);
 
-  return response.data;
+    const response = await api.get(
+        `/jobs/${id}/`
+    );
+
+    return response.data;
+
 };
 
 export const getFeaturedJobs = async () => {
-  const response = await api.get("/jobs/", {
-    params: {
-      is_featured: true,
-    },
-  });
 
-  return response.data.results || [];
+    const response = await api.get(
+        "/jobs/",
+        {
+            params: {
+                is_featured: true,
+            },
+        }
+    );
+
+    return response.data.results || [];
+
+};
+
+
+/* ======================================
+   RECRUITER JOB APIs
+====================================== */
+
+export const getMyJobs = async (params = {}) => {
+
+    const response = await api.get(
+        "/jobs/my/",
+        {
+            params,
+        }
+    );
+
+    return response.data.results || [];
+
+};
+
+export const getMyJob = async (id) => {
+
+    const response = await api.get(
+        `/jobs/my/${id}/`
+    );
+
+    return response.data;
+
+};
+
+export const createJob = async (jobData) => {
+
+    const response = await api.post(
+        "/jobs/create/",
+        jobData
+    );
+
+    return response.data;
+
+};
+
+export const updateJob = async (
+    id,
+    jobData
+) => {
+
+    const response = await api.put(
+        `/jobs/${id}/update/`,
+        jobData
+    );
+
+    return response.data;
+
+};
+
+export const deleteJob = async (id) => {
+
+    await api.delete(
+        `/jobs/${id}/delete/`
+    );
+
+    return true;
+
 };

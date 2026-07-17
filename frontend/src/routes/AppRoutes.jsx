@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
 import CandidateLayout from "../layouts/CandidateLayout";
+import RecruiterLayout from "../layouts/RecruiterLayout";
 
 import ProtectedRoute from "../components/auth/ProtectedRoute";
 
@@ -23,6 +24,8 @@ import CoverLetter from "../pages/AIResume/CoverLetter";
 import Interview from "../pages/AIResume/Interview";
 import MockInterview from "../pages/AIResume/MockInterview";
 
+import RecruiterDashboard from "../pages/Recruiter/Dashboard";
+
 import NotFound from "../pages/NotFound/NotFound";
 
 import JobDetails from "../pages/Jobs/JobDetails";
@@ -31,6 +34,21 @@ import MyApplications from "../pages/Applications/MyApplications";
 
 import AICareerHub from "../pages/AICareerHub/AICareerHub";
 import ATSScore from "../pages/ATSScore/ATSScore";
+
+
+
+
+
+import CreateJob from "../pages/Recruiter/CreateJob";
+import RecruiterJobs from "../pages/Recruiter/Jobs";
+
+import ViewJob from "../pages/Recruiter/ViewJob";
+
+import Applicants from "../pages/Recruiter/Applicants";
+import ApplicantDetails from "../pages/Recruiter/ApplicantDetails";
+import Company from "../pages/Recruiter/Company";
+import Analytics from "../pages/Recruiter/Analytics";
+import Settings from "../pages/Recruiter/Settings";
 
 function AppRoutes() {
   return (
@@ -46,7 +64,6 @@ function AppRoutes() {
             element={<Home />}
           />
 
-          {/* Public companies page */}
           <Route
             path="/companies"
             element={<Companies />}
@@ -75,6 +92,7 @@ function AppRoutes() {
             </ProtectedRoute>
           }
         >
+
           <Route
             path="/dashboard"
             element={<Dashboard />}
@@ -86,11 +104,8 @@ function AppRoutes() {
           />
 
           <Route
-
-          path="/jobs/details/:id"
-
-          element={<JobDetails />}
-
+            path="/jobs/details/:id"
+            element={<JobDetails />}
           />
 
           <Route
@@ -99,8 +114,8 @@ function AppRoutes() {
           />
 
           <Route
-              path="/ai-career-hub"
-              element={<AICareerHub />}
+            path="/ai-career-hub"
+            element={<AICareerHub />}
           />
 
           <Route
@@ -137,12 +152,78 @@ function AppRoutes() {
             path="/mock-interview"
             element={<MockInterview />}
           />
+
         </Route>
 
+{/* ================= RECRUITER ================= */}
+
         <Route
-    path="/ats-score"
-    element={<ATSScore />}
-/>
+          element={
+            <ProtectedRoute roles={["recruiter"]}>
+              <RecruiterLayout />
+            </ProtectedRoute>
+          }
+        >
+
+          <Route
+            path="/recruiter/dashboard"
+            element={<RecruiterDashboard />}
+          />
+
+          <Route
+            path="/recruiter/jobs"
+            element={<RecruiterJobs />}
+          />
+
+          <Route
+            path="/recruiter/jobs/create"
+            element={<CreateJob />}
+          />
+
+          <Route
+              path="/recruiter/jobs/:id/edit"
+              element={<CreateJob />}
+          />
+
+            <Route
+                path="/recruiter/jobs/:id"
+                element={<ViewJob />}
+            />
+
+            <Route
+                path="/recruiter/applicants"
+                element={<Applicants />}
+            />
+
+            <Route
+                path="/recruiter/applicants/:id"
+                element={<ApplicantDetails />}
+            />
+
+            <Route
+                path="/recruiter/companies"
+                element={<Company />}
+            />
+
+              <Route
+                  path="/recruiter/analytics"
+                  element={<Analytics />}
+              />
+
+              <Route
+                  path="/recruiter/settings"
+                  element={<Settings />}
+              />
+
+        </Route>
+
+
+        {/* ================= ATS ================= */}
+
+        <Route
+          path="/ats-score"
+          element={<ATSScore />}
+        />
 
         {/* ================= 404 ================= */}
 
