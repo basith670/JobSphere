@@ -110,8 +110,9 @@ export default function MyApplications() {
                 {application.company_logo ? (
 
                   <img
-                    src={application.company_logo}
-                    alt={application.company_name}
+                  src={application.company_logo}
+                  alt={application.company_name}
+                  onClick={() => console.log(application.company_logo)}
                   />
 
                 ) : (

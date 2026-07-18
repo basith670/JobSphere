@@ -9,6 +9,7 @@ export default function Jobs() {
   const loadJobs = async () => {
     try {
       const data = await getJobs();
+      console.log(data)
 
       console.log("API Response:", data);
       console.log("Jobs:", data.results);

@@ -18,7 +18,10 @@ import "./Topbar.css";
 
 export default function Topbar() {
   const { logout } = useAuth();
-  const { userProfile } = useUser();
+  const {
+    userProfile,
+    clearUser,
+  } = useUser();
 
   const navigate = useNavigate();
 
@@ -89,8 +92,13 @@ export default function Topbar() {
   }, [search]);
 
   const handleLogout = () => {
+
     logout();
+  
+    clearUser();
+  
     navigate("/login");
+  
   };
 
   return (

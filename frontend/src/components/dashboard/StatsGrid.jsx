@@ -7,6 +7,8 @@ import {
 import DashboardCard from "./DashboardCard";
 import { useSearch } from "../../context/SearchContext";
 
+import "./StatsGrid.css";
+
 export default function StatsGrid({ stats, user }) {
   const { searchTerm } = useSearch();
 
@@ -66,15 +68,7 @@ export default function StatsGrid({ stats, user }) {
 
   if (filteredCards.length === 0) {
     return (
-      <div
-        style={{
-          width: "100%",
-          padding: "40px",
-          background: "#fff",
-          borderRadius: "16px",
-          textAlign: "center",
-        }}
-      >
+      <div className="stats-grid">
         <h2>No dashboard cards found</h2>
         <p>Try searching with another keyword.</p>
       </div>

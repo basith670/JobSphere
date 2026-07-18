@@ -10,8 +10,8 @@ import Home from "../pages/Home/Home";
 import Jobs from "../pages/Jobs/Jobs";
 import Companies from "../pages/Companies/Companies";
 
-import Login from "../pages/Login/Login";
-import Register from "../pages/Register/Register";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
 
 import Dashboard from "../pages/Candidate/Dashboard";
 import Profile from "../pages/Candidate/Profile";

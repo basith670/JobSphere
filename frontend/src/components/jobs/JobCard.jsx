@@ -17,9 +17,17 @@ const JobCard = ({ job }) => {
     >
       <div className="job-card">
         <div className="job-card-top">
-          <div className="job-company-logo">
-            {job.company_name?.charAt(0)}
-          </div>
+        <div className="job-company-logo">
+          {job.company_logo ? (
+            <img
+              src={job.company_logo}
+              alt={job.company_name}
+              className="company-logo-img"
+            />
+          ) : (
+            job.company_name?.charAt(0)
+          )}
+        </div>
 
           {job.is_featured && (
             <span className="featured-badge">

@@ -20,18 +20,12 @@
     margin-bottom:24px;
 }
 
-.job-company-logo{
-    width:60px;
-    height:60px;
-    border-radius:18px;
-    background:var(--primary-light);
-    color:var(--primary);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:26px;
-    font-weight:700;
-}
+.company-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
 
 .featured-badge{
     display:flex;

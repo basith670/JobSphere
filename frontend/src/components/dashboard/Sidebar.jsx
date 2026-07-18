@@ -56,17 +56,21 @@ const menuItems = [
 export default function Sidebar() {
 
   const { logout } = useAuth();
-  const { userProfile } = useUser();
+  const {
+    userProfile,
+    clearUser,
+  } = useUser();
   const navigate = useNavigate();
 
   const handleLogout = () => {
 
     logout();
-
+  
+    clearUser();
+  
     navigate("/login");
-
+  
   };
-
   return (
 
     <aside className="sidebar">

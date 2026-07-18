@@ -42,9 +42,23 @@ export default function JobDetails() {
 
         <div className="job-header">
 
-          <div className="company-logo">
-            {job.company_name?.charAt(0)}
-          </div>
+        <div className="company-logo">
+
+              {job.company_logo ? (
+
+                <img
+                  src={job.company_logo}
+                  alt={job.company_name}
+                  className="company-logo-img"
+                />
+
+              ) : (
+
+                job.company_name?.charAt(0)
+
+              )}
+
+              </div>
 
           <h1 className="job-title">
             {job.title}

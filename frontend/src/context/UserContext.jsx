@@ -44,21 +44,28 @@ export function UserProvider({ children }) {
 
     }, []);
 
-    return (
+    const clearUser = () => {
 
+        setUserProfile(null);
+    
+    };
+    
+    return (
+    
         <UserContext.Provider
             value={{
                 userProfile,
                 setUserProfile,
                 refreshUser,
+                clearUser,
                 loading,
             }}
         >
-
+    
             {children}
-
+    
         </UserContext.Provider>
-
+    
     );
 
 }
