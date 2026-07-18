@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     "ai_interview",
     "mock_interview",
     "ai_mock_interview",
+    "search",
 
 ]
 

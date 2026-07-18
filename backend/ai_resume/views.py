@@ -63,6 +63,9 @@ class ResumeAnalysisAPIView(APIView):
             missing_skills=missing,
             suggestions=suggestions,
         )
+    # Update user's dashboard resume score
+        request.user.ai_resume_score = ats_score
+        request.user.save(update_fields=["ai_resume_score"])
 
         serializer = ResumeAnalysisSerializer(
             analysis

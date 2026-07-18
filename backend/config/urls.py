@@ -107,6 +107,8 @@ urlpatterns = [
     "api/mock-interview/",
     include("ai_mock_interview.urls"),
     ),
+
+    path("api/search/", include("search.urls")),
 ]
 
 

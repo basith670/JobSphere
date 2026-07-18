@@ -7,3 +7,4 @@
 [ERROR] 2026-07-17 16:34:54,257 django.request: Internal Server Error: /api/accounts/dashboard/
 [ERROR] 2026-07-17 16:35:08,211 django.request: Internal Server Error: /api/accounts/dashboard/
 [ERROR] 2026-07-17 16:35:08,482 django.request: Internal Server Error: /api/accounts/dashboard/
+[ERROR] 2026-07-18 09:29:05,900 django.request: Internal Server Error: /api/accounts/login/

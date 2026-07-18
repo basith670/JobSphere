@@ -12,59 +12,60 @@ from .models import User
 class UserSerializer(serializers.ModelSerializer):
 
     profile_completion = serializers.SerializerMethodField()
+    profile_image_url = serializers.SerializerMethodField()
 
     class Meta:
 
         model = User
 
         fields = (
-                "id",
-                "username",
-                "email",
+            "id",
+            "username",
+            "email",
 
-                "first_name",
-                "last_name",
+            "first_name",
+            "last_name",
 
-                "phone",
+            "phone",
 
-                "profile_image",
-                "profile_image_url",
+            "profile_image",
+            "profile_image_url",
 
-                "bio",
+            "bio",
 
-                "headline",
+            "headline",
 
-                "location",
+            "location",
 
-                "education",
+            "education",
 
-                "skills",
+            "skills",
 
-                "experience",
+            "experience",
 
-                "preferred_role",
+            "preferred_role",
 
-                "preferred_location",
+            "preferred_location",
 
-                "expected_salary",
+            "expected_salary",
 
-                "years_of_experience",
+            "years_of_experience",
 
-                "linkedin",
+            "linkedin",
 
-                "github",
+            "github",
 
-                "portfolio",
+            "portfolio",
 
-                "email_new_applicant",
-                "email_job_expiry",
-                "email_weekly_report",
-                "email_marketing",
+            "email_new_applicant",
+            "email_job_expiry",
+            "email_weekly_report",
+            "email_marketing",
 
-                "profile_completion",
+            "profile_completion",
 
-                "ai_resume_score",
-            )
+            "ai_resume_score",
+        )
 
         read_only_fields = (
             "id",
@@ -76,25 +77,41 @@ class UserSerializer(serializers.ModelSerializer):
             "profile_completion",
         )
 
+    def get_profile_image_url(self, obj):
+
+        request = self.context.get("request")
+
+        if obj.profile_image:
+
+            if request:
+                return request.build_absolute_uri(
+                    obj.profile_image.url
+                )
+
+            return obj.profile_image.url
+
+        return None
+
     def get_profile_completion(self, obj):
 
         fields = [
+            obj.first_name,
+            obj.last_name,
             obj.phone,
             obj.profile_image,
             obj.bio,
             obj.headline,
-            obj.linkedin,
-            obj.github,
-            obj.portfolio,
-            obj.resumes.exists(),
             obj.location,
+            obj.education,
+            obj.skills,
+            obj.experience,
             obj.preferred_role,
             obj.preferred_location,
             obj.expected_salary,
             obj.years_of_experience,
-            obj.skills,
-            obj.education,
-            obj.experience,
+            obj.linkedin,
+            obj.github,
+            obj.portfolio,
         ]
 
         completed = sum(bool(field) for field in fields)
@@ -103,10 +120,12 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 # =====================================================
-# Profile Serializer (Settings Page)
+# Profile Serializer
 # =====================================================
+
 class ProfileSerializer(serializers.ModelSerializer):
 
+    profile_completion = serializers.SerializerMethodField()
     profile_image_url = serializers.SerializerMethodField()
 
     class Meta:
@@ -179,6 +198,32 @@ class ProfileSerializer(serializers.ModelSerializer):
             return obj.profile_image.url
 
         return None
+
+    def get_profile_completion(self, obj):
+
+        fields = [
+            obj.first_name,
+            obj.last_name,
+            obj.phone,
+            obj.profile_image,
+            obj.bio,
+            obj.headline,
+            obj.location,
+            obj.education,
+            obj.skills,
+            obj.experience,
+            obj.preferred_role,
+            obj.preferred_location,
+            obj.expected_salary,
+            obj.years_of_experience,
+            obj.linkedin,
+            obj.github,
+            obj.portfolio,
+        ]
+
+        completed = sum(bool(field) for field in fields)
+
+        return round((completed / len(fields)) * 100)
 
 
 # =====================================================
