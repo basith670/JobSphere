@@ -19,3 +19,16 @@ class MyCompanyAPIView(generics.RetrieveUpdateAPIView):
         )
 
         return company
+    
+from rest_framework.permissions import AllowAny
+
+
+class CompanyListAPIView(generics.ListAPIView):
+    serializer_class = CompanySerializer
+    permission_classes = [AllowAny]
+
+    queryset = (
+        Company.objects
+        .exclude(company_name="")
+        .order_by("-created_at")
+    )

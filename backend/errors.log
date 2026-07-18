@@ -15,3 +15,16 @@
 [ERROR] 2026-07-18 14:54:47,090 django.request: Internal Server Error: /api/dashboard/candidate/
 [ERROR] 2026-07-18 14:54:47,094 django.request: Internal Server Error: /api/notifications/
 [ERROR] 2026-07-18 15:32:49,603 django.request: Internal Server Error: /api/accounts/register/
+[ERROR] 2026-07-19 03:23:33,374 django.request: Internal Server Error: /api/notifications/
+[ERROR] 2026-07-19 03:23:33,375 django.request: Internal Server Error: /api/notifications/
+[ERROR] 2026-07-19 03:23:33,375 django.request: Internal Server Error: /api/profile/
+[ERROR] 2026-07-19 03:23:33,376 django.request: Internal Server Error: /api/profile/
+[ERROR] 2026-07-19 03:23:33,376 django.request: Internal Server Error: /api/profile/
+[ERROR] 2026-07-19 03:23:33,403 django.request: Internal Server Error: /api/profile/
+[ERROR] 2026-07-19 03:23:33,423 django.request: Internal Server Error: /api/accounts/dashboard/
+[ERROR] 2026-07-19 03:23:33,425 django.request: Internal Server Error: /api/accounts/dashboard/
+[ERROR] 2026-07-19 03:23:38,793 django.request: Internal Server Error: /api/accounts/login/
+[ERROR] 2026-07-19 03:23:40,809 django.request: Internal Server Error: /api/accounts/login/
+[ERROR] 2026-07-19 03:23:49,073 django.request: Internal Server Error: /api/accounts/login/
+[ERROR] 2026-07-19 03:23:57,367 django.request: Internal Server Error: /api/profile/
+[ERROR] 2026-07-19 03:23:57,379 django.request: Internal Server Error: /api/profile/

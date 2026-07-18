@@ -14,6 +14,8 @@ from .views import (
     RecruiterDeleteJobAPIView,
 )
 
+from .views import homepage_stats
+
 urlpatterns = [
 
     path(
@@ -57,5 +59,7 @@ urlpatterns = [
     RecruiterJobDetailAPIView.as_view(),
     name="my-job-detail",
 ),
+
+    path("homepage-stats/", homepage_stats),
 
 ]
