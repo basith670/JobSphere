@@ -19,7 +19,7 @@ import NextActions from "../../components/airesume/NextActions";
 
 import "../../components/airesume/AIResume.css";
 
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export default function ResumeAnalysis() {
 

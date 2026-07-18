@@ -16,7 +16,7 @@ import MissingSkillsCard from "../../components/jobmatch/MissingSkillsCard";
 
 import RecommendationCard from "../../components/jobmatch/RecommendationCard";
 
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export default function JobMatch() {
 

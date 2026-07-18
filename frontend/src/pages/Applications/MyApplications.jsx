@@ -8,9 +8,12 @@ import { FaEye } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
+import { useSearch } from "../../context/SearchContext";
+
 export default function MyApplications() {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { searchTerm } = useSearch();
 
   useEffect(() => {
     loadApplications();
@@ -30,6 +33,17 @@ export default function MyApplications() {
   if (loading) {
     return <h2>Loading Applications...</h2>;
   }
+  const filteredApplications = applications.filter((application) => {
+    if (!searchTerm.trim()) return true;
+  
+    const search = searchTerm.toLowerCase();
+  
+    return (
+      application.job_title?.toLowerCase().includes(search) ||
+      application.company_name?.toLowerCase().includes(search) ||
+      application.status?.toLowerCase().includes(search)
+    );
+  });
 
   return (
     <div className="applications-page">
@@ -41,7 +55,7 @@ export default function MyApplications() {
       <div className="application-stats">
 
         <div className="stat-card">
-          <h3>{applications.length}</h3>
+        <h3>{filteredApplications.length}</h3>
           <p>Total Applications</p>
         </div>
 
@@ -82,7 +96,7 @@ export default function MyApplications() {
 
       <div className="applications-grid">
 
-        {applications.map((application) => (
+        {filteredApplications.map((application) => (
 
           <div
             key={application.id}

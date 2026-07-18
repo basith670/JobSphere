@@ -1,5 +1,5 @@
 import "./ApplyModal.css";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { useState } from "react";
 import { applyJob } from "../../services/applicationService";
 

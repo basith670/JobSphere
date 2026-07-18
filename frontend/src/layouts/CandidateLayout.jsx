@@ -18,13 +18,20 @@ export default function CandidateLayout() {
         style={{
           flex: 1,
           marginLeft: "270px",
-          padding: "30px",
           overflowX: "hidden",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <Topbar />
 
-        <Outlet />
+        <div
+          style={{
+            padding: "24px 30px 30px",
+          }}
+        >
+          <Outlet />
+        </div>
       </main>
     </div>
   );

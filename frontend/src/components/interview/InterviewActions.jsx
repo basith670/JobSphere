@@ -4,7 +4,7 @@ import {
     FaPlay,
   } from "react-icons/fa";
   
-  import { toast } from "react-toastify";
+  import toast from "react-hot-toast";
   
   import { useNavigate } from "react-router-dom";
   

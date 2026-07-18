@@ -125,18 +125,18 @@ export default function RecruiterNavbar() {
                 <NotificationDropdown />
 
                 <div
-                    className="profile-dropdown"
+                    className="recruiter-profile-dropdown"
                     ref={menuRef}
                 >
 
                     <div
-                        className="navbar-profile"
+                        className="recruiter-navbar-profile"
                         onClick={() =>
                             setShowMenu(!showMenu)
                         }
                     >
 
-                        <FaUserCircle className="profile-icon" />
+                        <FaUserCircle className="recruiter-profile-icon" />
 
                         <div>
 
@@ -147,14 +147,14 @@ export default function RecruiterNavbar() {
                         </div>
 
                         <FaChevronDown
-                            className="dropdown-arrow"
+                            className="recruiter-dropdown-arrow"
                         />
 
                     </div>
 
                     {showMenu && (
 
-                        <div className="profile-menu">
+                        <div className="recruiter-profile-menu">
 
                             <button
                                 onClick={() => {
@@ -208,7 +208,7 @@ export default function RecruiterNavbar() {
 
                             <button
                                 onClick={logout}
-                                className="logout-item"
+                                className="recruiter-logout-item"
                             >
 
                                 <FaSignOutAlt />

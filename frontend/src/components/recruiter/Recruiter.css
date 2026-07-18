@@ -3869,120 +3869,77 @@ Interview Modal
 }
 
 
-.profile-dropdown{
-
+.recruiter-profile-dropdown{
     position:relative;
-
 }
 
-.navbar-profile{
-
+.recruiter-navbar-profile{
     display:flex;
-
     align-items:center;
-
     gap:12px;
-
     cursor:pointer;
-
     padding:8px 12px;
-
     border-radius:12px;
-
     transition:.25s;
-
 }
 
-.navbar-profile:hover{
-
+.recruiter-navbar-profile:hover{
     background:#f3f4f6;
-
 }
 
-.dropdown-arrow{
-
-    font-size:12px;
-
-    color:#6b7280;
-
-}
-
-.profile-menu{
-
-    position:absolute;
-
-    right:0;
-
-    top:70px;
-
-    width:230px;
-
-    background:#fff;
-
-    border-radius:14px;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.12);
-
-    overflow:hidden;
-
-    z-index:999;
-
-    animation:fadeDown .2s ease;
-
-}
-
-.profile-menu button{
-
-    width:100%;
-
-    border:none;
-
-    background:none;
-
-    padding:14px 18px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    cursor:pointer;
-
-    font-size:15px;
-
-    transition:.2s;
-
-}
-
-.profile-menu button:hover{
-
-    background:#f8fafc;
-
+.recruiter-profile-icon{
+    font-size:42px;
     color:#0f766e;
-
 }
 
-.profile-menu hr{
+.recruiter-dropdown-arrow{
+    font-size:12px;
+    color:#6b7280;
+}
 
-    margin:0;
+.recruiter-profile-menu{
+    position:absolute;
+    right:0;
+    top:70px;
+    width:230px;
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+    overflow:hidden;
+    z-index:999;
+    animation:fadeDown .2s ease;
+}
 
+.recruiter-profile-menu button{
+    width:100%;
     border:none;
+    background:none;
+    padding:14px 18px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.2s;
+}
 
+.recruiter-profile-menu button:hover{
+    background:#f8fafc;
+    color:#0f766e;
+}
+
+.recruiter-profile-menu hr{
+    margin:0;
+    border:none;
     border-top:1px solid #eee;
-
 }
 
-.logout-item{
-
+.recruiter-logout-item{
     color:#dc2626;
-
 }
 
-.logout-item:hover{
-
+.recruiter-logout-item:hover{
     background:#fef2f2 !important;
-
 }
 
 @keyframes fadeDown{

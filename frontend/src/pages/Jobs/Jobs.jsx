@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import JobSearch from "../../components/jobs/JobSearch";
 import JobFilters from "../../components/jobs/JobFilters";
 import JobList from "../../components/jobs/JobList";
 
@@ -32,15 +31,6 @@ export default function Jobs() {
 
   return (
     <>
-      <JobSearch
-        onSearch={(value) =>
-          setFilters({
-            ...filters,
-            search: value,
-          })
-        }
-      />
-
       <JobFilters
         filters={filters}
         setFilters={setFilters}

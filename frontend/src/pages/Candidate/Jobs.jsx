@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 
 import { getJobs } from "../../services/jobService";
-
-import JobSearch from "../../components/jobs/JobSearch";
 import JobList from "../../components/jobs/JobList";
 
 export default function Jobs() {
   const [jobs, setJobs] = useState([]);
-  const [search, setSearch] = useState("");
 
-  const loadJobs = async (query = "") => {
+  const loadJobs = async () => {
     try {
-      const data = await getJobs({
-        search: query,
-      });
+      const data = await getJobs();
+
+      console.log("API Response:", data);
+      console.log("Jobs:", data.results);
 
       setJobs(data.results || []);
     } catch (error) {
@@ -31,12 +29,6 @@ export default function Jobs() {
         Browse Jobs
       </h1>
 
-      <JobSearch
-        search={search}
-        setSearch={setSearch}
-        onSearch={() => loadJobs(search)}
-      />
-
       <h3 style={{ margin: "20px 0" }}>
         {jobs.length} Jobs Found
       </h3>
@@ -45,18 +37,3 @@ export default function Jobs() {
     </div>
   );
 }
-
-const loadJobs = async (query = "") => {
-    try {
-      const data = await getJobs({
-        search: query,
-      });
-  
-      console.log("API Response:", data);
-      console.log("Jobs:", data.results);
-  
-      setJobs(data.results || []);
-    } catch (error) {
-      console.error(error);
-    }
-  };

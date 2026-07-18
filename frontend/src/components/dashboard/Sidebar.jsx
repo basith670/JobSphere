@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaHome,
   FaFileAlt,
@@ -11,6 +11,8 @@ import {
 } from "react-icons/fa";
 
 import useAuth from "../../hooks/useAuth";
+import useUser from "../../context/UserContext";
+
 import "./Sidebar.css";
 
 const menuItems = [
@@ -52,53 +54,114 @@ const menuItems = [
 ];
 
 export default function Sidebar() {
-  const { user, logout } = useAuth();
+
+  const { logout } = useAuth();
+  const { userProfile } = useUser();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+
+    logout();
+
+    navigate("/login");
+
+  };
 
   return (
+
     <aside className="sidebar">
+
       <div className="sidebar-logo">
+
         <h2>JobSphere</h2>
+
         <span>Career Platform</span>
+
       </div>
 
       <nav className="sidebar-menu">
+
         {menuItems.map((item) => (
+
           <NavLink
             key={item.name}
             to={item.path}
             className={({ isActive }) =>
-              isActive ? "sidebar-link active" : "sidebar-link"
+              isActive
+                ? "sidebar-link active"
+                : "sidebar-link"
             }
           >
+
             <span>{item.icon}</span>
+
             <span>{item.name}</span>
+
           </NavLink>
+
         ))}
+
       </nav>
 
       <div className="sidebar-footer">
+
         <div className="sidebar-user">
+
           <div className="avatar">
-            {user?.first_name?.charAt(0) || "U"}
+
+            {userProfile?.profile_image_url ? (
+
+              <img
+                src={userProfile.profile_image_url}
+                alt="Profile"
+                className="sidebar-avatar-img"
+              />
+
+            ) : (
+
+              userProfile?.first_name?.charAt(0) ||
+              userProfile?.username?.charAt(0) ||
+              "U"
+
+            )}
+
           </div>
 
           <div>
+
             <strong>
-              {user?.first_name || user?.username}
+
+              {userProfile?.first_name} {userProfile?.last_name}
+
             </strong>
 
-            <p>Job Seeker</p>
+            <p>
+
+              {userProfile?.role === "recruiter"
+                ? "Recruiter"
+                : "Job Seeker"}
+
+            </p>
+
           </div>
+
         </div>
 
         <button
           className="logout-btn"
-          onClick={logout}
+          onClick={handleLogout}
         >
+
           <FaSignOutAlt />
+
           <span>Logout</span>
+
         </button>
+
       </div>
+
     </aside>
+
   );
+
 }

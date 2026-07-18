@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 import InterviewHero from "../../components/interview/InterviewHero";
 import ResumeSelector from "../../components/resume/ResumeSelector";
