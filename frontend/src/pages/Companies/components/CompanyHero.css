@@ -1,0 +1,34 @@
+.companies-hero{
+    padding:80px 0 40px;
+}
+
+.companies-hero-content{
+    width:min(1200px,92%);
+    margin:auto;
+    text-align:center;
+}
+
+.companies-hero-badge{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:999px;
+    background:#ecfdf5;
+    color:#0f766e;
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.companies-hero-title{
+    font-size:3rem;
+    font-weight:800;
+    color:#0f172a;
+    margin-bottom:18px;
+}
+
+.companies-hero-description{
+    max-width:700px;
+    margin:auto;
+    color:#64748b;
+    line-height:1.8;
+    font-size:1.05rem;
+}

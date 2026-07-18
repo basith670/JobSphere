@@ -2,82 +2,109 @@ import "./Hero.css";
 
 import {
   ArrowRight,
-  Search,
   Sparkles,
   ShieldCheck,
   FileText,
 } from "lucide-react";
 
-import DashboardPreview from "../../components/home/DashboardPreview";
-import FloatingCard from "../../components/home/FloatingCard";
-import MiniChart from "../../components/home/MiniChart";
+import { useNavigate } from "react-router-dom";
+
+import DashboardPreview from "./DashboardPreview";
+import FloatingCard from "./FloatingCard";
+import MiniChart from "./MiniChart";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    const accessToken = localStorage.getItem("access");
+    const role = localStorage.getItem("role");
+
+    if (!accessToken) {
+      navigate("/register");
+      return;
+    }
+
+    if (role === "jobseeker") {
+      navigate("/dashboard");
+    } else if (role === "recruiter") {
+      navigate("/recruiter/dashboard");
+    } else {
+      navigate("/register");
+    }
+  };
+
   return (
-    <section className="hero">
-      <div className="hero-container">
+    <section className="home-hero">
+      <div className="home-hero-container">
 
-        {/* LEFT CONTENT */}
+        {/* Left */}
+        <div className="home-hero-left">
 
-        <div className="hero-left">
-
-          <span className="hero-badge">
+          <span className="home-hero-badge">
             <Sparkles size={16} />
-            AI Powered Recruitment Platform
+            AI Recruitment • Resume Analysis • Smart Hiring
           </span>
 
-          <h1>
-            Hire Smarter.
+          <h1 className="home-hero-title">
+            The Future of
             <br />
-            Get Hired Faster.
+            <span>AI Recruitment</span>
+            <br />
+            Starts Here.
           </h1>
 
-          <p>
-            JobSphere connects companies and candidates through intelligent
-            matching, resume analysis, and AI-driven hiring insights.
+          <p className="home-hero-description">
+            Find your dream job or hire exceptional talent with AI-powered
+            resume analysis, intelligent job matching, mock interviews,
+            ATS scoring, and advanced recruitment tools—all in one platform.
           </p>
 
-          <div className="hero-buttons">
-
-            <button className="primary-btn">
+          <div className="home-hero-buttons">
+            <button
+              className="home-hero-primary-btn"
+              onClick={handleGetStarted}
+            >
               Get Started
               <ArrowRight size={18} />
             </button>
-
-            <button className="secondary-btn">
-              Browse Jobs
-            </button>
-
           </div>
 
-          <div className="hero-search">
+          <div className="home-hero-trust">
 
-            <Search size={18} />
+            <div className="home-hero-trust-item">
+              <h3>10K+</h3>
+              <span>Candidates</span>
+            </div>
 
-            <input
-              type="text"
-              placeholder="Search jobs, companies, or skills..."
-            />
+            <div className="home-hero-trust-item">
+              <h3>500+</h3>
+              <span>Companies</span>
+            </div>
 
-            <button>Search</button>
+            <div className="home-hero-trust-item">
+              <h3>96%</h3>
+              <span>AI Accuracy</span>
+            </div>
 
           </div>
 
         </div>
 
-        {/* RIGHT CONTENT */}
-
-        <div className="hero-right">
+        {/* Right */}
+        <div className="home-hero-right">
 
           <DashboardPreview />
 
           <FloatingCard
+            className="home-hero-resume-card"
             title="Resume Score"
             value="94%"
             icon={<FileText size={22} />}
           />
 
           <FloatingCard
+            className="home-hero-company-card"
             title="Verified Companies"
             value="320+"
             icon={<ShieldCheck size={22} />}

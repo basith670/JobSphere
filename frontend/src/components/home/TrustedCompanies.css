@@ -1,87 +1,177 @@
-.trusted{
+/* =========================================================
+   Home Trusted Companies
+========================================================= */
 
-    padding:120px 0;
-
-    text-align:center;
-}
-
-.trusted-heading{
-
-    max-width:720px;
-
-    margin:auto;
-}
-
-.trusted-heading span{
-
-    color:#0f766e;
-
-    font-weight:700;
-
-    text-transform:uppercase;
-
-    letter-spacing:2px;
-
-    font-size:.85rem;
-}
-
-.trusted-heading h2{
-
-    margin:18px 0;
-
-    font-size:3rem;
-
-    color:#0f172a;
-
-    line-height:1.2;
-}
-
-.trusted-heading p{
-
-    color:#64748b;
-
-    font-size:1.1rem;
-
-    line-height:1.8;
-}
-
-.company-strip{
-
-    margin-top:70px;
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:26px;
-}
-
-.company-card{
-
-    padding:34px;
-
-    background:white;
-
-    border-radius:22px;
-
-    font-size:1.25rem;
-
-    font-weight:700;
-
-    color:#475569;
-
-    border:1px solid rgba(15,23,42,.05);
-
-    transition:.35s;
-
-    box-shadow:0 15px 35px rgba(15,23,42,.05);
-}
-
-.company-card:hover{
-
-    transform:translateY(-8px);
-
-    color:#0f766e;
-
-    box-shadow:0 25px 60px rgba(15,23,42,.12);
-}
+.home-trusted-section {
+    padding: 70px 0;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* =========================================================
+     Container
+  ========================================================= */
+  
+  .home-trusted-container {
+    width: min(1280px, 94%);
+    margin: 0 auto;
+  }
+  
+  .home-trusted-title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 45px;
+  }
+  
+  /* =========================================================
+     Slider
+  ========================================================= */
+  
+  .home-trusted-slider {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .home-trusted-slider::before,
+  .home-trusted-slider::after {
+    content: "";
+  
+    position: absolute;
+    top: 0;
+  
+    width: 120px;
+    height: 100%;
+  
+    z-index: 2;
+  }
+  
+  .home-trusted-slider::before {
+    left: 0;
+  
+    background: linear-gradient(
+      to right,
+      #ffffff,
+      transparent
+    );
+  }
+  
+  .home-trusted-slider::after {
+    right: 0;
+  
+    background: linear-gradient(
+      to left,
+      #ffffff,
+      transparent
+    );
+  }
+  
+  /* =========================================================
+     Track
+  ========================================================= */
+  
+  .home-trusted-track {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  
+    width: max-content;
+  
+    animation: homeTrustedScroll 32s linear infinite;
+  }
+  
+  .home-trusted-slider:hover .home-trusted-track {
+    animation-play-state: paused;
+  }
+  
+  /* =========================================================
+     Company Card
+  ========================================================= */
+  
+  .home-trusted-item {
+    min-width: 220px;
+    height: 92px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  
+    padding: 0 28px;
+  
+    background: #ffffff;
+  
+    border: 1px solid var(--border);
+    border-radius: 20px;
+  
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+  
+    transition: all .35s ease;
+  }
+  
+  .home-trusted-item:hover {
+    transform: translateY(-6px);
+  
+    border-color: rgba(20, 128, 109, .25);
+  
+    box-shadow: 0 20px 40px rgba(15, 23, 42, .08);
+  }
+  
+  .home-trusted-item img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+  }
+  
+  .home-trusted-item span {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--heading);
+  }
+  
+  /* =========================================================
+     Animation
+  ========================================================= */
+  
+  @keyframes homeTrustedScroll {
+  
+    from {
+      transform: translateX(0);
+    }
+  
+    to {
+      transform: translateX(-50%);
+    }
+  
+  }
+  
+  /* =========================================================
+     Responsive
+  ========================================================= */
+  
+  @media (max-width: 768px) {
+  
+    .home-trusted-section {
+      padding: 55px 0;
+    }
+  
+    .home-trusted-item {
+      min-width: 170px;
+      height: 76px;
+      padding: 0 20px;
+    }
+  
+    .home-trusted-item img {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .home-trusted-item span {
+      font-size: 14px;
+    }
+  
+  }

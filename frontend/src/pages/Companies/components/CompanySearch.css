@@ -1,0 +1,36 @@
+.companies-search{
+    width:min(1200px,92%);
+    margin:0 auto 50px;
+}
+
+.companies-search-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:18px;
+
+    padding:16px 20px;
+
+    box-shadow:0 10px 30px rgba(15,23,42,.06);
+}
+
+.companies-search-box svg{
+    color:#64748b;
+}
+
+.companies-search-box input{
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:16px;
+}

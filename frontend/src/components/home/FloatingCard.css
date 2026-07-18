@@ -18,17 +18,30 @@
 
     animation:floatCard 5s ease-in-out infinite;
 }
+/* =========================================================
+   Resume Score Card
+========================================================= */
 
-.floating-card:nth-of-type(2){
-    top:40px;
-    right:-70px;
+.home-hero-resume-card{
+
+    top:-45px;
+
+    right:75px;
+
 }
 
-.floating-card:nth-of-type(3){
+/* =========================================================
+   Verified Companies Card
+========================================================= */
+
+.home-hero-company-card{
+
     bottom:35px;
-    left:-60px;
+
+    left:-190px;
 
     animation-delay:2s;
+
 }
 
 .floating-icon{

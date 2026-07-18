@@ -1,8 +1,13 @@
 import "./FloatingCard.css";
 
-const FloatingCard = ({ icon, title, value }) => {
+const FloatingCard = ({
+  icon,
+  title,
+  value,
+  className = "",
+}) => {
   return (
-    <div className="floating-card">
+    <div className={`floating-card ${className}`}>
       <div className="floating-icon">
         {icon}
       </div>

@@ -1,0 +1,67 @@
+/* ==========================================================
+   Home Featured Jobs
+========================================================== */
+
+.home-featured-section{
+    padding:100px 0;
+    background:#ffffff;
+  }
+  
+  .home-featured-container{
+    width:min(1280px,94%);
+    margin:0 auto;
+  }
+  
+  .home-featured-tag{
+    display:block;
+    text-align:center;
+    color:var(--primary);
+    font-size:15px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:18px;
+  }
+  
+  .home-featured-heading{
+    text-align:center;
+    font-size:52px;
+    font-weight:800;
+    color:var(--heading);
+    margin-bottom:18px;
+  }
+  
+  .home-featured-description{
+    max-width:720px;
+    margin:0 auto 60px;
+    text-align:center;
+    color:var(--text);
+    line-height:1.8;
+    font-size:18px;
+  }
+  
+  .home-featured-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+    gap:32px;
+  }
+  
+  @media(max-width:768px){
+  
+    .home-featured-section{
+      padding:70px 0;
+    }
+  
+    .home-featured-heading{
+      font-size:36px;
+    }
+  
+    .home-featured-description{
+      font-size:16px;
+    }
+  
+    .home-featured-grid{
+      grid-template-columns:1fr;
+    }
+  
+  }

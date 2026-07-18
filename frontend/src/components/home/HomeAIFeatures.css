@@ -1,0 +1,122 @@
+/* ==========================================================
+   Home AI Features
+========================================================== */
+
+.home-ai-section{
+    padding:100px 0;
+    background:#ffffff;
+  }
+  
+  .home-ai-container{
+    width:min(1280px,94%);
+    margin:0 auto;
+  }
+  
+  .home-ai-tag{
+    display:block;
+    text-align:center;
+    color:var(--primary);
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  
+  .home-ai-heading{
+    text-align:center;
+    font-size:52px;
+    font-weight:800;
+    color:var(--heading);
+    margin-bottom:18px;
+  }
+  
+  .home-ai-description{
+    max-width:760px;
+    margin:0 auto 70px;
+    text-align:center;
+    color:var(--text);
+    line-height:1.8;
+    font-size:18px;
+  }
+  
+  .home-ai-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:32px;
+  }
+  
+  .home-ai-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:34px;
+    transition:.35s;
+    box-shadow:0 15px 40px rgba(15,23,42,.05);
+  }
+  
+  .home-ai-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 60px rgba(15,23,42,.10);
+  }
+  
+  .home-ai-icon{
+    width:72px;
+    height:72px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:18px;
+    background:linear-gradient(135deg,var(--primary),#22c55e);
+    color:#fff;
+    margin-bottom:24px;
+  }
+  
+  .home-ai-card h3{
+    font-size:24px;
+    color:var(--heading);
+    margin-bottom:16px;
+  }
+  
+  .home-ai-card p{
+    color:var(--text);
+    line-height:1.7;
+    margin-bottom:26px;
+  }
+  
+  .home-ai-button{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:none;
+    background:none;
+    color:var(--primary);
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+  }
+  
+  .home-ai-button:hover{
+    gap:14px;
+  }
+  
+  @media(max-width:768px){
+  
+    .home-ai-section{
+      padding:70px 0;
+    }
+  
+    .home-ai-heading{
+      font-size:36px;
+    }
+  
+    .home-ai-description{
+      font-size:16px;
+      margin-bottom:50px;
+    }
+  
+    .home-ai-grid{
+      grid-template-columns:1fr;
+    }
+  
+  }

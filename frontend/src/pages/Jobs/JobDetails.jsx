@@ -1,13 +1,14 @@
 import "./JobDetails.css";
 
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { getJob } from "../../services/jobService";
 import ApplyModal from "../../components/jobs/ApplyModal";
 
 export default function JobDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,6 +29,31 @@ export default function JobDetails() {
     }
   };
 
+  const handleApply = () => {
+    const token = localStorage.getItem("access");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const role = user?.role;
+
+    // User not logged in
+    if (!token) {
+      navigate("/login", {
+        state: {
+          from: `/jobs/details/${job.id}`,
+        },
+      });
+      return;
+    }
+
+    // Recruiters cannot apply
+    if (role !== "jobseeker") {
+      alert("Only job seekers can apply for jobs.");
+      return;
+    }
+
+    // Open Apply Modal
+    setShowModal(true);
+  };
+
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -42,23 +68,17 @@ export default function JobDetails() {
 
         <div className="job-header">
 
-        <div className="company-logo">
-
-              {job.company_logo ? (
-
-                <img
-                  src={job.company_logo}
-                  alt={job.company_name}
-                  className="company-logo-img"
-                />
-
-              ) : (
-
-                job.company_name?.charAt(0)
-
-              )}
-
-              </div>
+          <div className="company-logo">
+            {job.company_logo ? (
+              <img
+                src={job.company_logo}
+                alt={job.company_name}
+                className="company-logo-img"
+              />
+            ) : (
+              job.company_name?.charAt(0)
+            )}
+          </div>
 
           <h1 className="job-title">
             {job.title}
@@ -100,14 +120,11 @@ export default function JobDetails() {
           </div>
 
           <button
-                className="apply-btn"
-                onClick={() => {
-                    console.log("Apply button clicked");
-                    setShowModal(true);
-                }}
-                >
-                Apply Now
-                </button>
+            className="apply-btn"
+            onClick={handleApply}
+          >
+            Apply Now
+          </button>
 
         </div>
 

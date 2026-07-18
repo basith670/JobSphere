@@ -1,52 +1,89 @@
 import "./TrustedCompanies.css";
 
+import google from "../../assets/companies/google.png";
+
+import microsoft from "../../assets/companies/microsoft.png";
+
+import amazon from "../../assets/companies/amazon.png";
+
+import adobe from "../../assets/companies/adobe.png";
+
+import netflix from "../../assets/companies/netflix.png";
+
+import meta from "../../assets/companies/meta.png";
+
 const companies = [
-  "Google",
-  "Microsoft",
-  "Amazon",
-  "Adobe",
-  "Spotify",
-  "Atlassian",
-  "Stripe",
-  "Notion",
+  {
+    id: 1,
+    name: "Google",
+    logo: google,
+  },
+  {
+    id: 2,
+    name: "Microsoft",
+    logo: microsoft,
+  },
+  {
+    id: 3,
+    name: "Amazon",
+    logo: amazon,
+  },
+  {
+    id: 4,
+    name: "Adobe",
+    logo: adobe,
+  },
+  {
+    id: 5,
+    name: "Meta",
+    logo: meta,
+  },
+  {
+    id: 6,
+    name: "Netflix",
+    logo: netflix,
+  },
 ];
-
-const TrustedCompanies = () => {
+export default function TrustedCompanies() {
   return (
-    <section className="trusted">
+    <section className="home-trusted-section">
 
-      <div className="trusted-heading">
+      <div className="home-trusted-container">
 
-        <span>Trusted by Leading Companies</span>
-
-        <h2>
-          Connecting Top Talent
-          <br />
-          with Industry Leaders
-        </h2>
-
-        <p>
-          Thousands of professionals and hundreds of companies
-          trust JobSphere to streamline hiring with AI.
+        <p className="home-trusted-title">
+          Trusted by Leading Companies Worldwide
         </p>
 
-      </div>
+        <div className="home-trusted-slider">
 
-      <div className="company-strip">
+          <div className="home-trusted-track">
 
-        {companies.map((company) => (
-          <div
-            className="company-card"
-            key={company}
-          >
-            {company}
+            {[...companies, ...companies].map((company, index) => (
+
+              <div
+                key={index}
+                className="home-trusted-item"
+              >
+
+                <img
+                  src={company.logo}
+                  alt={company.name}
+                />
+
+                <span>
+                  {company.name}
+                </span>
+
+              </div>
+
+            ))}
+
           </div>
-        ))}
+
+        </div>
 
       </div>
 
     </section>
   );
-};
-
-export default TrustedCompanies;
+}

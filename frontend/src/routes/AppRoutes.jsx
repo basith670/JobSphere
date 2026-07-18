@@ -8,6 +8,7 @@ import ProtectedRoute from "../components/auth/ProtectedRoute";
 
 import Home from "../pages/Home/Home";
 import Jobs from "../pages/Jobs/Jobs";
+import JobDetails from "../pages/Jobs/JobDetails";
 import Companies from "../pages/Companies/Companies";
 
 import Login from "../pages/Auth/Login";
@@ -35,8 +36,6 @@ import Company from "../pages/Recruiter/Company";
 import Analytics from "../pages/Recruiter/Analytics";
 import RecruiterSettings from "../pages/Recruiter/Settings";
 
-
-import JobDetails from "../pages/Jobs/JobDetails";
 import MyApplications from "../pages/Applications/MyApplications";
 
 import AICareerHub from "../pages/AICareerHub/AICareerHub";
@@ -45,194 +44,194 @@ import ATSScore from "../pages/ATSScore/ATSScore";
 import NotFound from "../pages/NotFound/NotFound";
 
 function AppRoutes() {
-    return (
-        <BrowserRouter>
-            <Routes>
+  return (
+    <BrowserRouter>
+      <Routes>
 
-                {/* ================= PUBLIC ================= */}
+        {/* ================= PUBLIC ================= */}
 
-                <Route element={<MainLayout />}>
+        <Route element={<MainLayout />}>
 
-                    <Route
-                        path="/"
-                        element={<Home />}
-                    />
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
-                    <Route
-                        path="/companies"
-                        element={<Companies />}
-                    />
+          <Route
+            path="/companies"
+            element={<Companies />}
+          />
 
-                </Route>
+          <Route
+            path="/jobs"
+            element={<Jobs />}
+          />
 
-                {/* ================= AUTH ================= */}
+          <Route
+            path="/jobs/details/:id"
+            element={<JobDetails />}
+          />
 
-                <Route
-                    path="/login"
-                    element={<Login />}
-                />
+        </Route>
 
-                <Route
-                    path="/register"
-                    element={<Register />}
-                />
+        {/* ================= AUTH ================= */}
 
-                {/* ================= JOB SEEKER ================= */}
+        <Route
+          path="/login"
+          element={<Login />}
+        />
 
-                <Route
-                    element={
-                        <ProtectedRoute roles={["jobseeker"]}>
-                            <CandidateLayout />
-                        </ProtectedRoute>
-                    }
-                >
+        <Route
+          path="/register"
+          element={<Register />}
+        />
 
-                    <Route
-                        path="/dashboard"
-                        element={<Dashboard />}
-                    />
+        {/* ================= JOB SEEKER ================= */}
 
-                    <Route
-                        path="/jobs"
-                        element={<Jobs />}
-                    />
+        <Route
+          element={
+            <ProtectedRoute roles={["jobseeker"]}>
+              <CandidateLayout />
+            </ProtectedRoute>
+          }
+        >
 
-                    <Route
-                        path="/jobs/details/:id"
-                        element={<JobDetails />}
-                    />
+          <Route
+            path="/dashboard"
+            element={<Dashboard />}
+          />
 
-                    <Route
-                        path="/applications"
-                        element={<MyApplications />}
-                    />
+          <Route
+            path="/applications"
+            element={<MyApplications />}
+          />
 
-                    <Route
-                        path="/ai-career-hub"
-                        element={<AICareerHub />}
-                    />
+          <Route
+            path="/ai-career-hub"
+            element={<AICareerHub />}
+          />
 
-                    <Route
-                        path="/profile"
-                        element={<Profile />}
-                    />
+          <Route
+            path="/profile"
+            element={<Profile />}
+          />
 
-                    <Route
-                        path="/settings"
-                        element={<CandidateSettings />}
-                    />
+          <Route
+            path="/settings"
+            element={<CandidateSettings />}
+          />
 
-                    <Route
-                        path="/resumes"
-                        element={<ResumeManager />}
-                    />
+          <Route
+            path="/resumes"
+            element={<ResumeManager />}
+          />
 
-                    <Route
-                        path="/ai-resume/:resumeId"
-                        element={<ResumeAnalysis />}
-                    />
+          <Route
+            path="/ai-resume/:resumeId"
+            element={<ResumeAnalysis />}
+          />
 
-                    <Route
-                        path="/job-match"
-                        element={<JobMatch />}
-                    />
+          <Route
+            path="/job-match"
+            element={<JobMatch />}
+          />
 
-                    <Route
-                        path="/cover-letter"
-                        element={<CoverLetter />}
-                    />
+          <Route
+            path="/cover-letter"
+            element={<CoverLetter />}
+          />
 
-                    <Route
-                        path="/interview"
-                        element={<Interview />}
-                    />
+          <Route
+            path="/interview"
+            element={<Interview />}
+          />
 
-                    <Route
-                        path="/mock-interview"
-                        element={<MockInterview />}
-                    />
+          <Route
+            path="/mock-interview"
+            element={<MockInterview />}
+          />
 
-                </Route>
+        </Route>
 
-                {/* ================= RECRUITER ================= */}
+        {/* ================= RECRUITER ================= */}
 
-                <Route
-                    element={
-                        <ProtectedRoute roles={["recruiter"]}>
-                            <RecruiterLayout />
-                        </ProtectedRoute>
-                    }
-                >
+        <Route
+          element={
+            <ProtectedRoute roles={["recruiter"]}>
+              <RecruiterLayout />
+            </ProtectedRoute>
+          }
+        >
 
-                    <Route
-                        path="/recruiter/dashboard"
-                        element={<RecruiterDashboard />}
-                    />
+          <Route
+            path="/recruiter/dashboard"
+            element={<RecruiterDashboard />}
+          />
 
-                    <Route
-                        path="/recruiter/jobs"
-                        element={<RecruiterJobs />}
-                    />
+          <Route
+            path="/recruiter/jobs"
+            element={<RecruiterJobs />}
+          />
 
-                    <Route
-                        path="/recruiter/jobs/create"
-                        element={<CreateJob />}
-                    />
+          <Route
+            path="/recruiter/jobs/create"
+            element={<CreateJob />}
+          />
 
-                    <Route
-                        path="/recruiter/jobs/:id/edit"
-                        element={<CreateJob />}
-                    />
+          <Route
+            path="/recruiter/jobs/:id/edit"
+            element={<CreateJob />}
+          />
 
-                    <Route
-                        path="/recruiter/jobs/:id"
-                        element={<ViewJob />}
-                    />
+          <Route
+            path="/recruiter/jobs/:id"
+            element={<ViewJob />}
+          />
 
-                    <Route
-                        path="/recruiter/applicants"
-                        element={<Applicants />}
-                    />
+          <Route
+            path="/recruiter/applicants"
+            element={<Applicants />}
+          />
 
-                    <Route
-                        path="/recruiter/applicants/:id"
-                        element={<ApplicantDetails />}
-                    />
+          <Route
+            path="/recruiter/applicants/:id"
+            element={<ApplicantDetails />}
+          />
 
-                    <Route
-                        path="/recruiter/companies"
-                        element={<Company />}
-                    />
+          <Route
+            path="/recruiter/companies"
+            element={<Company />}
+          />
 
-                    <Route
-                        path="/recruiter/analytics"
-                        element={<Analytics />}
-                    />
+          <Route
+            path="/recruiter/analytics"
+            element={<Analytics />}
+          />
 
-                    <Route
-                        path="/recruiter/settings"
-                        element={<RecruiterSettings />}
-                    />
+          <Route
+            path="/recruiter/settings"
+            element={<RecruiterSettings />}
+          />
 
-                </Route>
+        </Route>
 
-                {/* ================= ATS ================= */}
+        {/* ================= ATS ================= */}
 
-                <Route
-                    path="/ats-score"
-                    element={<ATSScore />}
-                />
+        <Route
+          path="/ats-score"
+          element={<ATSScore />}
+        />
 
-                {/* ================= 404 ================= */}
+        {/* ================= 404 ================= */}
 
-                <Route
-                    path="*"
-                    element={<NotFound />}
-                />
+        <Route
+          path="*"
+          element={<NotFound />}
+        />
 
-            </Routes>
-        </BrowserRouter>
-    );
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default AppRoutes;

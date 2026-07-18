@@ -1,0 +1,124 @@
+/* ==========================================================
+   Home How It Works
+========================================================== */
+
+.home-work-section{
+    padding:100px 0;
+    background:#f8fafc;
+  }
+  
+  .home-work-container{
+    width:min(1280px,94%);
+    margin:0 auto;
+  }
+  
+  .home-work-tag{
+    display:block;
+    text-align:center;
+    color:var(--primary);
+    font-size:15px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:16px;
+  }
+  
+  .home-work-heading{
+    text-align:center;
+    font-size:52px;
+    font-weight:800;
+    color:var(--heading);
+    margin-bottom:18px;
+  }
+  
+  .home-work-description{
+    max-width:720px;
+    margin:0 auto 70px;
+    text-align:center;
+    color:var(--text);
+    font-size:18px;
+    line-height:1.8;
+  }
+  
+  .home-work-timeline{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+  }
+  
+  .home-work-card{
+    position:relative;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:34px 26px;
+    text-align:center;
+    transition:.35s;
+    box-shadow:0 15px 40px rgba(15,23,42,.05);
+  }
+  
+  .home-work-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 30px 70px rgba(15,23,42,.10);
+  }
+  
+  .home-work-number{
+    position:absolute;
+    top:18px;
+    right:18px;
+    font-size:14px;
+    font-weight:700;
+    color:#94a3b8;
+  }
+  
+  .home-work-icon{
+    width:72px;
+    height:72px;
+    margin:0 auto 24px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:18px;
+    background:linear-gradient(135deg,var(--primary),#22c55e);
+    color:#fff;
+  }
+  
+  .home-work-card h3{
+    font-size:24px;
+    color:var(--heading);
+    margin-bottom:16px;
+  }
+  
+  .home-work-card p{
+    color:var(--text);
+    line-height:1.7;
+  }
+  
+  @media(max-width:1100px){
+  
+    .home-work-timeline{
+      grid-template-columns:repeat(2,1fr);
+    }
+  
+  }
+  
+  @media(max-width:768px){
+  
+    .home-work-section{
+      padding:70px 0;
+    }
+  
+    .home-work-heading{
+      font-size:36px;
+    }
+  
+    .home-work-description{
+      font-size:16px;
+      margin-bottom:50px;
+    }
+  
+    .home-work-timeline{
+      grid-template-columns:1fr;
+    }
+  
+  }

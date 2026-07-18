@@ -53,21 +53,25 @@ const JobCard = ({ job }) => {
           </div>
         </div>
 
-        <div className="experience-pill">
-          {job.experience}
-        </div>
+        <div className="job-highlights">
 
-        <div className="salary">
-          <IndianRupee size={16} />
+          <div className="highlight-box">
+            <span className="highlight-label">Experience</span>
+            <strong>{job.experience}</strong>
+          </div>
 
-          <span>
-            ₹{(Number(job.salary_min) / 100000).toFixed(1)}L -
-            ₹{(Number(job.salary_max) / 100000).toFixed(1)}L
-          </span>
+          <div className="highlight-box">
+            <span className="highlight-label">Salary</span>
+            <strong>
+              ₹{(Number(job.salary_min) / 100000).toFixed(1)}L -
+              ₹{(Number(job.salary_max) / 100000).toFixed(1)}L
+            </strong>
+          </div>
+
         </div>
 
         <button className="apply-btn">
-          Apply Now
+          Job Details
           <ArrowRight size={18} />
         </button>
       </div>

@@ -1,29 +1,27 @@
 import Hero from "../../components/home/Hero";
 import TrustedCompanies from "../../components/home/TrustedCompanies";
-import FeaturedJobs from "../../components/jobs/FeaturedJobs";
-import CompanySection from "../../components/companies/CompanySection";
-import Statistics from "../../components/home/Statistics";
-import AIFeatures from "../../components/home/AIFeatures";
-import HowItWorks from "../../components/home/HowItWorks";
-import Testimonials from "../../components/home/Testimonials";
-import CTA from "../../components/layout/CTA";
-import Footer from "../../components/layout/Footer";
+import CompanyShowcase from "../../components/home/CompanyShowcase";
+import HomeFeaturedJobs from "../../components/home/HomeFeaturedJobs";
+import HomeStatistics from "../../components/home/HomeStatistics";
+import HomeAIFeatures from "../../components/home/HomeAIFeatures";
+import HomeHowItWorks from "../../components/home/HomeHowItWorks";
+import HomeTestimonials from "../../components/home/HomeTestimonials";
+import HomeCTA from "../../components/home/HomeCTA";
+import HomeFooter from "../../components/home/HomeFooter";
 
 const Home = () => {
   return (
     <>
       <Hero />
       <TrustedCompanies />
-      <CompanySection />
-      <FeaturedJobs />
-      <Statistics />
-      <AIFeatures />
-      <HowItWorks />
-      <Testimonials />
-      <CTA />
-      <Footer />
-
-
+      <CompanyShowcase />
+      <HomeFeaturedJobs />
+      <HomeStatistics />
+      <HomeAIFeatures />
+      <HomeHowItWorks />
+      <HomeTestimonials />
+      <HomeCTA />
+      <HomeFooter />
     </>
   );
 };

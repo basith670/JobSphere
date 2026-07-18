@@ -104,3 +104,8 @@ export const deleteJob = async (id) => {
     return true;
 
 };
+
+export const getHomepageStats = async () => {
+    const response = await api.get("/jobs/homepage-stats/");
+    return response.data;
+};

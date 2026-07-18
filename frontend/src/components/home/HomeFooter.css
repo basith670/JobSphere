@@ -1,0 +1,197 @@
+/* ==========================================================
+   Home Footer
+========================================================== */
+
+.home-footer {
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 90px 0 0;
+  }
+  
+  /* ==========================================================
+     Container
+  ========================================================== */
+  
+  .home-footer-container {
+    width: min(1280px, 94%);
+    margin: 0 auto;
+  
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+  }
+  
+  /* ==========================================================
+     Logo
+  ========================================================== */
+  
+  .home-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  
+    margin-bottom: 24px;
+  
+    color: #ffffff;
+  
+    font-size: 30px;
+    font-weight: 800;
+  }
+  
+  .home-footer-description {
+    max-width: 360px;
+  
+    color: #94a3b8;
+  
+    line-height: 1.9;
+  
+    margin-bottom: 30px;
+  }
+  
+  /* ==========================================================
+     Social Icons
+  ========================================================== */
+  
+  .home-footer-social {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .home-footer-social a {
+    width: 46px;
+    height: 46px;
+  
+    border-radius: 14px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background: #1e293b;
+  
+    color: #ffffff;
+  
+    font-size: 20px;
+  
+    transition: all 0.3s ease;
+  }
+  
+  .home-footer-social a:hover {
+    background: var(--primary);
+  
+    transform: translateY(-4px);
+  }
+  
+  /* ==========================================================
+     Columns
+  ========================================================== */
+  
+  .home-footer-column h3 {
+    color: #ffffff;
+  
+    font-size: 20px;
+    font-weight: 700;
+  
+    margin-bottom: 24px;
+  }
+  
+  .home-footer-column a {
+    display: block;
+  
+    text-decoration: none;
+  
+    color: #94a3b8;
+  
+    margin-bottom: 16px;
+  
+    transition: all 0.3s ease;
+  }
+  
+  .home-footer-column a:hover {
+    color: #ffffff;
+  
+    padding-left: 8px;
+  }
+  
+  /* ==========================================================
+     Contact
+  ========================================================== */
+  
+  .home-footer-contact {
+    display: flex;
+    align-items: center;
+  
+    gap: 12px;
+  
+    margin-bottom: 18px;
+  
+    color: #94a3b8;
+  }
+  
+  .home-footer-contact svg {
+    color: var(--primary);
+  }
+  
+  /* ==========================================================
+     Bottom
+  ========================================================== */
+  
+  .home-footer-bottom {
+    margin-top: 70px;
+  
+    border-top: 1px solid #334155;
+  
+    padding: 24px 0;
+  
+    text-align: center;
+  
+    color: #94a3b8;
+  
+    font-size: 15px;
+  }
+  
+  /* ==========================================================
+     Tablet
+  ========================================================== */
+  
+  @media (max-width: 992px) {
+    .home-footer-container {
+      grid-template-columns: repeat(2, 1fr);
+  
+      gap: 50px;
+    }
+  }
+  
+  /* ==========================================================
+     Mobile
+  ========================================================== */
+  
+  @media (max-width: 768px) {
+    .home-footer {
+      padding-top: 70px;
+    }
+  
+    .home-footer-container {
+      grid-template-columns: 1fr;
+  
+      gap: 40px;
+    }
+  
+    .home-footer-logo {
+      font-size: 26px;
+    }
+  
+    .home-footer-description {
+      max-width: 100%;
+    }
+  
+    .home-footer-social {
+      justify-content: flex-start;
+    }
+  
+    .home-footer-bottom {
+      margin-top: 50px;
+  
+      padding: 20px 0;
+    }
+  }

@@ -4,7 +4,7 @@ import { FaBriefcase } from "react-icons/fa";
 import Button from "../ui/Button";
 import useAuth from "../../hooks/useAuth";
 
-const visitorLinks = [
+const publicLinks = [
   { name: "Home", path: "/" },
   { name: "Jobs", path: "/jobs" },
   { name: "Companies", path: "/companies" },
@@ -33,14 +33,11 @@ export default function Navbar() {
     logout,
   } = useAuth();
 
-  let navLinks = visitorLinks;
-
-  if (isAuthenticated) {
-    navLinks =
-      user?.role === "recruiter"
-        ? recruiterLinks
-        : candidateLinks;
-  }
+  const navLinks = isAuthenticated
+    ? user?.role === "recruiter"
+      ? recruiterLinks
+      : candidateLinks
+    : publicLinks;
 
   return (
     <header
@@ -70,7 +67,6 @@ export default function Navbar() {
         }}
       >
         {/* Logo */}
-
         <Link
           to="/"
           style={{
@@ -89,16 +85,14 @@ export default function Navbar() {
               fontSize: "24px",
             }}
           />
-
           JobSphere
         </Link>
 
         {/* Navigation */}
-
         <div
           style={{
             display: "flex",
-            gap: "30px",
+            gap: "32px",
             alignItems: "center",
           }}
         >
@@ -119,7 +113,6 @@ export default function Navbar() {
         </div>
 
         {/* Right Side */}
-
         <div
           style={{
             display: "flex",

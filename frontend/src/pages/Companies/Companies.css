@@ -1,0 +1,14 @@
+.companies-page{
+    min-height:100vh;
+    background:#f8fafc;
+}
+
+.companies-loading{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#0f172a;
+}
