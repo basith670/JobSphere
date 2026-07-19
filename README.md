@@ -16,22 +16,14 @@ A modern full-stack recruitment platform that connects job seekers and recruiter
 
 <p align="center">
 
-![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
-
-![Django](https://img.shields.io/badge/Django-REST_Framework-092E20?logo=django&logoColor=white)
-
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-336791?logo=postgresql&logoColor=white)
-
-![JWT](https://img.shields.io/badge/Auth-JWT-orange)
-
-![Cloudinary](https://img.shields.io/badge/Cloudinary-Storage-3448C5?logo=cloudinary&logoColor=white)
-
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap&logoColor=white)
-
-![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
-
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?logo=django&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?logo=jsonwebtokens&logoColor=white)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?logo=cloudinary&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
 ![MIT License](https://img.shields.io/badge/License-MIT-green)
-
 </p>
 <p align="center">
 
