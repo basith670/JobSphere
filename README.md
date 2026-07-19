@@ -12,25 +12,25 @@ AI-Powered Career & Recruitment Platform
 A modern full-stack recruitment platform that connects job seekers and recruiters with AI-powered resume analysis, cover letter generation, mock interviews, and seamless hiring workflows.
 </p>
 
-------------------------------------------------------------------------
+---
 
 <p align="center">
 
-![React](https://img.shields.io/badge/React-18-blue?logo=react)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
 
-![Django](https://img.shields.io/badge/Django-REST_Framework-092E20?logo=django)
+![Django](https://img.shields.io/badge/Django-REST_Framework-092E20?logo=django&logoColor=white)
 
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-336791?logo=postgresql)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-336791?logo=postgresql&logoColor=white)
 
 ![JWT](https://img.shields.io/badge/Auth-JWT-orange)
 
-![Cloudinary](https://img.shields.io/badge/Cloudinary-Media-3448C5)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-Storage-3448C5?logo=cloudinary&logoColor=white)
 
-![Bootstrap](https://img.shields.io/badge/UI-Bootstrap_5-7952B3?logo=bootstrap)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap&logoColor=white)
 
-![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
 
-![License](https://img.shields.io/badge/License-MIT-green)
+![MIT License](https://img.shields.io/badge/License-MIT-green)
 
 </p>
 <p align="center">
@@ -39,7 +39,7 @@ A modern full-stack recruitment platform that connects job seekers and recruiter
 
 </p>
 
-------------------------------------------------------------------------
+---
 
 # 🧩 Core Modules
 
@@ -68,7 +68,7 @@ A modern full-stack recruitment platform that connects job seekers and recruiter
 - AI Cover Letter Generator
 - AI Mock Interview
 
-------------------------------------------------------------------------
+---
 
 ## 🌐 Live Demo
 
@@ -77,13 +77,13 @@ A modern full-stack recruitment platform that connects job seekers and recruiter
 | 🌐 Live Website | https://job-sphere-chi.vercel.app |
 | ⚙️ Backend API | https://jobsphere-api-udpb.onrender.com |
 
-------------------------------------------------------------------------
+---
 
 ## 📸 Project Preview
 
 ![Homepage](docs/screenshots/01-homepage.png)
 
-------------------------------------------------------------------------
+---
 
 # 🎯 Why JobSphere?
 
@@ -99,7 +99,7 @@ It combines traditional job portal functionality with intelligent career tools s
 
 The platform demonstrates a production-ready full-stack architecture using React, Django REST Framework, PostgreSQL, JWT Authentication, Cloudinary, and modern deployment practices.
 
-------------------------------------------------------------------------
+---
 ## ✨ Features
 
 ### Candidate
@@ -124,7 +124,7 @@ The platform demonstrates a production-ready full-stack architecture using React
 -   AI Mock Interview
 -   Resume Skill Extraction
 
-------------------------------------------------------------------------
+---
 
 ## 🛠 Tech Stack
 
@@ -136,7 +136,7 @@ The platform demonstrates a production-ready full-stack architecture using React
   Storage      Cloudinary
   Deployment   Vercel, Render
 
-------------------------------------------------------------------------
+---
 
 # 📊 Project Highlights
 
@@ -154,7 +154,7 @@ The platform demonstrates a production-ready full-stack architecture using React
 | 🚀 Production Deployment | ✅ |
 
 
-------------------------------------------------------------------------
+---
 
 ## 📂 Project Structure
 
@@ -170,7 +170,7 @@ JobSphere/
 └── LICENSE
 ```
 
-------------------------------------------------------------------------
+---
 
 # 🏗️ System Architecture
 
@@ -205,7 +205,7 @@ JobSphere/
                  +----------------------+
 ```
 
-------------------------------------------------------------------------
+---
 
 # 📸 Application Gallery
 
@@ -251,7 +251,7 @@ JobSphere/
 |-------------------|----------------|
 | ![](docs/screenshots/10-company-dashboard.png) | ![](docs/screenshots/11-company-job-management.png) |
 
-------------------------------------------------------------------------
+---
 
 # 📡 REST API
 
@@ -267,7 +267,7 @@ JobSphere/
 | AI Cover Letter | `/api/cover-letter/` |
 | AI Interview | `/api/mock-interview/` |
 
-------------------------------------------------------------------------
+---
 
 ## 🚀 Getting Started
 
@@ -299,7 +299,7 @@ npm install
 npm run dev
 ```
 
-------------------------------------------------------------------------
+---
 
 ## 🔑 Environment Variables
 
@@ -328,7 +328,7 @@ DEFAULT_FROM_EMAIL=
 VITE_API_URL=
 ```
 
-------------------------------------------------------------------------
+---
 
 ## 🚀 Deployment
 
@@ -339,7 +339,7 @@ VITE_API_URL=
 | Database | Neon PostgreSQL |
 | Media Storage | Cloudinary |
 
-------------------------------------------------------------------------
+---
 
 ## 📈 Roadmap
 
@@ -348,7 +348,7 @@ VITE_API_URL=
 -   Interview Scheduling
 -   Email Notifications
 
-------------------------------------------------------------------------
+---
 
 ## 📈 Repository Overview
 
@@ -360,7 +360,7 @@ VITE_API_URL=
 - **Deployment:** Vercel + Render
 - **Architecture:** REST API
 
-------------------------------------------------------------------------
+---
 
 ## 👨‍💻 Author
 
@@ -374,13 +374,13 @@ VITE_API_URL=
 
 📧 Email: basithkdrmf87@gmail.com
 
-------------------------------------------------------------------------
+---
 
 ## 📄 License
 
 This project is licensed under the **MIT License**.
 
-------------------------------------------------------------------------
+---
 
 ## ⭐ Support
 
