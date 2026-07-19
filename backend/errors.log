@@ -28,3 +28,4 @@
 [ERROR] 2026-07-19 03:23:49,073 django.request: Internal Server Error: /api/accounts/login/
 [ERROR] 2026-07-19 03:23:57,367 django.request: Internal Server Error: /api/profile/
 [ERROR] 2026-07-19 03:23:57,379 django.request: Internal Server Error: /api/profile/
+[ERROR] 2026-07-19 10:55:01,231 django.request: Internal Server Error: /api/accounts/login/

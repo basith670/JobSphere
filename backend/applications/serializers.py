@@ -39,6 +39,10 @@ class ApplicationSerializer(serializers.ModelSerializer):
         source="applicant.last_name",
         read_only=True,
     )
+    applicant_profile_image = serializers.ImageField(
+    source="applicant.profile_image",
+    read_only=True,
+    )
 
     class Meta:
 
