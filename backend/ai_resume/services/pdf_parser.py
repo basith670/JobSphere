@@ -1,25 +1,29 @@
 import pdfplumber
 
 
-def extract_resume_text(pdf_path):
+def extract_resume_text(resume_file):
     """
-    Extract plain text from a PDF resume.
+    Extract plain text from an uploaded PDF.
 
-    Args:
-        pdf_path (str): Absolute path of uploaded PDF.
-
-    Returns:
-        str: Extracted text.
+    Works with:
+    - Local FileSystemStorage
+    - Cloudinary
+    - Any Django storage backend
     """
 
     extracted_text = []
 
-    with pdfplumber.open(pdf_path) as pdf:
-        for page in pdf.pages:
+    resume_file.open("rb")
 
-            page_text = page.extract_text()
+    try:
+        with pdfplumber.open(resume_file) as pdf:
+            for page in pdf.pages:
+                page_text = page.extract_text()
 
-            if page_text:
-                extracted_text.append(page_text)
+                if page_text:
+                    extracted_text.append(page_text)
+
+    finally:
+        resume_file.close()
 
     return "\n".join(extracted_text)

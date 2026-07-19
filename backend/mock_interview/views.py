@@ -36,7 +36,7 @@ class StartInterviewAPIView(APIView):
         )
 
         resume_text = extract_resume_text(
-            resume.resume_file.path
+            resume.resume_file
         )
 
         skills = extract_skills(

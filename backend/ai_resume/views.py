@@ -27,7 +27,7 @@ class ResumeAnalysisAPIView(APIView):
         )
 
         text = extract_resume_text(
-            resume.resume_file.path
+            resume.resume_file
         )
 
         skills = extract_skills(text)
@@ -108,7 +108,7 @@ class ResumeJobMatchAPIView(APIView):
         )
 
         resume_text = extract_resume_text(
-            resume.resume_file.path
+            resume.resume_file
         )
 
         result = match_resume_with_jd(
