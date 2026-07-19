@@ -133,10 +133,16 @@ export default function RecruiterApplicantTable({
 
                                     <div className="applicant-info">
 
-                                        <div className="avatar">
-
-                                            {application.applicant_name?.[0]?.toUpperCase()}
-
+                                    <div className="avatar">
+                                            {application.applicant_profile_image ? (
+                                                <img
+                                                    src={application.applicant_profile_image}
+                                                    alt={application.applicant_first_name}
+                                                    className="avatar-image"
+                                                />
+                                            ) : (
+                                                application.applicant_name?.[0]?.toUpperCase()
+                                            )}
                                         </div>
 
                                         <div>

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import {
   MapPin,
   BriefcaseBusiness,
-  IndianRupee,
   Star,
   ArrowRight,
 } from "lucide-react";
@@ -16,52 +15,81 @@ const JobCard = ({ job }) => {
       className="job-card-link"
     >
       <div className="job-card">
+
+        {/* Header */}
         <div className="job-card-top">
-        <div className="job-company-logo">
-          {job.company_logo ? (
-            <img
-              src={job.company_logo}
-              alt={job.company_name}
-              className="company-logo-img"
-            />
-          ) : (
-            job.company_name?.charAt(0)
-          )}
-        </div>
+
+          <div className="job-company-logo">
+            {job.company_logo ? (
+              <img
+                src={job.company_logo}
+                alt={job.company_name}
+                className="company-logo-img"
+              />
+            ) : (
+              <span className="company-initial">
+                {job.company_name?.charAt(0)}
+              </span>
+            )}
+          </div>
 
           {job.is_featured && (
             <span className="featured-badge">
-              <Star size={14} fill="currentColor" />
+              <Star
+                size={14}
+                fill="currentColor"
+              />
               Featured
             </span>
           )}
+
         </div>
 
-        <h3>{job.title}</h3>
+        {/* Title */}
+        <h3 className="job-title">
+          {job.title}
+        </h3>
 
-        <h4>{job.company_name}</h4>
+        <h4 className="company-name">
+          {job.company_name}
+        </h4>
 
+        {/* Location & Type */}
         <div className="job-info">
-          <div>
+
+          <div className="job-info-item">
             <MapPin size={16} />
             <span>{job.location}</span>
           </div>
 
-          <div>
+          <div className="job-info-item">
             <BriefcaseBusiness size={16} />
             <span>{job.job_type}</span>
           </div>
+
         </div>
 
+        {/* Divider */}
+        <div className="job-divider"></div>
+
+        {/* Highlights */}
         <div className="job-highlights">
 
           <div className="highlight-box">
-            <span className="highlight-label">Experience</span>
-            <strong>{job.experience}</strong>
+            <span className="highlight-label">
+              Experience
+            </span>
+
+            <strong>
+              {job.experience}
+            </strong>
           </div>
 
           <div className="highlight-box">
-            <span className="highlight-label">Salary</span>
+            <span className="highlight-label">
+              Salary
+            </span>
+
             <strong>
               ₹{(Number(job.salary_min) / 100000).toFixed(1)}L -
               ₹{(Number(job.salary_max) / 100000).toFixed(1)}L
@@ -70,10 +98,16 @@ const JobCard = ({ job }) => {
 
         </div>
 
-        <button className="apply-btn">
-          Job Details
-          <ArrowRight size={18} />
-        </button>
+        {/* Footer */}
+        <div className="job-card-footer">
+
+          <button className="apply-btn">
+            Job Details
+            <ArrowRight size={18} />
+          </button>
+
+        </div>
+
       </div>
     </Link>
   );

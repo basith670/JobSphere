@@ -1,0 +1,136 @@
+/* ===========================
+   Jobs Page
+=========================== */
+
+.jobs-page {
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+/* ===========================
+   Hero
+=========================== */
+
+.jobs-hero {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 24px 20px;
+}
+
+.jobs-hero-content {
+    background: linear-gradient(135deg, #157a6e 0%, #0f6157 100%);
+    color: white;
+    border-radius: 28px;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.jobs-hero-content::before {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    background: rgba(255,255,255,.08);
+    border-radius: 50%;
+    top: -140px;
+    right: -120px;
+}
+
+.jobs-hero-content::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background: rgba(255,255,255,.05);
+    border-radius: 50%;
+    bottom: -90px;
+    left: -70px;
+}
+
+.jobs-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.jobs-hero p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 650px;
+    color: rgba(255,255,255,.92);
+    position: relative;
+    z-index: 2;
+}
+/* ===========================
+   Hero Search
+=========================== */
+
+.jobs-search{
+    margin-top:32px;
+    position:relative;
+    max-width:620px;
+    z-index:2;
+}
+
+.jobs-search input{
+    width:100%;
+    height:60px;
+    border:none;
+    border-radius:16px;
+    padding:0 24px;
+    font-size:1rem;
+    background:#ffffff;
+    color:#111827;
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.jobs-search input:focus{
+    outline:none;
+    transform:translateY(-2px);
+    box-shadow:0 18px 40px rgba(0,0,0,.18);
+}
+
+.jobs-search input::placeholder{
+    color:#94a3b8;
+}
+
+/* ===========================
+   Results Heading
+=========================== */
+
+.jobs-results {
+    max-width: 1500px;
+    margin: 35px auto 10px;
+    padding: 0 24px;
+}
+
+.jobs-results h2 {
+    font-size: 2rem;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.jobs-results p {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+
+    .jobs-hero-content {
+        padding: 35px 25px;
+    }
+
+    .jobs-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .jobs-hero p {
+        font-size: 1rem;
+    }
+
+}

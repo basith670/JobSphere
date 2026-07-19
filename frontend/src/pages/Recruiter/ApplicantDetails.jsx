@@ -173,12 +173,26 @@ const handleInterviewSchedule = async (data) => {
 
         <div className="applicant-profile">
 
-          <div className="profile-avatar">
+        <div className="profile-avatar">
 
-            {application.applicant_first_name?.charAt(0)}
-            {application.applicant_last_name?.charAt(0)}
+            {application.applicant_profile_image ? (
 
-          </div>
+              <img
+                src={application.applicant_profile_image}
+                alt={`${application.applicant_first_name} ${application.applicant_last_name}`}
+                className="profile-avatar-img"
+              />
+
+            ) : (
+
+              <>
+                {application.applicant_first_name?.charAt(0)}
+                {application.applicant_last_name?.charAt(0)}
+              </>
+
+            )}
+
+            </div>
 
           <div className="profile-info">
 

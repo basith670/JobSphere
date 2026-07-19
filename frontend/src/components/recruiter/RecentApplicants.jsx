@@ -160,9 +160,21 @@ export default function RecentApplicants() {
 
                                     <div className="applicant-info">
 
-                                        <div className="applicant-avatar">
+                                    <div className="applicant-avatar">
 
-                                            {application.applicant_first_name?.charAt(0)}
+                                        {application.applicant_profile_image ? (
+
+                                            <img
+                                                src={application.applicant_profile_image}
+                                                alt={application.applicant_first_name}
+                                                className="applicant-avatar-image"
+                                            />
+
+                                        ) : (
+
+                                            application.applicant_first_name?.charAt(0)
+
+                                        )}
 
                                         </div>
 
