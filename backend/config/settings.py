@@ -215,7 +215,7 @@ STORAGES = {
 
 CORS_ALLOWED_ORIGINS = config(
     "CORS_ALLOWED_ORIGINS",
-    default="http://localhost:5173",
+    default="http://localhost:5173,https://job-sphere-chi.vercel.app",
     cast=lambda v: [i.strip() for i in v.split(",")],
 )
 
@@ -277,9 +277,13 @@ SECURE_PROXY_SSL_HEADER = (
     "https",
 )
 
+# ------------------------
+# CSRF
+# ------------------------
+
 CSRF_TRUSTED_ORIGINS = config(
     "CSRF_TRUSTED_ORIGINS",
-    default="",
+    default="https://job-sphere-chi.vercel.app",
     cast=lambda v: [i.strip() for i in v.split(",") if i],
 )
 
