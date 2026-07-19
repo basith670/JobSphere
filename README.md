@@ -16,7 +16,7 @@ A modern full-stack recruitment platform that connects job seekers and recruiter
 
 <p align="center">
 
-![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black)
 ![Django](https://img.shields.io/badge/Django-092E20?logo=django&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-000000?logo=jsonwebtokens&logoColor=white)
