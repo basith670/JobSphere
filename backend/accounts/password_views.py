@@ -74,17 +74,19 @@ class ForgotPasswordAPIView(APIView):
 
         try:
 
+            print("========== BEFORE SEND MAIL ==========")
+
             send_jobsphere_email(
                 subject="JobSphere Password Reset",
                 message=(
                     f"Hello {user.username},\n\n"
-                    f"You requested to reset your JobSphere password.\n\n"
-                    f"Click the link below:\n\n"
-                    f"{reset_link}\n\n"
-                    f"If you didn't request this, you can safely ignore this email."
+                    f"Use the following link to reset your password:\n\n"
+                    f"{reset_link}"
                 ),
                 recipient=user.email,
             )
+
+            print("========== AFTER SEND MAIL ==========")
 
             print("Email sent successfully.")
 
