@@ -45,6 +45,7 @@ import NotFound from "../pages/NotFound/NotFound";
 
 import ForgotPassword from "../pages/Auth/ForgotPassword";
 import ResetPassword from "../pages/Auth/ResetPassword";
+import CandidateJobs from "../pages/Candidate/CandidateJobs";
 
 function AppRoutes() {
   return (
@@ -162,6 +163,11 @@ function AppRoutes() {
           <Route
             path="/mock-interview"
             element={<MockInterview />}
+          />
+
+          <Route
+            path="/candidate/jobs"
+            element={<CandidateJobs />}
           />
 
         </Route>

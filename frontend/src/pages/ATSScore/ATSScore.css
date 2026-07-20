@@ -2,6 +2,8 @@
     padding:30px;
     min-height:100vh;
     background:#f8fafc;
+    width:100%;
+    overflow-x:hidden;
 }
 
 .ats-title{
@@ -21,6 +23,7 @@
     align-items:flex-end;
     gap:20px;
     flex-wrap:wrap;
+    width:100%;
 }
 
 .ats-btn{
@@ -133,24 +136,6 @@
 
 }
 
-@media(max-width:900px){
-
-.ats-result{
-
-grid-template-columns:1fr;
-
-}
-
-.ats-card{
-
-flex-direction:column;
-
-align-items:stretch;
-
-}
-
-}
-
 /* ==============================
    ATS SCORE CIRCLE
 ============================== */
@@ -230,3 +215,143 @@ align-items:stretch;
     color:#64748b;
 
 }
+
+@media(max-width:900px){
+
+    .ats-page{
+    
+    padding:22px;
+    
+    }
+    
+    .ats-title{
+    
+    font-size:36px;
+    
+    }
+    
+    .ats-card{
+    
+    padding:26px;
+    
+    flex-direction:column;
+    
+    align-items:stretch;
+    
+    }
+    
+    .ats-btn{
+    
+    width:100%;
+    
+    }
+    
+    .ats-result{
+    
+    grid-template-columns:1fr;
+    
+    gap:22px;
+    
+    }
+    
+    .ats-circle-card{
+    
+    padding:28px;
+    
+    }
+    
+    .ats-details{
+    
+    padding:26px;
+    
+    }
+    
+    }
+
+    @media(max-width:480px){
+
+        .ats-page{
+        
+        padding:16px;
+        
+        }
+        
+        .ats-title{
+        
+        font-size:28px;
+        
+        line-height:1.2;
+        
+        margin-bottom:22px;
+        
+        }
+        
+        .ats-card{
+        
+        padding:18px;
+        
+        border-radius:18px;
+        
+        }
+        
+        .ats-btn{
+        
+        padding:12px;
+        
+        font-size:14px;
+        
+        }
+        
+        .ats-circle-card{
+        
+        padding:20px;
+        
+        }
+        
+        .ats-circle-card svg{
+        
+        width:180px;
+        
+        height:180px;
+        
+        }
+        
+        .circle-content h1{
+        
+        font-size:40px;
+        
+        }
+        
+        .circle-content p{
+        
+        font-size:14px;
+        
+        }
+        
+        .ats-details{
+        
+        padding:18px;
+        
+        border-radius:18px;
+        
+        }
+        
+        .ats-row{
+        
+        padding:14px 0;
+        
+        }
+        
+        .ats-row span{
+        
+        font-size:14px;
+        
+        }
+        
+        .ats-row strong{
+        
+        font-size:15px;
+        
+        }
+        
+        }

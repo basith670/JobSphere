@@ -2,6 +2,8 @@
     max-width:1200px;
     margin:40px auto;
     padding:0 20px;
+    width:100%;
+    overflow-x:hidden;
 }
 
 .resume-header{
@@ -65,6 +67,7 @@
     display:flex;
     align-items:center;
     gap:15px;
+    flex-wrap:wrap;
 }
 
 .resume-actions{
@@ -153,40 +156,154 @@
 
 @media(max-width:768px){
 
-.resume-form{
-grid-template-columns:1fr;
-}
-
-.resume-grid{
-grid-template-columns:1fr;
-}
-
-.resume-actions{
-justify-content:center;
-}
-
-}
-
-.resume-item{
-    transition:.3s;
-}
-
-.resume-item:hover{
-    transform:translateY(-6px);
-    box-shadow:0 20px 40px rgba(0,0,0,.08);
-}
-
-.resume-meta p{
-    margin:8px 0;
-}
-
-.resume-buttons a{
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
+    .resume-page{
+    
+    margin:24px auto;
+    
+    padding:0 16px;
+    
+    }
+    
+    .resume-title{
+    
+    font-size:30px;
+    
+    }
+    
+    .resume-card{
+    
+    padding:22px;
+    
+    }
+    
+    .resume-form{
+    
+    grid-template-columns:1fr;
+    
+    }
+    
+    .resume-upload{
+    
+    flex-direction:column;
+    
+    align-items:stretch;
+    
+    }
+    
+    .resume-upload input{
+    
+    width:100%;
+    
+    }
+    
+    .resume-grid{
+    
+    grid-template-columns:1fr;
+    
+    }
+    
+    .resume-actions{
+    
     justify-content:center;
-}
+    
+    }
+    
+    .resume-btn{
+    
+    width:100%;
+    
+    }
+    
+    .resume-buttons{
+    
+    flex-direction:column;
+    
+    }
+    
+    .resume-buttons .btn,
+    .resume-buttons a{
+    
+    width:100%;
+    
+    }
+    
+    .resume-buttons .btn{
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    }
+    
+    }
 
-.resume-buttons .btn{
-    min-width:110px;
-}
+    @media(max-width:480px){
+
+        .resume-page{
+        
+        padding:0 12px;
+        
+        }
+        
+        .resume-title{
+        
+        font-size:26px;
+        
+        }
+        
+        .resume-card{
+        
+        padding:18px;
+        
+        }
+        
+        .resume-card h2{
+        
+        font-size:22px;
+        
+        }
+        
+        .resume-form input,
+        .resume-form textarea{
+        
+        padding:12px 14px;
+        
+        font-size:14px;
+        
+        }
+        
+        .resume-item{
+        
+        padding:18px;
+        
+        }
+        
+        .resume-item h3{
+        
+        font-size:20px;
+        
+        }
+        
+        .resume-btn{
+        
+        padding:12px;
+        
+        font-size:14px;
+        
+        }
+        
+        .resume-buttons .btn{
+        
+        padding:12px;
+        
+        font-size:14px;
+        
+        }
+        
+        .empty-state{
+        
+        padding:40px 20px;
+        
+        }
+        
+        }

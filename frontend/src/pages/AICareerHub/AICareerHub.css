@@ -2,6 +2,8 @@
     padding:30px;
     min-height:100vh;
     background:#f8fafc;
+    width:100%;
+    overflow-x:hidden;
 }
 
 /* ================= HERO ================= */
@@ -48,7 +50,7 @@
 
 .feature-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
     gap:25px;
 }
 
@@ -162,22 +164,89 @@
 }
 
 /* ================= RESPONSIVE ================= */
-
 @media(max-width:768px){
 
+    .aihub-page{
+    
+    padding:18px;
+    
+    }
+    
     .aihub-hero{
-        padding:35px 25px;
+    
+    padding:28px 22px;
+    
+    border-radius:20px;
+    
+    margin-bottom:28px;
+    
     }
-
+    
+    .hero-badge{
+    
+    font-size:13px;
+    
+    padding:8px 14px;
+    
+    }
+    
+    .hero-badge svg{
+    
+    font-size:16px;
+    
+    }
+    
     .aihub-hero h1{
-        font-size:38px;
+    
+    font-size:34px;
+    
+    line-height:1.2;
+    
     }
-
+    
+    .aihub-hero p{
+    
+    font-size:15px;
+    
+    line-height:1.7;
+    
+    }
+    
+    .ai-stats{
+    
+    grid-template-columns:1fr;
+    
+    gap:16px;
+    
+    }
+    
     .feature-grid{
-        grid-template-columns:1fr;
+    
+    grid-template-columns:1fr;
+    
     }
-
-}
+    
+    .feature-card{
+    
+    padding:22px;
+    
+    }
+    
+    .feature-icon{
+    
+    width:56px;
+    height:56px;
+    font-size:24px;
+    
+    }
+    
+    .feature-card h3{
+    
+    font-size:22px;
+    
+    }
+    
+    }
 
 @media(max-width:992px){
 
@@ -187,26 +256,85 @@
 
 }
 
-@media(max-width:768px){
+@media(max-width:480px){
 
     .aihub-page{
-        padding:20px;
+    
+    padding:14px;
+    
     }
-
+    
     .aihub-hero{
-        padding:35px 25px;
+    
+    padding:22px 18px;
+    
     }
-
+    
+    .hero-badge{
+    
+    font-size:12px;
+    
+    padding:7px 12px;
+    
+    }
+    
     .aihub-hero h1{
-        font-size:38px;
+    
+    font-size:28px;
+    
+    }
+    
+    .aihub-hero p{
+    
+    font-size:14px;
+    
+    }
+    
+    .ai-stat-card{
+    
+    padding:22px 16px;
+    
+    }
+    
+    .ai-stat-icon{
+    
+    width:55px;
+    height:55px;
+    font-size:24px;
+    
+    }
+    
+    .ai-stat-card h2{
+    
+    font-size:28px;
+    
+    }
+    
+    .feature-card{
+    
+    padding:18px;
+    
+    }
+    
+    .feature-card h3{
+    
+    font-size:20px;
+    
+    }
+    
+    .feature-card p{
+    
+    font-size:14px;
+    
+    min-height:auto;
+    
+    }
+    
+    .feature-link{
+    
+    font-size:14px;
+    
+    }
+    
     }
 
-    .feature-grid{
-        grid-template-columns:1fr;
-    }
-
-    .ai-stats{
-        grid-template-columns:1fr;
-    }
-
-}

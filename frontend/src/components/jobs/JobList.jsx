@@ -1,7 +1,10 @@
 import "./JobList.css";
 import JobCard from "./JobCard";
 
-export default function JobList({ jobs }) {
+export default function JobList({
+  jobs,
+  onSaveToggle,
+}) {
 
   if (!jobs.length) {
     return (
@@ -16,7 +19,6 @@ export default function JobList({ jobs }) {
   }
 
   return (
-
     <section className="jobs-wrapper section">
 
       <div className="container">
@@ -28,6 +30,7 @@ export default function JobList({ jobs }) {
             <JobCard
               key={job.id}
               job={job}
+              onSaveToggle={onSaveToggle}
             />
 
           ))}
@@ -37,7 +40,5 @@ export default function JobList({ jobs }) {
       </div>
 
     </section>
-
   );
-
 }

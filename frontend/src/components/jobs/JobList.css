@@ -6,31 +6,92 @@
     padding-top:0;
 }
 
+/* ==========================================================
+   Jobs Grid
+========================================================== */
+
 .jobs-grid{
+
     display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:clamp(1.5rem,2vw,2rem);
+
+    grid-template-columns:repeat(auto-fit, minmax(380px, 1fr));
+
+    gap:32px;
+
+    align-items:stretch;
+
 }
+
+/* ==========================================================
+   No Jobs
+========================================================== */
 
 .no-jobs{
-    padding:4rem 0;
+
+    padding:5rem 0;
+
     text-align:center;
+
     font-size:1.1rem;
+
     color:var(--text-light);
+
 }
 
-@media (max-width:1200px){
+/* ==========================================================
+   Large Desktop
+========================================================== */
+
+@media (min-width:1600px){
 
     .jobs-grid{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:repeat(3, minmax(420px, 1fr));
+
     }
 
 }
 
-@media (max-width:768px){
+/* ==========================================================
+   Laptop
+========================================================== */
+
+@media (max-width:1200px){
 
     .jobs-grid{
+
+        grid-template-columns:repeat(2, minmax(340px, 1fr));
+
+        gap:28px;
+
+    }
+
+}
+
+/* ==========================================================
+   Tablet
+========================================================== */
+
+@media (max-width:900px){
+
+    .jobs-grid{
+
         grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ==========================================================
+   Mobile
+========================================================== */
+
+@media (max-width:576px){
+
+    .jobs-grid{
+
+        gap:22px;
+
     }
 
 }

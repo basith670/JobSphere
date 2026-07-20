@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   FaSearch,
+  FaBars,
   FaUser,
   FaFileAlt,
   FaCog,
@@ -16,7 +17,9 @@ import NotificationDropdown from "../../components/notifications/NotificationDro
 
 import "./Topbar.css";
 
-export default function Topbar() {
+export default function Topbar({
+  setSidebarOpen,
+}) {
   const { logout } = useAuth();
   const {
     userProfile,
@@ -104,6 +107,12 @@ export default function Topbar() {
   return (
     <header className="topbar">
       <div className="topbar-left">
+      <button
+          className="mobile-menu-btn"
+          onClick={() => setSidebarOpen(true)}
+        >
+          <FaBars />
+        </button>
         <h2>
           Welcome Back,{" "}
           {userProfile?.first_name ||

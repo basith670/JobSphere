@@ -5,6 +5,8 @@
 .resume-page{
     padding:30px;
     min-height:100vh;
+    width:100%;
+    overflow-x:hidden;
 }
 
 .resume-header{
@@ -29,6 +31,7 @@
     border-radius:22px;
     padding:35px;
     box-shadow:0 12px 30px rgba(0,0,0,.08);
+    overflow:hidden;
 }
 
 .resume-form{
@@ -2032,3 +2035,208 @@ MOCK INTERVIEW
     font-size:17px;
 
 }
+
+/* ======================================
+   GLOBAL AI MOBILE RESPONSIVE
+====================================== */
+
+@media(max-width:768px){
+
+    .resume-page{
+    
+    padding:18px;
+    
+    }
+    
+    .resume-title,
+    .match-hero h1,
+    .cover-hero h1,
+    .interview-hero h1,
+    .resume-hero h1{
+    
+    font-size:34px;
+    
+    line-height:1.2;
+    
+    }
+    
+    .resume-subtitle,
+    .match-hero p,
+    .cover-hero p,
+    .interview-hero p,
+    .resume-hero p{
+    
+    font-size:15px;
+    
+    line-height:1.7;
+    
+    }
+    
+    .resume-card,
+    .workspace-card,
+    .jobmatch-card,
+    .match-score-card,
+    .recommendation-card,
+    .cover-letter-preview,
+    .question-display,
+    .progress-wrapper{
+    
+    padding:22px;
+    
+    }
+    
+    .match-circle{
+    
+    width:180px;
+    height:180px;
+    
+    }
+    
+    .match-content h1{
+    
+    font-size:42px;
+    
+    }
+    
+    .hero-score,
+    .match-hero-right,
+    .cover-right,
+    .interview-right{
+    
+    width:180px;
+    height:180px;
+    
+    }
+    
+    .hero-score h2{
+    
+    font-size:42px;
+    
+    }
+    
+    .resume-btn,
+    .analyze-btn{
+    
+    width:100%;
+    
+    }
+    
+    .jobmatch-chip{
+    
+    width:100%;
+    
+    justify-content:center;
+    
+    }
+    
+    .recommendation-item{
+    
+    flex-direction:column;
+    
+    }
+    
+    }
+
+    @media(max-width:480px){
+
+        .resume-page{
+        
+        padding:14px;
+        
+        }
+        
+        .resume-title,
+        .match-hero h1,
+        .cover-hero h1,
+        .interview-hero h1,
+        .resume-hero h1{
+        
+        font-size:28px;
+        
+        }
+        
+        .resume-card,
+        .workspace-card,
+        .jobmatch-card,
+        .match-score-card,
+        .recommendation-card,
+        .cover-letter-preview,
+        .question-display,
+        .progress-wrapper{
+        
+        padding:18px;
+        
+        }
+        
+        .resume-select,
+        .resume-input,
+        .resume-textarea{
+        
+        font-size:14px;
+        
+        }
+        
+        .resume-btn,
+        .analyze-btn{
+        
+        padding:12px;
+        
+        font-size:14px;
+        
+        }
+        
+        .match-circle{
+        
+        width:150px;
+        height:150px;
+        
+        }
+        
+        .match-content h1{
+        
+        font-size:34px;
+        
+        }
+        
+        .hero-score,
+        .match-hero-right,
+        .cover-right,
+        .interview-right{
+        
+        width:150px;
+        height:150px;
+        
+        }
+        
+        .hero-score h2{
+        
+        font-size:34px;
+        
+        }
+        
+        .progress-ring{
+        
+        width:150px;
+        height:150px;
+        
+        }
+        
+        .progress-text h1{
+        
+        font-size:34px;
+        
+        }
+        
+        .question-display p{
+        
+        font-size:18px;
+        
+        }
+        
+        .feedback-list li{
+        
+        font-size:15px;
+        
+        }
+        
+        }

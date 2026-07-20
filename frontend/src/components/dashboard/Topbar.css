@@ -407,3 +407,59 @@
     text-align: center;
     color: gray;
   }
+
+  .mobile-menu-btn{
+
+    display:none;
+    
+    border:none;
+    
+    background:transparent;
+    
+    font-size:22px;
+    
+    cursor:pointer;
+    
+    margin-right:15px;
+    
+    color:#0f766e;
+    
+    }
+
+    .mobile-menu-btn{
+
+        display:flex;
+        
+        align-items:center;
+        
+        justify-content:center;
+        
+        }
+        
+        .topbar-left{
+        
+        display:flex;
+        
+        align-items:center;
+        
+        gap:12px;
+        
+        }
+        
+        .topbar-left h2{
+        
+        font-size:20px;
+        
+        }
+        
+        .topbar-left p{
+        
+        display:none;
+        
+        }
+        
+        .search-dropdown{
+        
+        width:100%;
+        
+        }

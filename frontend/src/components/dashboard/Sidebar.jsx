@@ -28,7 +28,7 @@ const menuItems = [
   },
   {
     name: "Jobs",
-    path: "/jobs",
+    path: "/candidate/jobs",
     icon: <FaBriefcase />,
   },
   {
@@ -53,119 +53,99 @@ const menuItems = [
   },
 ];
 
-export default function Sidebar() {
-
+export default function Sidebar({
+  open,
+  setOpen,
+}) {
   const { logout } = useAuth();
+
   const {
     userProfile,
     clearUser,
   } = useUser();
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
-
     logout();
-  
     clearUser();
-  
     navigate("/login");
-  
   };
+
   return (
+    <>
+      {open && (
+        <div
+          className="sidebar-overlay"
+          onClick={() => setOpen(false)}
+        />
+      )}
 
-    <aside className="sidebar">
-
-      <div className="sidebar-logo">
-
-        <h2>JobSphere</h2>
-
-        <span>Career Platform</span>
-
-      </div>
-
-      <nav className="sidebar-menu">
-
-        {menuItems.map((item) => (
-
-          <NavLink
-            key={item.name}
-            to={item.path}
-            className={({ isActive }) =>
-              isActive
-                ? "sidebar-link active"
-                : "sidebar-link"
-            }
-          >
-
-            <span>{item.icon}</span>
-
-            <span>{item.name}</span>
-
-          </NavLink>
-
-        ))}
-
-      </nav>
-
-      <div className="sidebar-footer">
-
-        <div className="sidebar-user">
-
-          <div className="avatar">
-
-            {userProfile?.profile_image_url ? (
-
-              <img
-                src={userProfile.profile_image_url}
-                alt="Profile"
-                className="sidebar-avatar-img"
-              />
-
-            ) : (
-
-              userProfile?.first_name?.charAt(0) ||
-              userProfile?.username?.charAt(0) ||
-              "U"
-
-            )}
-
-          </div>
-
-          <div>
-
-            <strong>
-
-              {userProfile?.first_name} {userProfile?.last_name}
-
-            </strong>
-
-            <p>
-
-              {userProfile?.role === "recruiter"
-                ? "Recruiter"
-                : "Job Seeker"}
-
-            </p>
-
-          </div>
-
+      <aside
+        className={`sidebar ${open ? "open" : ""}`}
+      >
+        <div className="sidebar-logo">
+          <h2>JobSphere</h2>
+          <span>Career Platform</span>
         </div>
 
-        <button
-          className="logout-btn"
-          onClick={handleLogout}
-        >
+        <nav className="sidebar-menu">
+          {menuItems.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.path}
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                isActive
+                  ? "sidebar-link active"
+                  : "sidebar-link"
+              }
+            >
+              <span>{item.icon}</span>
+              <span>{item.name}</span>
+            </NavLink>
+          ))}
+        </nav>
 
-          <FaSignOutAlt />
+        <div className="sidebar-footer">
+          <div className="sidebar-user">
+            <div className="avatar">
+              {userProfile?.profile_image_url ? (
+                <img
+                  src={userProfile.profile_image_url}
+                  alt="Profile"
+                  className="sidebar-avatar-img"
+                />
+              ) : (
+                userProfile?.first_name?.charAt(0) ||
+                userProfile?.username?.charAt(0) ||
+                "U"
+              )}
+            </div>
 
-          <span>Logout</span>
+            <div>
+              <strong>
+                {userProfile?.first_name}{" "}
+                {userProfile?.last_name}
+              </strong>
 
-        </button>
+              <p>
+                {userProfile?.role === "recruiter"
+                  ? "Recruiter"
+                  : "Job Seeker"}
+              </p>
+            </div>
+          </div>
 
-      </div>
-
-    </aside>
-
+          <button
+            className="logout-btn"
+            onClick={handleLogout}
+          >
+            <FaSignOutAlt />
+            <span>Logout</span>
+          </button>
+        </div>
+      </aside>
+    </>
   );
-
 }

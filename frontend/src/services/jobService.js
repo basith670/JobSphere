@@ -42,6 +42,39 @@ export const getFeaturedJobs = async () => {
 
 };
 
+/* ======================================
+   SAVED JOB APIs
+====================================== */
+
+export const getSavedJobs = async () => {
+
+    const response = await api.get(
+        "/jobs/saved/"
+    );
+
+    return response.data.results || [];
+
+};
+
+export const saveJob = async (id) => {
+
+    const response = await api.post(
+        `/jobs/${id}/save/`
+    );
+
+    return response.data;
+
+};
+
+export const unsaveJob = async (id) => {
+
+    const response = await api.delete(
+        `/jobs/${id}/unsave/`
+    );
+
+    return response.data;
+
+};
 
 /* ======================================
    RECRUITER JOB APIs
@@ -106,6 +139,25 @@ export const deleteJob = async (id) => {
 };
 
 export const getHomepageStats = async () => {
-    const response = await api.get("/jobs/homepage-stats/");
+
+    const response = await api.get(
+        "/jobs/homepage-stats/"
+    );
+
     return response.data;
+
+};
+
+/* ======================================
+   CANDIDATE DASHBOARD
+====================================== */
+
+export const getDashboardStats = async () => {
+
+    const response = await api.get(
+        "/accounts/dashboard/stats/"
+    );
+
+    return response.data;
+
 };

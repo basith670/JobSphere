@@ -5,38 +5,57 @@ import StatsGrid from "../../components/dashboard/StatsGrid";
 import QuickActions from "../../components/dashboard/QuickActions";
 
 import { getCandidateDashboard } from "../../services/candidateDashboardService";
+import { getDashboardStats } from "../../services/jobService";
+
 import { useSearch } from "../../context/SearchContext";
 
 import "./Dashboard.css";
 
 export default function Dashboard() {
+
   const navigate = useNavigate();
 
   const [dashboard, setDashboard] = useState(null);
+  const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const { searchTerm } = useSearch();
 
   useEffect(() => {
+
     const fetchDashboard = async () => {
+
       try {
-        const data = await getCandidateDashboard();
-        setDashboard(data);
+
+        const [dashboardData, statsData] = await Promise.all([
+          getCandidateDashboard(),
+          getDashboardStats(),
+        ]);
+
+        setDashboard(dashboardData);
+        setStats(statsData);
+
       } catch (err) {
+
         console.error(err);
+
       } finally {
+
         setLoading(false);
+
       }
+
     };
 
     fetchDashboard();
+
   }, []);
 
   if (loading) {
     return <h2>Loading Dashboard...</h2>;
   }
 
-  if (!dashboard) {
+  if (!dashboard || !stats) {
     return <h2>Unable to load dashboard.</h2>;
   }
 
@@ -92,16 +111,22 @@ export default function Dashboard() {
           <div className="dashboard-score-circle">
 
             <h2>
-              {dashboard.stats?.resume_score ?? 0}%
+              {stats.profile_strength}%
             </h2>
 
-            <span>Resume Score</span>
+            <span>Profile Strength</span>
 
           </div>
 
           <p>
-            AI Resume Analysis
-          </p>
+          {stats.profile_strength < 65
+            ? "Complete your profile to attract more recruiters."
+            : stats.profile_strength < 85
+            ? "Great progress! Add more details to stand out."
+            : stats.profile_strength < 100
+            ? "Excellent profile! Complete the remaining details."
+            : "Outstanding! Your profile is fully complete."}
+        </p>
 
         </div>
 
@@ -169,18 +194,18 @@ export default function Dashboard() {
                   <div
                     className="progress-fill"
                     style={{
-                      width: `${dashboard.user?.profile_completion ?? 0}%`,
+                      width: `${stats.profile_strength}%`,
                     }}
                   />
 
                 </div>
 
                 <h1>
-                  {dashboard.user?.profile_completion ?? 0}%
+                  {stats.profile_strength}%
                 </h1>
 
                 <p>
-                  Your profile is looking great.
+                  Keep your profile updated to improve visibility.
                 </p>
 
               </div>
