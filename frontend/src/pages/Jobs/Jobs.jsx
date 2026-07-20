@@ -160,9 +160,9 @@ export default function Jobs() {
 
       {/* Results */}
       <section
-          className="jobs-results section"
+          className="jobs-results"
           ref={resultsRef}
-        >
+      >
 
           <div className="container">
         <h2>Available Jobs</h2>

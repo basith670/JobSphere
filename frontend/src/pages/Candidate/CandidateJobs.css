@@ -136,6 +136,8 @@
 
     margin:35px 0 25px;
 
+    padding:0 45px;
+
 }
 
 .candidate-results h2{
@@ -277,6 +279,11 @@
         grid-template-columns:repeat(2,1fr);
 
     }
+    .candidate-results{
+
+        padding:0 25px;
+    
+    }
 
 }
 
@@ -346,6 +353,12 @@
 
         font-size:15px;
 
+    }
+
+    .candidate-results{
+
+        padding:0;
+    
     }
 
 }

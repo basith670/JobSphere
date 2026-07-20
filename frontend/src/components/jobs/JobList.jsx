@@ -8,7 +8,7 @@ export default function JobList({
 
   if (!jobs.length) {
     return (
-      <section className="jobs-wrapper section">
+      <section className="jobs-wrapper">
         <div className="container">
           <p className="no-jobs">
             No jobs found.
@@ -19,7 +19,7 @@ export default function JobList({
   }
 
   return (
-    <section className="jobs-wrapper section">
+    <section className="jobs-wrapper">
 
       <div className="container">
 

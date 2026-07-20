@@ -3,7 +3,9 @@
 ========================================================== */
 
 .job-filters-wrapper{
-  margin:50px 0 60px;
+
+  margin:20px 0 10px;
+
 }
 
 /* ==========================================================
@@ -297,9 +299,9 @@
 
   .job-filters-wrapper{
 
-      margin:35px 0 45px;
+    margin:24px 0 32px;
 
-  }
+}
 
   .job-filters-card{
 

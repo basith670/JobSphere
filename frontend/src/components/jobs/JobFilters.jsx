@@ -6,9 +6,11 @@ export default function JobFilters({
   setFilters,
 }) {
   return (
-    <section className="job-filters-wrapper">
+        <section className="job-filters-wrapper">
 
-      <div className="job-filters-card">
+        <div className="container">
+
+          <div className="job-filters-card">
 
         {/* Header */}
 
@@ -131,8 +133,10 @@ export default function JobFilters({
 
         </div>
 
+        </div>
+
       </div>
 
-    </section>
+      </section>
   );
 }

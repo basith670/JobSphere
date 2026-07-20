@@ -12,7 +12,13 @@
 ========================================================== */
 
 .jobs-hero{
-    padding-bottom:1rem;
+
+    padding-top:1rem;
+
+    padding-bottom:0;
+
+    margin-bottom:24px;
+
 }
 
 .jobs-hero-content{
@@ -29,7 +35,7 @@
 
     border-radius:28px;
 
-    padding:clamp(2.5rem,5vw,4rem);
+    padding:clamp(2.25rem,4vw,3.5rem);
 }
 
 .jobs-hero-content::before{
@@ -97,7 +103,7 @@
     position:relative;
     z-index:2;
 
-    margin-top:2rem;
+    margin-top:1.5rem;
 
     max-width:620px;
 }
@@ -141,7 +147,9 @@
 ========================================================== */
 
 .jobs-results{
-    padding-top:0;
+
+    padding:0 0 1rem;
+
 }
 
 .jobs-results h2{
