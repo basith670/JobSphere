@@ -24,6 +24,10 @@ class ForgotPasswordAPIView(APIView):
 
     permission_classes = [AllowAny]
 
+    print("FRONTEND_URL =", settings.FRONTEND_URL)
+    print("EMAIL_HOST =", settings.EMAIL_HOST)
+    print("EMAIL_PORT =", settings.EMAIL_PORT)
+
     def post(self, request):
 
         print("\n========== FORGOT PASSWORD ==========")

@@ -13,18 +13,19 @@ class SendTestEmailAPIView(APIView):
 
     def post(self, request):
 
-        send_jobsphere_email(
+        # send_jobsphere_email(
 
-            subject="JobSphere Test Email",
+        #     subject="JobSphere Test Email",
 
-            message="Congratulations! Your email service is working successfully.",
+        #     message="Congratulations! Your email service is working successfully.",
 
-            recipient=request.user.email,
+        #     recipient=request.user.email,
 
-        )
+        # )
 
-        return Response(
-            {
-                "message": "Email sent successfully."
-            }
-        )
+        # return Response(
+        #     {
+        #         "message": "Email sent successfully."
+        #     }
+        # )
+        print("Skipping email")
