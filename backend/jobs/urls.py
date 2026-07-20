@@ -1,10 +1,6 @@
 from django.urls import path
 
 from .views import (
-    JobDetailAPIView,
-    JobListAPIView,
-)
-from .views import (
     JobListAPIView,
     JobDetailAPIView,
     RecruiterJobListAPIView,
@@ -12,11 +8,17 @@ from .views import (
     RecruiterCreateJobAPIView,
     RecruiterUpdateJobAPIView,
     RecruiterDeleteJobAPIView,
+    SaveJobAPIView,
+    UnsaveJobAPIView,
+    SavedJobsAPIView,
+    homepage_stats,
 )
 
-from .views import homepage_stats
-
 urlpatterns = [
+
+    # =====================================================
+    # PUBLIC JOBS
+    # =====================================================
 
     path(
         "",
@@ -25,21 +27,59 @@ urlpatterns = [
     ),
 
     path(
+        "<int:pk>/",
+        JobDetailAPIView.as_view(),
+        name="job-detail",
+    ),
+
+    path(
+        "homepage-stats/",
+        homepage_stats,
+        name="homepage-stats",
+    ),
+
+    # =====================================================
+    # SAVED JOBS
+    # =====================================================
+
+    path(
+        "saved/",
+        SavedJobsAPIView.as_view(),
+        name="saved-jobs",
+    ),
+
+    path(
+        "<int:pk>/save/",
+        SaveJobAPIView.as_view(),
+        name="save-job",
+    ),
+
+    path(
+        "<int:pk>/unsave/",
+        UnsaveJobAPIView.as_view(),
+        name="unsave-job",
+    ),
+
+    # =====================================================
+    # RECRUITER
+    # =====================================================
+
+    path(
         "my/",
         RecruiterJobListAPIView.as_view(),
         name="my-jobs",
     ),
 
     path(
-        "create/",
-        RecruiterCreateJobAPIView.as_view(),
-        name="create-job",
+        "my/<int:pk>/",
+        RecruiterJobDetailAPIView.as_view(),
+        name="my-job-detail",
     ),
 
     path(
-        "<int:pk>/",
-        JobDetailAPIView.as_view(),
-        name="job-detail",
+        "create/",
+        RecruiterCreateJobAPIView.as_view(),
+        name="create-job",
     ),
 
     path(
@@ -53,13 +93,4 @@ urlpatterns = [
         RecruiterDeleteJobAPIView.as_view(),
         name="delete-job",
     ),
-
-    path(
-    "my/<int:pk>/",
-    RecruiterJobDetailAPIView.as_view(),
-    name="my-job-detail",
-),
-
-    path("homepage-stats/", homepage_stats),
-
 ]

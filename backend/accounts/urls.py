@@ -15,6 +15,8 @@ from .password_views import (
 
 from .dashboard import RecruiterDashboardAPIView
 
+from .views import DashboardStatsView
+
 
 urlpatterns = [
 
@@ -64,6 +66,12 @@ urlpatterns = [
         "change-password/",
         ChangePasswordAPIView.as_view(),
         name="change-password",
+    ),
+
+    path(
+    "dashboard/stats/",
+    DashboardStatsView.as_view(),
+    name="dashboard-stats",
     ),
 
 ]

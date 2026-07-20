@@ -1,11 +1,13 @@
 from rest_framework import serializers
-from .models import Job
+
+from .models import Job, SavedJob
 
 
 class JobSerializer(serializers.ModelSerializer):
 
     application_count = serializers.SerializerMethodField()
     status = serializers.SerializerMethodField()
+    is_saved = serializers.SerializerMethodField()
 
     company_name = serializers.CharField(
         source="company.company_name",
@@ -23,6 +25,18 @@ class JobSerializer(serializers.ModelSerializer):
     def get_status(self, obj):
         return "Open" if obj.is_active else "Closed"
 
+    def get_is_saved(self, obj):
+
+        request = self.context.get("request")
+
+        if not request or request.user.is_anonymous:
+            return False
+
+        return SavedJob.objects.filter(
+            user=request.user,
+            job=obj,
+        ).exists()
+
     class Meta:
         model = Job
 
@@ -36,6 +50,7 @@ class JobSerializer(serializers.ModelSerializer):
             "location",
             "application_count",
             "status",
+            "is_saved",
             "job_type",
             "experience",
             "salary_min",

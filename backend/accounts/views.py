@@ -12,6 +12,10 @@ from .serializers import (
     ProfileSerializer,
     ChangePasswordSerializer,
 )
+from rest_framework.permissions import IsAuthenticated
+
+from jobs.models import Job, SavedJob
+from applications.models import Application
 
 
 # =====================================================
@@ -153,3 +157,28 @@ class ChangePasswordAPIView(APIView):
             },
             status=status.HTTP_200_OK,
         )
+
+class DashboardStatsView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+
+        user = request.user
+
+        data = {
+            "available_jobs": Job.objects.filter(
+                is_active=True
+            ).count(),
+
+            "saved_jobs": SavedJob.objects.filter(
+                user=user
+            ).count(),
+
+            "applications": Application.objects.filter(
+                applicant=user
+            ).count(),
+
+            "profile_strength": user.profile_completion,
+        }
+
+        return Response(data)

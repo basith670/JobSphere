@@ -14,6 +14,13 @@ from rest_framework.response import Response
 from .models import Job
 from .serializers import JobSerializer
 
+from rest_framework.views import APIView
+
+
+from rest_framework import status
+
+from .models import SavedJob
+
 
 # =====================================================
 # PUBLIC JOB LIST
@@ -219,3 +226,55 @@ def homepage_stats(request):
         "applications": Application.objects.count(),
         "success_rate": 95,
     })
+
+class SaveJobAPIView(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, pk):
+
+        job = generics.get_object_or_404(Job, pk=pk)
+
+        SavedJob.objects.get_or_create(
+            user=request.user,
+            job=job,
+        )
+
+        return Response(
+            {
+                "message": "Job saved successfully."
+            },
+            status=status.HTTP_200_OK,
+        )
+    
+class UnsaveJobAPIView(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, pk):
+
+        SavedJob.objects.filter(
+            user=request.user,
+            job_id=pk,
+        ).delete()
+
+        return Response(
+            {
+                "message": "Job removed."
+            },
+            status=status.HTTP_200_OK,
+        )
+    
+class SavedJobsAPIView(generics.ListAPIView):
+
+    serializer_class = JobSerializer
+
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+
+        return Job.objects.filter(
+
+            saved_by__user=self.request.user
+
+        ).select_related("company")
