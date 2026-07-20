@@ -158,12 +158,71 @@ class ChangePasswordAPIView(APIView):
             status=status.HTTP_200_OK,
         )
 
+# =====================================================
+# Candidate Dashboard Stats
+# =====================================================
+
 class DashboardStatsView(APIView):
+
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
 
         user = request.user
+
+        # ==========================================
+        # Profile Strength Calculation (Out of 100)
+        # ==========================================
+
+        score = 0
+
+        # ---------- Basic Information (20) ----------
+
+        if user.first_name:
+            score += 5
+
+        if user.last_name:
+            score += 5
+
+        if user.email:
+            score += 5
+
+        if user.phone:
+            score += 5
+
+        # ---------- Personal Profile (25) ----------
+
+        if user.profile_image:
+            score += 10
+
+        if user.bio:
+            score += 10
+
+        if user.location:
+            score += 5
+
+        # ---------- Professional Details (55) ----------
+
+        if user.headline:
+            score += 10
+
+        if user.education:
+            score += 10
+
+        if user.skills:
+            score += 15
+
+        if user.experience:
+            score += 10
+
+        if (
+            user.portfolio
+            or user.github
+            or user.linkedin
+        ):
+            score += 10
+
+        # ==========================================
 
         data = {
             "available_jobs": Job.objects.filter(
@@ -178,7 +237,7 @@ class DashboardStatsView(APIView):
                 applicant=user
             ).count(),
 
-            "profile_strength": user.profile_completion,
+            "profile_strength": score,
         }
 
         return Response(data)
