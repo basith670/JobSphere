@@ -1,12 +1,11 @@
+from django.conf import settings
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import force_bytes
-from django.utils.http import (
-    urlsafe_base64_encode,
-)
+from django.utils.http import urlsafe_base64_encode
 
-from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import User
 from .password_serializers import (
@@ -17,11 +16,17 @@ from .password_serializers import (
 from email_service.utils import send_jobsphere_email
 
 
+# =====================================================
+# Forgot Password
+# =====================================================
+
 class ForgotPasswordAPIView(APIView):
 
     permission_classes = [AllowAny]
 
     def post(self, request):
+
+        print("\n========== FORGOT PASSWORD ==========")
 
         serializer = ForgotPasswordSerializer(
             data=request.data,
@@ -33,13 +38,19 @@ class ForgotPasswordAPIView(APIView):
 
         email = serializer.validated_data["email"]
 
+        print(f"Email received: {email}")
+
         try:
 
             user = User.objects.get(
                 email=email,
             )
 
+            print(f"User found: {user.username}")
+
         except User.DoesNotExist:
+
+            print("User not found.")
 
             return Response(
                 {
@@ -56,23 +67,35 @@ class ForgotPasswordAPIView(APIView):
         )
 
         reset_link = (
-            f"http://127.0.0.1:8000/reset-password/"
-            f"{uid}/{token}/"
+            f"{settings.FRONTEND_URL}/reset-password/{uid}/{token}"
         )
 
-        send_jobsphere_email(
+        print(f"Reset Link: {reset_link}")
 
-            subject="JobSphere Password Reset",
+        try:
 
-            message=(
-                f"Hello {user.username},\n\n"
-                f"Use the following link to reset your password:\n\n"
-                f"{reset_link}"
-            ),
+            send_jobsphere_email(
+                subject="JobSphere Password Reset",
+                message=(
+                    f"Hello {user.username},\n\n"
+                    f"You requested to reset your JobSphere password.\n\n"
+                    f"Click the link below:\n\n"
+                    f"{reset_link}\n\n"
+                    f"If you didn't request this, you can safely ignore this email."
+                ),
+                recipient=user.email,
+            )
 
-            recipient=user.email,
+            print("Email sent successfully.")
 
-        )
+        except Exception as e:
+
+            print("========== EMAIL ERROR ==========")
+            print(type(e).__name__)
+            print(str(e))
+            print("=================================")
+
+            raise
 
         return Response(
             {
@@ -80,6 +103,10 @@ class ForgotPasswordAPIView(APIView):
             }
         )
 
+
+# =====================================================
+# Reset Password
+# =====================================================
 
 class ResetPasswordAPIView(APIView):
 

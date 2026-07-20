@@ -287,3 +287,8 @@ CSRF_TRUSTED_ORIGINS = config(
     cast=lambda v: [i.strip() for i in v.split(",") if i],
 )
 
+FRONTEND_URL = config(
+    "FRONTEND_URL",
+    default="http://localhost:5173",
+)
+
