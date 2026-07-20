@@ -1,16 +1,31 @@
+import resend
 from django.conf import settings
-from django.core.mail import EmailMessage, get_connection
+
+
+resend.api_key = settings.RESEND_API_KEY
 
 
 def send_jobsphere_email(subject, message, recipient):
-    connection = get_connection(timeout=10)
 
-    email = EmailMessage(
-        subject=subject,
-        body=message,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        to=[recipient],
-        connection=connection,
-    )
+    print("========== SEND EMAIL (Resend) ==========")
+    print(f"Recipient: {recipient}")
+    print(f"From: {settings.DEFAULT_FROM_EMAIL}")
 
-    return email.send()
+    try:
+        response = resend.Emails.send({
+            "from": settings.DEFAULT_FROM_EMAIL,
+            "to": [recipient],
+            "subject": subject,
+            "text": message,
+        })
+
+        print("Email sent successfully:", response)
+
+        return response
+
+    except Exception as e:
+        print("========== RESEND EMAIL ERROR ==========")
+        print(type(e).__name__)
+        print(str(e))
+        print("==========================================")
+        raise
