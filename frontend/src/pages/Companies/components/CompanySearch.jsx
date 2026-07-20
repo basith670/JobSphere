@@ -5,16 +5,20 @@ function CompanySearch({ searchTerm, setSearchTerm }) {
   return (
     <section className="companies-search">
 
-      <div className="companies-search-box">
+      <div className="container">
 
-        <Search size={20} />
+        <div className="companies-search-box">
 
-        <input
-          type="text"
-          placeholder="Search companies..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+          <Search size={20} />
+
+          <input
+            type="text"
+            placeholder="Search companies by name, industry or location..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+
+        </div>
 
       </div>
 

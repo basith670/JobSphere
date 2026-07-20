@@ -43,6 +43,9 @@ import ATSScore from "../pages/ATSScore/ATSScore";
 
 import NotFound from "../pages/NotFound/NotFound";
 
+import ForgotPassword from "../pages/Auth/ForgotPassword";
+import ResetPassword from "../pages/Auth/ResetPassword";
+
 function AppRoutes() {
   return (
     <BrowserRouter>
@@ -84,6 +87,16 @@ function AppRoutes() {
         <Route
           path="/register"
           element={<Register />}
+        />
+
+        <Route
+          path="/forgot-password"
+          element={<ForgotPassword />}
+        />
+
+        <Route
+            path="/reset-password/:uid/:token"
+            element={<ResetPassword />}
         />
 
         {/* ================= JOB SEEKER ================= */}

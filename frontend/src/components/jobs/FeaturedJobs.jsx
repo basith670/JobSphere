@@ -29,8 +29,9 @@ const FeaturedJobs = () => {
 
   if (loading) {
     return (
-      <section className="featured-jobs">
-        <div className="jobs-container">
+      <section className="featured-jobs section">
+
+        <div className="container">
           <p className="loading-text">Loading featured jobs...</p>
         </div>
       </section>
@@ -39,8 +40,9 @@ const FeaturedJobs = () => {
 
   if (error) {
     return (
-      <section className="featured-jobs">
-        <div className="jobs-container">
+        <section className="featured-jobs section">
+
+        <div className="container">
           <p className="error-text">{error}</p>
         </div>
       </section>
@@ -48,9 +50,9 @@ const FeaturedJobs = () => {
   }
 
   return (
-    <section className="featured-jobs">
+        <section className="featured-jobs section">
 
-      <div className="jobs-container">
+        <div className="container">
 
         <div className="jobs-header">
 

@@ -1,34 +1,167 @@
+/* ==========================================================
+   Companies Hero
+========================================================== */
+
 .companies-hero{
-    padding:80px 0 40px;
+    padding-bottom:2rem;
 }
 
 .companies-hero-content{
-    width:min(1200px,92%);
-    margin:auto;
+
+    position:relative;
+
+    overflow:hidden;
+
     text-align:center;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+
+    color:#fff;
+
+    border-radius:28px;
+
+    padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);
 }
+
+/* Decorative circles */
+
+.companies-hero-content::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    top:-140px;
+    right:-120px;
+}
+
+.companies-hero-content::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.05);
+
+    bottom:-100px;
+    left:-80px;
+}
+
+/* ==========================================================
+   Badge
+========================================================== */
 
 .companies-hero-badge{
-    display:inline-block;
-    padding:8px 18px;
+
+    position:relative;
+    z-index:2;
+
+    display:inline-flex;
+    align-items:center;
+
+    padding:.6rem 1.2rem;
+
     border-radius:999px;
-    background:#ecfdf5;
-    color:#0f766e;
+
+    background:rgba(255,255,255,.16);
+
+    color:#fff;
+
+    font-size:.9rem;
     font-weight:600;
-    margin-bottom:18px;
+
+    backdrop-filter:blur(10px);
+
+    margin-bottom:1.5rem;
 }
+
+/* ==========================================================
+   Title
+========================================================== */
 
 .companies-hero-title{
-    font-size:3rem;
+
+    position:relative;
+    z-index:2;
+
+    font-size:clamp(2.25rem,5vw,3.75rem);
+
     font-weight:800;
-    color:#0f172a;
-    margin-bottom:18px;
+
+    line-height:1.15;
+
+    margin-bottom:1rem;
 }
 
+/* ==========================================================
+   Description
+========================================================== */
+
 .companies-hero-description{
-    max-width:700px;
-    margin:auto;
-    color:#64748b;
+
+    position:relative;
+    z-index:2;
+
+    max-width:720px;
+
+    margin:0 auto;
+
+    color:rgba(255,255,255,.9);
+
+    font-size:clamp(1rem,1.5vw,1.1rem);
+
     line-height:1.8;
-    font-size:1.05rem;
+}
+
+/* ==========================================================
+   Tablet
+========================================================== */
+
+@media (max-width:768px){
+
+    .companies-hero-content{
+
+        padding:2.5rem 1.5rem;
+
+        border-radius:22px;
+    }
+
+}
+
+/* ==========================================================
+   Small Phones
+========================================================== */
+
+@media (max-width:480px){
+
+    .companies-hero-content{
+
+        padding:2rem 1.25rem;
+
+        border-radius:18px;
+    }
+
+    .companies-hero-badge{
+
+        font-size:.82rem;
+
+        padding:.5rem 1rem;
+    }
+
 }

@@ -1,69 +1,199 @@
+/* ==========================================================
+   Company Card
+========================================================== */
+
 .company-card{
-    background:#fff;
+
+    display:flex;
+    flex-direction:column;
+
+    height:100%;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
     border-radius:22px;
-    padding:32px;
-    border:1px solid rgba(0,0,0,.05);
-    transition:.35s;
-    box-shadow:0 15px 40px rgba(0,0,0,.05);
+
+    padding:clamp(1.3rem,2vw,2rem);
+
+    box-shadow:0 10px 30px rgba(15,23,42,.06);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
 }
 
 .company-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 30px 60px rgba(0,0,0,.12);
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(15,23,42,.12);
 }
 
+/* ==========================================================
+   Logo
+========================================================== */
+
 .company-logo{
+
     width:72px;
     height:72px;
+
     border-radius:20px;
-    background:var(--primary-soft);
-    color:var(--primary);
-    font-size:30px;
-    font-weight:700;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    margin-bottom:24px;
+
+    margin-bottom:1.5rem;
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+    font-size:1.8rem;
+    font-weight:700;
+
+    flex-shrink:0;
 }
 
+/* ==========================================================
+   Title
+========================================================== */
+
 .company-card h3{
+
+    font-size:clamp(1.15rem,2vw,1.35rem);
+
     color:var(--heading);
-    margin-bottom:14px;
+
+    margin-bottom:1rem;
+
+    line-height:1.4;
 }
+
+/* ==========================================================
+   Details
+========================================================== */
 
 .industry,
 .location,
 .size,
 .verified{
+
     display:flex;
     align-items:center;
-    gap:10px;
-    margin-bottom:14px;
+
+    gap:.7rem;
+
+    margin-bottom:.9rem;
+
     color:var(--text-light);
+
+    font-size:.95rem;
+}
+
+.industry svg,
+.location svg,
+.verified svg{
+
+    flex-shrink:0;
 }
 
 .verified{
+
     color:var(--primary);
+
     font-weight:600;
 }
 
+/* ==========================================================
+   Button
+========================================================== */
+
 .company-btn{
+
+    margin-top:auto;
+
     width:100%;
-    margin-top:20px;
-    padding:14px;
-    border:none;
-    border-radius:14px;
-    background:var(--primary);
-    color:#fff;
-    font-weight:600;
-    cursor:pointer;
+    height:52px;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:8px;
-    transition:.3s;
+
+    gap:.5rem;
+
+    border:none;
+    border-radius:14px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:.95rem;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
 }
 
 .company-btn:hover{
-    opacity:.9;
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+}
+
+.company-btn svg{
+
+    transition:transform .3s ease;
+}
+
+.company-card:hover .company-btn svg{
+
+    transform:translateX(4px);
+}
+
+/* ==========================================================
+   Tablet
+========================================================== */
+
+@media (max-width:768px){
+
+    .company-card{
+
+        padding:1.25rem;
+    }
+
+}
+
+/* ==========================================================
+   Small Phones
+========================================================== */
+
+@media (max-width:480px){
+
+    .company-card{
+
+        border-radius:18px;
+    }
+
+    .company-logo{
+
+        width:60px;
+        height:60px;
+
+        font-size:1.5rem;
+    }
+
+    .company-btn{
+
+        height:48px;
+    }
+
 }

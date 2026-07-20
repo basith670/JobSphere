@@ -1,44 +1,231 @@
+/* ==========================================================
+   CONTAINERS
+========================================================== */
+
+.container {
+  width: min(92%, var(--container-xl));
+  margin-inline: auto;
+}
+
+.container-lg {
+  width: min(94%, var(--container-2xl));
+  margin-inline: auto;
+}
+
+.container-sm {
+  width: min(92%, var(--container-md));
+  margin-inline: auto;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-inline: var(--space-lg);
+}
+
+/* ==========================================================
+ SECTIONS
+========================================================== */
+
+.section {
+  padding-block: var(--space-4xl);
+}
+
+.section-sm {
+  padding-block: var(--space-3xl);
+}
+
+.section-lg {
+  padding-block: 7rem;
+}
+
+/* ==========================================================
+ TEXT
+========================================================== */
+
 .text-center {
-    text-align: center;
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* ==========================================================
+ FLEX
+========================================================== */
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-sm {
+  gap: var(--space-sm);
+}
+
+.gap-md {
+  gap: var(--space-md);
+}
+
+.gap-lg {
+  gap: var(--space-lg);
+}
+
+/* ==========================================================
+ GRID
+========================================================== */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: var(--space-xl);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: var(--space-xl);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: var(--space-xl);
+}
+
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: var(--space-xl);
+}
+
+/* ==========================================================
+ CARDS
+========================================================== */
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.card-body {
+  padding: var(--space-xl);
+}
+
+/* ==========================================================
+ TABLES
+========================================================== */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* ==========================================================
+ SPACING
+========================================================== */
+
+.mt-1 { margin-top: var(--space-sm); }
+.mt-2 { margin-top: var(--space-md); }
+.mt-3 { margin-top: var(--space-lg); }
+.mt-4 { margin-top: var(--space-xl); }
+.mt-5 { margin-top: var(--space-2xl); }
+
+.mb-1 { margin-bottom: var(--space-sm); }
+.mb-2 { margin-bottom: var(--space-md); }
+.mb-3 { margin-bottom: var(--space-lg); }
+.mb-4 { margin-bottom: var(--space-xl); }
+.mb-5 { margin-bottom: var(--space-2xl); }
+
+.p-1 { padding: var(--space-sm); }
+.p-2 { padding: var(--space-md); }
+.p-3 { padding: var(--space-lg); }
+.p-4 { padding: var(--space-xl); }
+
+/* ==========================================================
+ IMAGES
+========================================================== */
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================
+ RESPONSIVE
+========================================================== */
+
+@media (max-width:1200px){
+
+  .grid-4{
+      grid-template-columns:repeat(2,1fr);
   }
-  
-  .mt-1 { margin-top: 8px; }
-  .mt-2 { margin-top: 16px; }
-  .mt-3 { margin-top: 24px; }
-  .mt-4 { margin-top: 32px; }
-  
-  .mb-1 { margin-bottom: 8px; }
-  .mb-2 { margin-bottom: 16px; }
-  .mb-3 { margin-bottom: 24px; }
-  .mb-4 { margin-bottom: 32px; }
-  
-  .flex {
-    display: flex;
+
+}
+
+@media (max-width:992px){
+
+  .grid-3{
+      grid-template-columns:repeat(2,1fr);
   }
-  
-  .flex-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+}
+
+@media (max-width:768px){
+
+  .section{
+      padding-block:var(--space-3xl);
   }
-  
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 20px;
-  }
-  
-  .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
-  }
-  
-  @media(max-width:768px){
-  
-    .grid-2,
-    .grid-3{
+
+  .grid-2,
+  .grid-3,
+  .grid-4{
       grid-template-columns:1fr;
-    }
-  
   }
+
+  .container,
+  .container-lg,
+  .container-sm{
+      width:min(94%,100%);
+  }
+
+}
+
+@media (max-width:576px){
+
+  .container-fluid{
+      padding-inline:1rem;
+  }
+
+  .card-body{
+      padding:1.25rem;
+  }
+
+}

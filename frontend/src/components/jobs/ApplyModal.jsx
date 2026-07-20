@@ -15,7 +15,7 @@ export default function ApplyModal({
     e.preventDefault();
 
     if (!resume) {
-        toast.warning("Please select your resume.");
+      toast.warning("Please select your resume.");
       return;
     }
 
@@ -34,50 +34,68 @@ export default function ApplyModal({
 
       onClose();
     } catch (error) {
-        console.error(error);
-      
-        const data = error.response?.data;
-      
-        if (data?.errors?.non_field_errors?.length) {
-          toast.error(data.errors.non_field_errors[0]);
-        } else if (data?.message) {
-          toast.error(data.message);
-        } else {
-          toast.error("Failed to apply.");
-        }
+      console.error("Full Error:", error);
+      console.error("Response:", error.response);
+      console.error("Response Data:", error.response?.data);
+    
+      const data = error.response?.data;
+    
+      if (data) {
+        Object.values(data).flat().forEach((msg) => {
+          toast.error(String(msg));
+        });
+      } else {
+        toast.error("Failed to apply.");
       }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="apply-modal">
-
-      <div className="apply-modal-content">
-
+    <div
+      className="apply-modal"
+      onClick={onClose}
+    >
+      <div
+        className="apply-modal-content"
+        onClick={(e) => e.stopPropagation()}
+      >
         <h2>Apply for this Job</h2>
 
         <form onSubmit={handleApply}>
-
-          <label>Resume</label>
+          <label htmlFor="resume">
+            Resume
+          </label>
 
           <input
+            id="resume"
             type="file"
             accept=".pdf,.doc,.docx"
             onChange={(e) => setResume(e.target.files[0])}
           />
 
-          <label>Cover Letter</label>
+          {resume && (
+            <small className="selected-file">
+              Selected: <strong>{resume.name}</strong>
+            </small>
+          )}
+
+          <label htmlFor="coverLetter">
+            Cover Letter
+          </label>
 
           <textarea
-            rows="6"
+            id="coverLetter"
+            rows={6}
+            placeholder="Write a short cover letter (optional)..."
             value={coverLetter}
-            onChange={(e) => setCoverLetter(e.target.value)}
+            onChange={(e) =>
+              setCoverLetter(e.target.value)
+            }
           />
 
           <div className="modal-buttons">
-
             <button
               type="button"
               onClick={onClose}
@@ -89,15 +107,13 @@ export default function ApplyModal({
               type="submit"
               disabled={loading}
             >
-              {loading ? "Applying..." : "Apply"}
+              {loading
+                ? "Applying..."
+                : "Apply Now"}
             </button>
-
           </div>
-
         </form>
-
       </div>
-
     </div>
   );
 }

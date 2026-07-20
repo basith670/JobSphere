@@ -1,18 +1,73 @@
+/* ==========================================================
+   Companies Grid Section
+========================================================== */
+
 .companies-grid-section{
-    width:min(1200px,92%);
-    margin:auto;
-    padding-bottom:80px;
+    padding-bottom:clamp(3rem,6vw,5rem);
 }
 
 .companies-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-    gap:30px;
+
+    grid-template-columns:repeat(3,minmax(0,1fr));
+
+    gap:clamp(1.5rem,2vw,2rem);
 }
+
+/* ==========================================================
+   Empty State
+========================================================== */
 
 .companies-empty{
     grid-column:1/-1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:300px;
+
     text-align:center;
-    padding:80px 0;
-    color:#64748b;
+
+    color:var(--text-light);
+}
+
+.companies-empty h3{
+    font-size:clamp(1.2rem,2vw,1.6rem);
+}
+
+/* ==========================================================
+   Desktop
+========================================================== */
+
+@media (max-width:1200px){
+
+    .companies-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* ==========================================================
+   Tablet
+========================================================== */
+
+@media (max-width:768px){
+
+    .companies-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* ==========================================================
+   Small Phones
+========================================================== */
+
+@media (max-width:480px){
+
+    .companies-grid{
+        gap:1rem;
+    }
+
 }

@@ -57,9 +57,11 @@ export default function HomeStatistics() {
   ];
 
   return (
-    <section className="home-stats-section">
+      <section className="home-stats-section section">
 
-      <div className="home-stats-container">
+      <div className="container">
+
+        <div className="home-stats-container">
 
         {cards.map((item, index) => (
           <div
@@ -76,8 +78,10 @@ export default function HomeStatistics() {
           </div>
         ))}
 
-      </div>
+        </div>
 
-    </section>
+        </div>
+
+        </section>
   );
 }

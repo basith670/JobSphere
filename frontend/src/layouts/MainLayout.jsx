@@ -7,9 +7,11 @@ export default function MainLayout() {
     <>
       <Navbar />
 
-      <main>
+      <main className="app-main">
+
         <Outlet />
-      </main>
+
+    </main>
     </>
   );
 }

@@ -48,7 +48,7 @@ function Companies() {
   }
 
   return (
-    <main className="companies-page">
+<main className="companies-page">
 
       <CompanyHero />
 

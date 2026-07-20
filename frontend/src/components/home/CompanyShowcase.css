@@ -3,14 +3,16 @@
 ========================================================== */
 
 .home-company-section{
-    padding:100px 0;
-    background:var(--background);
-  }
+
+  background:var(--background);
+
+}
   
-  .home-company-container{
-    width:min(1280px,94%);
-    margin:0 auto;
-  }
+.home-company-container{
+
+  width:100%;
+
+}
   
   /* ==========================================================
      Header
@@ -34,31 +36,36 @@
   }
   
   .home-company-heading{
+
     text-align:center;
-  
-    font-size:52px;
+
+    font-size:clamp(2rem,4vw,3.25rem);
+
     font-weight:800;
-  
+
     color:var(--heading);
-  
+
     letter-spacing:-1px;
-  
+
     margin-bottom:18px;
-  }
+
+}
   
-  .home-company-description{
-    max-width:720px;
-  
-    margin:0 auto 70px;
-  
-    text-align:center;
-  
-    color:var(--text);
-  
-    font-size:18px;
-  
-    line-height:1.8;
-  }
+.home-company-description{
+
+  max-width:720px;
+
+  margin:0 auto clamp(3rem,5vw,4.5rem);
+
+  text-align:center;
+
+  color:var(--text-light);
+
+  font-size:clamp(1rem,1.5vw,1.1rem);
+
+  line-height:1.8;
+
+}
   
   /* ==========================================================
      Grid
@@ -66,12 +73,9 @@
   
   .home-company-grid{
     display:grid;
-  
-    grid-template-columns:
-    repeat(auto-fit,minmax(320px,1fr));
-  
-    gap:32px;
-  }
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(1.5rem,2vw,2rem);
+}
   
   /* ==========================================================
      Card
@@ -81,7 +85,7 @@
   
     position:relative;
   
-    background:#fff;
+    background:var(--surface);
   
     border:1px solid var(--border);
   
@@ -91,7 +95,9 @@
   
     overflow:hidden;
   
-    transition:.35s ease;
+    transition:
+    transform .35s ease,
+    box-shadow .35s ease;
   
     box-shadow:
     0 15px 40px rgba(15,23,42,.05);
@@ -126,7 +132,7 @@
   
   .home-company-card:hover{
   
-    transform:translateY(-10px);
+    transform:translateY(-10px) scale(1.01);
   
     box-shadow:
     0 30px 70px rgba(15,23,42,.10);
@@ -150,7 +156,7 @@
   
     border-radius:20px;
   
-    background:#f8fafc;
+    background:var(--surface-light);
   
     display:flex;
   
@@ -175,14 +181,14 @@
   ========================================================== */
   
   .home-company-card h3{
-  
-    font-size:28px;
-  
+
+    font-size:clamp(1.35rem,2vw,1.75rem);
+
     color:var(--heading);
-  
+
     margin-bottom:10px;
-  
-  }
+
+}
   
   .home-company-card>p{
   
@@ -214,7 +220,7 @@
   
     flex:1;
   
-    background:#f8fafc;
+    background:var(--surface-light);
   
     border-radius:18px;
   
@@ -225,20 +231,20 @@
   }
   
   .home-company-stats strong{
-  
+
     display:block;
-  
-    font-size:28px;
-  
+
+    font-size:clamp(1.35rem,2vw,1.75rem);
+
     color:var(--primary);
-  
+
     margin-bottom:6px;
-  
-  }
+
+}
   
   .home-company-stats span{
   
-    color:#64748b;
+    color:var(--text-light);
   
     font-size:14px;
   
@@ -290,42 +296,21 @@
      Responsive
   ========================================================== */
   
-  @media(max-width:992px){
-  
-    .home-company-heading{
-  
-      font-size:42px;
-  
-    }
-  
-  }
-  
-  @media(max-width:768px){
-  
-    .home-company-section{
-  
-      padding:70px 0;
-  
-    }
-  
-    .home-company-heading{
-  
-      font-size:34px;
-  
-    }
-  
-    .home-company-description{
-  
-      font-size:16px;
-  
-      margin-bottom:50px;
-  
-    }
-  
+  @media (max-width:992px){
+
     .home-company-grid{
-  
-      grid-template-columns:1fr;
-  
+        grid-template-columns:repeat(2,1fr);
     }
-  
+
+}
+@media (max-width:768px){
+
+  .home-company-grid{
+      grid-template-columns:1fr;
   }
+
+  .home-company-button{
+      width:100%;
+  }
+
+}

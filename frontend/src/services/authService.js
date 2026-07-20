@@ -28,3 +28,11 @@ export const getCurrentUser = () => {
 export const isAuthenticated = () => {
   return !!localStorage.getItem("access");
 };
+
+export const forgotPassword = async (email) => {
+  const response = await api.post("/accounts/forgot-password/", {
+    email,
+  });
+
+  return response.data;
+};

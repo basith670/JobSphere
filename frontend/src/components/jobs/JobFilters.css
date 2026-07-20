@@ -1,95 +1,174 @@
+/* ==========================================================
+   Job Filters
+========================================================== */
+
 .job-filters-wrapper{
-  max-width:1500px;
-  margin:30px auto;
-  padding:0 24px;
+  width:100%;
+  margin:2rem 0;
 }
+
+/* ==========================================================
+ Header
+========================================================== */
 
 .job-filters-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:18px;
+  gap:1rem;
+  margin-bottom:1.25rem;
 }
 
 .job-filters-header h3{
-  font-size:1.35rem;
-  color:#111827;
+  font-size:clamp(1.25rem,2vw,1.5rem);
   font-weight:700;
+  color:var(--heading);
 }
 
+/* ==========================================================
+ Reset Button
+========================================================== */
+
 .reset-filter-btn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:.75rem 1.25rem;
+
   border:none;
-  background:#157a6e;
+  border-radius:12px;
+
+  background:var(--primary);
   color:#fff;
-  padding:10px 18px;
-  border-radius:10px;
-  cursor:pointer;
+
   font-weight:600;
-  transition:.3s;
+  cursor:pointer;
+
+  transition:
+      background .3s ease,
+      transform .3s ease;
 }
 
 .reset-filter-btn:hover{
-  background:#0f6157;
+  background:var(--primary-dark);
+  transform:translateY(-2px);
 }
 
+/* ==========================================================
+ Filters Card
+========================================================== */
+
 .job-filters{
-  background:#ffffff;
-  border:1px solid #e5e7eb;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.5rem;
+
+  padding:1.5rem;
+
+  background:var(--surface);
+
+  border:1px solid var(--border);
   border-radius:20px;
-  padding:24px;
-  display:flex;
-  gap:24px;
+
   box-shadow:0 10px 25px rgba(15,23,42,.05);
 }
+
+/* ==========================================================
+ Filter Group
+========================================================== */
 
 .filter-group{
   display:flex;
   flex-direction:column;
-  flex:1;
 }
 
 .filter-group label{
-  margin-bottom:8px;
+  margin-bottom:.6rem;
+
   font-size:.9rem;
-  color:#64748b;
   font-weight:600;
+
+  color:var(--text-light);
 }
 
 .filter-group select{
-  height:50px;
-  border:1px solid #d1d5db;
+  width:100%;
+  height:52px;
+
+  padding:0 1rem;
+
+  border:1px solid var(--border);
   border-radius:12px;
-  padding:0 16px;
+
   background:#fff;
+
+  color:var(--heading);
+
   font-size:.95rem;
-  transition:.3s;
+
   outline:none;
+
+  transition:
+      border-color .3s ease,
+      box-shadow .3s ease;
 }
 
 .filter-group select:hover{
-  border-color:#157a6e;
+  border-color:var(--primary);
 }
 
 .filter-group select:focus{
-  border-color:#157a6e;
+  border-color:var(--primary);
   box-shadow:0 0 0 4px rgba(21,122,110,.12);
 }
 
-@media(max-width:768px){
+/* ==========================================================
+ Tablet
+========================================================== */
 
-.job-filters{
-flex-direction:column;
-padding:20px;
+@media (max-width:992px){
+
+  .job-filters{
+      grid-template-columns:1fr;
+  }
+
 }
 
-.job-filters-header{
-flex-direction:column;
-align-items:flex-start;
-gap:14px;
+/* ==========================================================
+ Mobile
+========================================================== */
+
+@media (max-width:768px){
+
+  .job-filters-header{
+      flex-direction:column;
+      align-items:stretch;
+  }
+
+  .reset-filter-btn{
+      width:100%;
+  }
+
+  .job-filters{
+      padding:1.25rem;
+  }
+
 }
 
-.reset-filter-btn{
-width:100%;
-}
+/* ==========================================================
+ Small Mobile
+========================================================== */
+
+@media (max-width:480px){
+
+  .job-filters{
+      padding:1rem;
+  }
+
+  .filter-group select{
+      height:50px;
+      font-size:.9rem;
+  }
 
 }

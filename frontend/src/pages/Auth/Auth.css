@@ -435,3 +435,112 @@ display:none;
     gap: 12px;
     color: #115e59;
 }
+
+/* =========================================
+   Forgot Password
+========================================= */
+
+.forgot-password{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-top:.65rem;
+}
+
+.forgot-password a{
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.forgot-password a:hover{
+
+    color:var(--primary-dark);
+
+    text-decoration:underline;
+}
+
+/* =========================================
+   Input With Icon
+========================================= */
+
+.auth-input-icon{
+
+    position:relative;
+}
+
+.auth-input-icon svg{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#94a3b8;
+}
+
+.auth-input-icon input{
+
+    padding-left:50px;
+}
+
+/* =========================================
+   Success State
+========================================= */
+
+.auth-success{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:1rem;
+}
+
+.auth-success svg{
+
+    color:var(--primary);
+}
+
+.auth-success h3{
+
+    color:var(--heading);
+
+    font-size:1.5rem;
+}
+
+.auth-success p{
+
+    color:var(--text-light);
+
+    line-height:1.7;
+}
+
+.auth-link-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    margin-top:1rem;
+}

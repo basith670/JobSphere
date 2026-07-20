@@ -18,8 +18,11 @@ export default function HomeFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="home-footer">
-      <div className="home-footer-container">
+<footer className="home-footer">
+
+<div className="container">
+
+  <div className="home-footer-container">
 
         {/* Company */}
 
@@ -114,14 +117,16 @@ export default function HomeFooter() {
 
         </div>
 
-      </div>
+        </div>
 
-      <div className="home-footer-bottom">
+    <div className="home-footer-bottom">
         <p>
           © {year} JobSphere. All Rights Reserved.
         </p>
+        </div>
+
       </div>
 
-    </footer>
+      </footer>
   );
 }

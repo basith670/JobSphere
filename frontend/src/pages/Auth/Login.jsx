@@ -118,6 +118,12 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
             />
+
+          <div className="forgot-password">
+            <Link to="/forgot-password">
+              Forgot Password?
+            </Link>
+          </div>
           </div>
 
           {error && (

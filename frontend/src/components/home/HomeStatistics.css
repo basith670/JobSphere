@@ -3,36 +3,37 @@
 ========================================================== */
 
 .home-stats-section{
-    padding:100px 0;
-    background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);
-  }
+  background:linear-gradient(
+      180deg,
+      var(--surface) 0%,
+      var(--background) 100%
+  );
+}
   
-  .home-stats-container{
-    width:min(1280px,94%);
-    margin:0 auto;
-  
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:30px;
-  }
-  
+.home-stats-container{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(1.5rem,2vw,2rem);
+}
   /* ==========================================================
      Card
   ========================================================== */
   
   .home-stats-card{
   
-    background:#ffffff;
+    background:var(--surface);
   
     border:1px solid var(--border);
   
     border-radius:24px;
   
-    padding:42px 28px;
+    padding:clamp(1.75rem,2vw,2.75rem);
   
     text-align:center;
   
-    transition:.35s;
+    transition:
+    transform .35s ease,
+    box-shadow .35s ease;
   
     box-shadow:
       0 15px 40px rgba(15,23,42,.06);
@@ -41,7 +42,7 @@
   
   .home-stats-card:hover{
   
-    transform:translateY(-10px);
+    transform:translateY(-10px) scale(1.01);
   
     box-shadow:
       0 30px 70px rgba(15,23,42,.10);
@@ -73,65 +74,54 @@
   }
   
   .home-stats-card h2{
-  
-    font-size:42px;
-  
+
+    font-size:clamp(2rem,4vw,2.6rem);
+
     color:var(--heading);
-  
+
     margin-bottom:12px;
-  
+
     font-weight:800;
+
+}
   
-  }
-  
-  .home-stats-card p{
-  
-    color:var(--text);
-  
-    font-size:17px;
-  
-    font-weight:500;
-  
-  }
+.home-stats-card p{
+
+  color:var(--text-light);
+
+  font-size:clamp(.95rem,1.5vw,1.05rem);
+
+  font-weight:500;
+
+}
   
   /* ==========================================================
      Responsive
   ========================================================== */
   
-  @media(max-width:992px){
-  
+  @media (max-width:992px){
+
     .home-stats-container{
-  
-      grid-template-columns:repeat(2,1fr);
-  
+        grid-template-columns:repeat(2,1fr);
     }
+
+}
   
-  }
-  
-  @media(max-width:768px){
-  
-    .home-stats-section{
-  
-      padding:70px 0;
-  
-    }
-  
-    .home-stats-container{
-  
+@media (max-width:768px){
+
+  .home-stats-container{
       grid-template-columns:1fr;
-  
-    }
-  
-    .home-stats-card{
-  
-      padding:34px 22px;
-  
-    }
-  
-    .home-stats-card h2{
-  
-      font-size:34px;
-  
-    }
-  
   }
+
+  .home-stats-card{
+      padding:34px 22px;
+  }
+
+}
+@media (min-width:1600px){
+
+  .home-stats-container{
+      gap:2.5rem;
+  }
+
+}

@@ -36,84 +36,84 @@ const Hero = () => {
 
   return (
     <section className="home-hero">
-      <div className="home-hero-container">
+      <div className="container">
+        <div className="home-hero-container">
 
-        {/* Left */}
-        <div className="home-hero-left">
+          {/* Left Side */}
+          <div className="home-hero-left">
 
-          <span className="home-hero-badge">
-            <Sparkles size={16} />
-            AI Recruitment • Resume Analysis • Smart Hiring
-          </span>
+            <span className="home-hero-badge">
+              <Sparkles size={16} />
+              AI Recruitment • Resume Analysis • Smart Hiring
+            </span>
 
-          <h1 className="home-hero-title">
-            The Future of
-            <br />
-            <span>AI Recruitment</span>
-            <br />
-            Starts Here.
-          </h1>
+            <h1 className="home-hero-title">
+              The Future of
+              <br />
+              <span>AI Recruitment</span>
+              <br />
+              Starts Here.
+            </h1>
 
-          <p className="home-hero-description">
-            Find your dream job or hire exceptional talent with AI-powered
-            resume analysis, intelligent job matching, mock interviews,
-            ATS scoring, and advanced recruitment tools—all in one platform.
-          </p>
+            <p className="home-hero-description">
+              Find your dream job or hire exceptional talent with AI-powered
+              resume analysis, intelligent job matching, mock interviews,
+              ATS scoring, and advanced recruitment tools—all in one platform.
+            </p>
 
-          <div className="home-hero-buttons">
-            <button
-              className="home-hero-primary-btn"
-              onClick={handleGetStarted}
-            >
-              Get Started
-              <ArrowRight size={18} />
-            </button>
+            <div className="home-hero-buttons">
+              <button
+                className="home-hero-primary-btn"
+                onClick={handleGetStarted}
+              >
+                Get Started
+                <ArrowRight size={18} />
+              </button>
+            </div>
+
+            <div className="home-hero-trust">
+              <div className="home-hero-trust-item">
+                <h3>10K+</h3>
+                <span>Candidates</span>
+              </div>
+
+              <div className="home-hero-trust-item">
+                <h3>500+</h3>
+                <span>Companies</span>
+              </div>
+
+              <div className="home-hero-trust-item">
+                <h3>96%</h3>
+                <span>AI Accuracy</span>
+              </div>
+            </div>
+
           </div>
 
-          <div className="home-hero-trust">
+          {/* Right Side */}
+          <div className="home-hero-right">
 
-            <div className="home-hero-trust-item">
-              <h3>10K+</h3>
-              <span>Candidates</span>
-            </div>
+            <DashboardPreview />
 
-            <div className="home-hero-trust-item">
-              <h3>500+</h3>
-              <span>Companies</span>
-            </div>
+            <FloatingCard
+              className="home-hero-resume-card"
+              title="Resume Score"
+              value="94%"
+              icon={<FileText size={22} />}
+            />
 
-            <div className="home-hero-trust-item">
-              <h3>96%</h3>
-              <span>AI Accuracy</span>
-            </div>
+            <FloatingCard
+              className="home-hero-company-card"
+              title="Verified Companies"
+              value="320+"
+              icon={<ShieldCheck size={22} />}
+            />
+
+            <MiniChart />
 
           </div>
 
         </div>
-
-        {/* Right */}
-        <div className="home-hero-right">
-
-          <DashboardPreview />
-
-          <FloatingCard
-            className="home-hero-resume-card"
-            title="Resume Score"
-            value="94%"
-            icon={<FileText size={22} />}
-          />
-
-          <FloatingCard
-            className="home-hero-company-card"
-            title="Verified Companies"
-            value="320+"
-            icon={<ShieldCheck size={22} />}
-          />
-
-          <MiniChart />
-
-        </div>
-
       </div>
     </section>
   );

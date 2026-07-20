@@ -4,9 +4,11 @@ import { ArrowRight, BriefcaseBusiness, Users } from "lucide-react";
 
 export default function HomeCTA() {
   return (
-    <section className="home-cta-section">
+<section className="home-cta-section section">
 
-      <div className="home-cta-container">
+<div className="container">
+
+  <div className="home-cta-container">
 
         <span className="home-cta-tag">
           Ready to Get Started?
@@ -45,8 +47,10 @@ export default function HomeCTA() {
 
         </div>
 
+        </div>
+
       </div>
 
-    </section>
+      </section>
   );
 }

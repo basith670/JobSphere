@@ -34,8 +34,9 @@ const testimonials = [
 
 export default function HomeTestimonials() {
   return (
-    <section className="home-testimonial-section">
-      <div className="home-testimonial-container">
+<section className="home-testimonial-section section">
+  <div className="container">
+    <div className="home-testimonial-container">
 
         <span className="home-testimonial-tag">
           Success Stories
@@ -98,6 +99,7 @@ export default function HomeTestimonials() {
 
         </div>
 
+        </div>
       </div>
     </section>
   );

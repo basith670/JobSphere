@@ -7,6 +7,8 @@ export default function JobFilters({
   return (
     <section className="job-filters-wrapper">
 
+    <div className="container">
+
       <div className="job-filters-header">
 
         <h3>Filter Jobs</h3>
@@ -14,8 +16,13 @@ export default function JobFilters({
         <button
           className="reset-filter-btn"
           onClick={() =>
-            setFilters({})
-          }
+            setFilters({
+                search: "",
+                job_type: "",
+                experience: "",
+                ...(filters.company && { company: filters.company }),
+            })
+        }
         >
           Reset
         </button>
@@ -71,8 +78,10 @@ export default function JobFilters({
 
         </div>
 
-      </div>
+        </div>
 
-    </section>
+        </div>
+
+  </section>
   );
 }

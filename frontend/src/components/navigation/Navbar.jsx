@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBriefcase } from "react-icons/fa";
+import {
+  FaBriefcase,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
 
 import Button from "../ui/Button";
 import useAuth from "../../hooks/useAuth";
+
+import "./Navbar.css";
 
 const publicLinks = [
   { name: "Home", path: "/" },
@@ -27,11 +34,9 @@ const recruiterLinks = [
 ];
 
 export default function Navbar() {
-  const {
-    user,
-    isAuthenticated,
-    logout,
-  } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = isAuthenticated
     ? user?.role === "recruiter"
@@ -39,128 +44,131 @@ export default function Navbar() {
       : candidateLinks
     : publicLinks;
 
+  const handleLogout = () => {
+    logout();
+    setMenuOpen(false);
+  };
+
   return (
-    <header
-      style={{
-        position: "sticky",
-        top: 20,
-        zIndex: 1000,
-        display: "flex",
-        justifyContent: "center",
-        padding: "20px 0",
-      }}
-    >
-      <nav
-        style={{
-          width: "92%",
-          maxWidth: "1250px",
-          background: "rgba(255,255,255,.75)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          border: "1px solid rgba(255,255,255,.45)",
-          borderRadius: "18px",
-          boxShadow: "var(--shadow-md)",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "18px 32px",
-        }}
-      >
-        {/* Logo */}
-        <Link
-          to="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            textDecoration: "none",
-            fontWeight: 700,
-            fontSize: "22px",
-            color: "var(--heading)",
-          }}
-        >
-          <FaBriefcase
-            style={{
-              color: "var(--primary)",
-              fontSize: "24px",
-            }}
-          />
-          JobSphere
-        </Link>
+    <>
+      <header className="navbar-header">
+        <nav className="navbar">
 
-        {/* Navigation */}
-        <div
-          style={{
-            display: "flex",
-            gap: "32px",
-            alignItems: "center",
-          }}
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              style={{
-                textDecoration: "none",
-                color: "var(--text)",
-                fontWeight: 600,
-                transition: "0.3s",
-              }}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
+          {/* Logo */}
+          <Link
+            to="/"
+            className="navbar-logo"
+            onClick={() => setMenuOpen(false)}
+          >
+            <FaBriefcase className="navbar-logo-icon" />
+            <span>JobSphere</span>
+          </Link>
 
-        {/* Right Side */}
-        <div
-          style={{
-            display: "flex",
-            gap: "12px",
-            alignItems: "center",
-          }}
-        >
-          {!isAuthenticated ? (
-            <>
+          {/* Navigation Links */}
+          <div
+            className={`navbar-links ${
+              menuOpen ? "active" : ""
+            }`}
+          >
+            {navLinks.map((link) => (
               <Link
-                to="/login"
-                style={{ textDecoration: "none" }}
+                key={link.name}
+                to={link.path}
+                className="navbar-link"
+                onClick={() => setMenuOpen(false)}
               >
-                <Button variant="secondary">
-                  Login
-                </Button>
+                {link.name}
               </Link>
+            ))}
 
-              <Link
-                to="/register"
-                style={{ textDecoration: "none" }}
-              >
-                <Button>
-                  Get Started
+            {/* Mobile Actions */}
+            <div className="navbar-mobile-actions">
+              {!isAuthenticated ? (
+                <>
+                  <Link
+                    to="/login"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <Button variant="secondary">
+                      Login
+                    </Button>
+                  </Link>
+
+                  <Link
+                    to="/register"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <Button>
+                      Get Started
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <span className="navbar-username">
+                    {user?.username}
+                  </span>
+
+                  <Button
+                    variant="secondary"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </Button>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Desktop Right */}
+          <div className="navbar-actions">
+            {!isAuthenticated ? (
+              <>
+                <Link to="/login">
+                  <Button variant="secondary">
+                    Login
+                  </Button>
+                </Link>
+
+                <Link to="/register">
+                  <Button>
+                    Get Started
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <span className="navbar-username">
+                  {user?.username}
+                </span>
+
+                <Button
+                  variant="secondary"
+                  onClick={handleLogout}
+                >
+                  Logout
                 </Button>
-              </Link>
-            </>
-          ) : (
-            <>
-              <span
-                style={{
-                  fontWeight: 600,
-                  color: "var(--primary)",
-                }}
-              >
-                {user?.username}
-              </span>
+              </>
+            )}
+          </div>
 
-              <Button
-                variant="secondary"
-                onClick={logout}
-              >
-                Logout
-              </Button>
-            </>
-          )}
-        </div>
-      </nav>
-    </header>
+          {/* Mobile Toggle */}
+          <button
+            className="navbar-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+
+        </nav>
+      </header>
+
+      {menuOpen && (
+        <div
+          className="navbar-overlay"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+    </>
   );
 }

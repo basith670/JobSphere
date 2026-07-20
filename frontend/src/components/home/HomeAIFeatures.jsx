@@ -51,9 +51,11 @@ const features = [
 
 export default function HomeAIFeatures() {
   return (
-    <section className="home-ai-section">
+      <section className="home-ai-section section">
 
-      <div className="home-ai-container">
+      <div className="container">
+
+        <div className="home-ai-container">
 
         <span className="home-ai-tag">
           AI Powered Platform
@@ -103,8 +105,10 @@ export default function HomeAIFeatures() {
 
         </div>
 
-      </div>
+        </div>
 
-    </section>
+</div>
+
+</section>
   );
 }

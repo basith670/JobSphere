@@ -64,7 +64,9 @@ export default function JobDetails() {
 
   return (
     <>
-      <div className="job-details-page">
+      <div className="job-details-page section">
+
+      <div className="container">
 
         <div className="job-header">
 
@@ -78,7 +80,9 @@ export default function JobDetails() {
             ) : (
               job.company_name?.charAt(0)
             )}
-          </div>
+                </div>
+
+                </div>
 
           <h1 className="job-title">
             {job.title}

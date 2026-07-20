@@ -2,22 +2,27 @@ import "./CompanyHero.css";
 
 function CompanyHero() {
   return (
-    <section className="companies-hero">
+    <section className="companies-hero section">
 
-      <div className="companies-hero-content">
+      <div className="container">
 
-        <span className="companies-hero-badge">
-          Trusted Employers
-        </span>
+        <div className="companies-hero-content">
 
-        <h1 className="companies-hero-title">
-          Discover Top Companies
-        </h1>
+          <span className="companies-hero-badge">
+            Trusted Employers
+          </span>
 
-        <p className="companies-hero-description">
-          Explore verified companies hiring through JobSphere.
-          Find your next opportunity with industry-leading employers.
-        </p>
+          <h1 className="companies-hero-title">
+            Discover Top Companies
+          </h1>
+
+          <p className="companies-hero-description">
+            Explore verified companies hiring through JobSphere.
+            Connect with industry-leading employers and discover
+            your next career opportunity.
+          </p>
+
+        </div>
 
       </div>
 

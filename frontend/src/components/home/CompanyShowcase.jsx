@@ -65,9 +65,9 @@ export default function CompanyShowcase() {
 
     const navigate = useNavigate();
   return (
-    <section className="home-company-section">
+      <section className="home-company-section section">
 
-      <div className="home-company-container">
+      <div className="container">
 
         <span className="home-company-tag">
           Trusted Companies

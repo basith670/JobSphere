@@ -1,5 +1,5 @@
 .dashboard-preview{
-    width:420px;
+    width:min(420px,100%);
     background:white;
     border-radius:32px;
     padding:32px;

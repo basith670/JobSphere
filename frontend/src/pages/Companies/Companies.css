@@ -1,6 +1,10 @@
+/* ==========================================================
+   Companies Page
+========================================================== */
+
 .companies-page{
     min-height:100vh;
-    background:#f8fafc;
+    background:var(--background);
 }
 
 .companies-loading{
@@ -10,5 +14,13 @@
     justify-content:center;
     align-items:center;
 
-    color:#0f172a;
+    padding:2rem;
+
+    text-align:center;
+
+    color:var(--heading);
+}
+
+.companies-loading h2{
+    font-size:clamp(1.5rem,3vw,2rem);
 }

@@ -119,8 +119,11 @@ export default function Jobs() {
     <div className="jobs-page">
 
       {/* Hero */}
-      <section className="jobs-hero">
-        <div className="jobs-hero-content">
+      <section className="jobs-hero section">
+
+    <div className="container">
+
+      <div className="jobs-hero-content">
 
           <h1>Find Your Dream Job</h1>
 
@@ -143,7 +146,10 @@ export default function Jobs() {
             />
           </div>
 
-        </div>
+          </div>
+
+      </div>
+
       </section>
 
       {/* Filters */}
@@ -154,15 +160,19 @@ export default function Jobs() {
 
       {/* Results */}
       <section
-        className="jobs-results"
-        ref={resultsRef}
-      >
+          className="jobs-results section"
+          ref={resultsRef}
+        >
+
+          <div className="container">
         <h2>Available Jobs</h2>
 
         <p>
           Showing {filteredJobs.length}{" "}
           {filteredJobs.length === 1 ? "opportunity" : "opportunities"}
         </p>
+        </div>
+
       </section>
 
       {/* Job Cards */}
