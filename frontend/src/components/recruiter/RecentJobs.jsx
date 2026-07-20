@@ -65,7 +65,9 @@ export default function RecentJobs() {
 
             </div>
 
-            <table className="recruiter-table">
+            <div className="table-responsive">
+
+    <table className="recruiter-table">
 
                 <thead>
 
@@ -198,9 +200,11 @@ export default function RecentJobs() {
 
                 </tbody>
 
-            </table>
+                </table>
 
-        </section>
+                </div>
+
+                </section>
 
     );
 

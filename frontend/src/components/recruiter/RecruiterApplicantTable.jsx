@@ -75,7 +75,9 @@ export default function RecruiterApplicantTable({
 
             </div>
 
-            <table className="jobs-table">
+            <div className="table-responsive">
+
+               <table className="jobs-table">
 
                 <thead>
 
@@ -264,9 +266,11 @@ export default function RecruiterApplicantTable({
 
                 </tbody>
 
-            </table>
+                </table>
 
-        </section>
+                </div>
+
+                </section>
 
     );
 

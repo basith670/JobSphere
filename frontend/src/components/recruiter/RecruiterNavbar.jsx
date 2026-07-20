@@ -8,6 +8,7 @@ import {
     FaLock,
     FaSignOutAlt,
     FaChevronDown,
+    FaBars,
 } from "react-icons/fa";
 
 import { useLocation, useNavigate } from "react-router-dom";
@@ -16,7 +17,10 @@ import NotificationDropdown from "../common/NotificationDropdown";
 
 import { useSearch } from "../../context/SearchContext";
 
-export default function RecruiterNavbar() {
+export default function RecruiterNavbar({
+    sidebarOpen,
+    setSidebarOpen,
+}) {
 
     const {
         searchTerm,
@@ -105,6 +109,13 @@ export default function RecruiterNavbar() {
 
         <header className="recruiter-navbar">
 
+            <button
+                className="sidebar-toggle"
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+                <FaBars />
+            </button>
+
             <div className="navbar-search">
 
                 <FaSearch className="search-icon" />
@@ -138,7 +149,7 @@ export default function RecruiterNavbar() {
 
                         <FaUserCircle className="recruiter-profile-icon" />
 
-                        <div>
+                        <div className="navbar-user-info">
 
                             <h4>Recruiter</h4>
 

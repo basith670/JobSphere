@@ -90,7 +90,9 @@ export default function RecruiterJobTable({
 
             <section className="recruiter-card">
 
-                <table className="jobs-table">
+            <div className="table-responsive">
+
+            <table className="jobs-table">
 
                     <thead>
 
@@ -234,9 +236,11 @@ export default function RecruiterJobTable({
 
                     </tbody>
 
-                </table>
+                    </table>
 
-            </section>
+                    </div>
+
+                    </section>
 
             <DeleteModal
 

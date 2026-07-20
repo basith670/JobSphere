@@ -92,7 +92,9 @@ export default function RecentApplicants() {
 
             </div>
 
-            <table className="recruiter-table">
+            <div className="table-responsive">
+
+              <table className="recruiter-table">
 
                 <thead>
 
@@ -277,9 +279,11 @@ export default function RecentApplicants() {
 
                 </tbody>
 
-            </table>
+                </table>
 
-        </section>
+                </div>
+
+                </section>
 
     );
 
