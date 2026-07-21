@@ -98,12 +98,11 @@ export default function Dashboard() {
           </p>
 
           <button
-            className="dashboard-hero-btn"
-            onClick={() => navigate("/jobs")}
-          >
-            Browse Jobs →
-          </button>
-
+          className="dashboard-hero-btn"
+          onClick={() => navigate("/candidate/jobs")}
+        >
+          Browse Jobs →
+        </button>
         </div>
 
         <div className="dashboard-hero-score">

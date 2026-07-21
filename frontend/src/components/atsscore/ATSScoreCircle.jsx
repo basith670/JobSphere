@@ -11,10 +11,11 @@ export default function ATSScoreCircle({ score }) {
 
     <div className="ats-circle-card">
 
-      <svg
-        width="220"
-        height="220"
-      >
+        <svg
+            viewBox="0 0 220 220"
+            width="100%"
+            height="100%"
+        >
 
         <circle
           className="circle-bg"

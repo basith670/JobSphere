@@ -18,7 +18,7 @@ export default function ATSCard({ score }) {
     color = "#dc2626";
   }
 
-  const radius = 70;
+  const radius = 85;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (score / 100) * circumference;
 
@@ -29,7 +29,11 @@ export default function ATSCard({ score }) {
 
       <div className="progress-ring">
 
-        <svg width="180" height="180">
+      <svg
+          viewBox="0 0 180 180"
+          width="100%"
+          height="100%"
+      >
 
           <circle
             className="progress-bg"

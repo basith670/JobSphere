@@ -16,7 +16,7 @@ export default function QuickActions() {
         {
             id: 2,
             title: "Browse Jobs",
-            to: "/jobs",
+            to: "/candidate/jobs",
             className: "secondary-btn",
             keywords: "jobs browse vacancies career",
         },
