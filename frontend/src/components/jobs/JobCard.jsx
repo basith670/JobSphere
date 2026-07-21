@@ -15,7 +15,11 @@ import {
   unsaveJob,
 } from "../../services/jobService";
 
-const JobCard = ({ job, onSaveToggle }) => {
+const JobCard = ({
+  job,
+  onSaveToggle,
+  detailsBasePath = "/jobs/details",
+}) => {
   const [saved, setSaved] = useState(job.is_saved);
   const [loading, setLoading] = useState(false);
 
@@ -55,9 +59,9 @@ const JobCard = ({ job, onSaveToggle }) => {
 
   return (
     <Link
-      to={`/jobs/details/${job.id}`}
-      className="job-card-link"
-    >
+        to={`${detailsBasePath}/${job.id}`}
+        className="job-card-link"
+      >
       <article className="job-card">
         {/* Top */}
 

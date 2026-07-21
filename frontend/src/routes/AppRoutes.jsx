@@ -46,6 +46,7 @@ import NotFound from "../pages/NotFound/NotFound";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
 import ResetPassword from "../pages/Auth/ResetPassword";
 import CandidateJobs from "../pages/Candidate/CandidateJobs";
+import CandidateJobDetails from "../pages/Candidate/CandidateJobDetails";
 
 function AppRoutes() {
   return (
@@ -168,6 +169,11 @@ function AppRoutes() {
           <Route
             path="/candidate/jobs"
             element={<CandidateJobs />}
+          />
+
+          <Route
+              path="/candidate/jobs/:id"
+              element={<CandidateJobDetails />}
           />
 
         </Route>

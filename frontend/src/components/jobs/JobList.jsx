@@ -4,6 +4,7 @@ import JobCard from "./JobCard";
 export default function JobList({
   jobs,
   onSaveToggle,
+  detailsBasePath = "/jobs/details",
 }) {
 
   if (!jobs.length) {
@@ -27,11 +28,12 @@ export default function JobList({
 
           {jobs.map((job) => (
 
-            <JobCard
-              key={job.id}
-              job={job}
-              onSaveToggle={onSaveToggle}
-            />
+          <JobCard
+            key={job.id}
+            job={job}
+            onSaveToggle={onSaveToggle}
+            detailsBasePath={detailsBasePath}
+          />
 
           ))}
 

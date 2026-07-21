@@ -284,9 +284,10 @@ import {
         {/* Jobs */}
   
         <JobList
-          jobs={filteredJobs}
-          onSaveToggle={handleSaveToggle}
-        />
+        jobs={filteredJobs}
+        onSaveToggle={handleSaveToggle}
+        detailsBasePath="/candidate/jobs"
+      />
   
       </div>
     );

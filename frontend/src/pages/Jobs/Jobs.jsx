@@ -176,7 +176,10 @@ export default function Jobs() {
       </section>
 
       {/* Job Cards */}
-      <JobList jobs={filteredJobs} />
+      <JobList
+        jobs={filteredJobs}
+        detailsBasePath="/jobs/details"
+      />
 
     </div>
   );

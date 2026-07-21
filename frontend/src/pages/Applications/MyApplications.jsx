@@ -164,12 +164,12 @@ export default function MyApplications() {
 
             <div className="application-actions">
 
-                <Link
-                    to={`/jobs/details/${application.job}`}
-                    className="view-job-btn"
-                >
-                    View Job
-                </Link>
+            <Link
+                  to={`/candidate/jobs/${application.job}`}
+                  className="view-job-btn"
+              >
+                  View Job
+              </Link>
 
                 <a
                     href={application.resume}
