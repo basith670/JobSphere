@@ -28,20 +28,34 @@ class Resume(models.Model):
         max_length=100,
     )
 
-    summary = models.TextField()
+    summary = models.TextField(
+        blank=True,
+        default="",
+    )
 
-    skills = models.TextField()
+    skills = models.TextField(
+        blank=True,
+        default="",
+    )
 
-    experience = models.TextField()
+    experience = models.TextField(
+        blank=True,
+        default="",
+    )
 
-    education = models.TextField()
+    education = models.TextField(
+        blank=True,
+        default="",
+    )
 
     projects = models.TextField(
         blank=True,
+        default="",
     )
 
     certifications = models.TextField(
         blank=True,
+        default="",
     )
 
     linkedin = models.URLField(
