@@ -3,6 +3,7 @@ import ResumeCard from "./ResumeCard";
 export default function ResumeList({
   resumes,
   onDelete,
+  onEdit,
 }) {
   if (!resumes.length) {
     return (
@@ -22,6 +23,7 @@ export default function ResumeList({
           key={resume.id}
           resume={resume}
           onDelete={onDelete}
+          onEdit={onEdit}
         />
       ))}
     </div>

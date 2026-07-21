@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import toast from "react-hot-toast";
 
@@ -9,14 +8,16 @@ import DeleteConfirmModal from "../common/DeleteConfirmModal";
 export default function ResumeCard({
   resume,
   onDelete,
+  onEdit,
 }) {
-  const navigate = useNavigate();
 
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
+
     try {
+
       setLoading(true);
 
       await deleteResume(resume.id);
@@ -28,21 +29,26 @@ export default function ResumeCard({
       if (onDelete) {
         onDelete();
       }
-    } catch (err) {
-      console.error(err);
-      toast.error("Unable to delete resume.");
-    } finally {
-      setLoading(false);
-    }
-  };
 
-  const handleAnalyze = () => {
-    navigate(`/ai-resume/${resume.id}`);
+    } catch (err) {
+
+      console.error(err);
+
+      toast.error("Unable to delete resume.");
+
+    } finally {
+
+      setLoading(false);
+
+    }
+
   };
 
   return (
     <>
+
       <div className="resume-card">
+
         <h2>{resume.title}</h2>
 
         <p>
@@ -63,11 +69,12 @@ export default function ResumeCard({
         </p>
 
         <div className="resume-actions">
+
           <button
             className="resume-btn"
-            onClick={handleAnalyze}
+            onClick={() => onEdit(resume)}
           >
-            Analyze Resume
+            Edit
           </button>
 
           <button
@@ -76,7 +83,9 @@ export default function ResumeCard({
           >
             Delete
           </button>
+
         </div>
+
       </div>
 
       <DeleteConfirmModal
@@ -87,6 +96,8 @@ export default function ResumeCard({
         onCancel={() => setOpenDeleteModal(false)}
         onConfirm={handleDelete}
       />
+
     </>
   );
+
 }

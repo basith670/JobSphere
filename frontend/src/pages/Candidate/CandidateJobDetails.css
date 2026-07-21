@@ -1,271 +1,423 @@
 /* ==========================================================
-   Job Details Page
+   Candidate Job Details
 ========================================================== */
 
 .job-details-page{
     background:var(--background);
-  }
-  
-  /* ==========================================================
+    min-height:100vh;
+    padding:30px;
+}
+
+.job-details-page .container{
+    max-width:1200px;
+    margin:0 auto;
+}
+
+/* ==========================================================
    Header Card
-  ========================================================== */
-  
-  .job-header{
+========================================================== */
+
+.job-header{
+
     background:var(--surface);
-  
+
     border:1px solid var(--border);
     border-radius:24px;
-  
+
     padding:clamp(2rem,4vw,3rem);
-  
+
     margin-bottom:2rem;
-  
+
     box-shadow:0 12px 30px rgba(15,23,42,.06);
-  }
-  
-  .company-logo{
+
+}
+
+.company-logo{
+
     width:80px;
     height:80px;
-  
+
     display:flex;
     justify-content:center;
     align-items:center;
-  
+
     overflow:hidden;
-  
+
     margin-bottom:1.5rem;
-  
+
     border-radius:18px;
-  
+
     background:#fff;
-  
+
     border:1px solid var(--border);
-  }
-  
-  .company-logo-img{
+
+}
+
+.company-logo-img{
+
     width:100%;
     height:100%;
+
     object-fit:contain;
+
     padding:8px;
-  }
-  
-  /* ==========================================================
+
+}
+
+/* ==========================================================
    Title
-  ========================================================== */
-  
-  .job-title{
-    font-size:clamp(2rem,5vw,3rem);
+========================================================== */
+
+.job-title{
+
+    font-size:clamp(2.5rem,5vw,3.5rem);
+
     font-weight:800;
+
     color:var(--heading);
-    margin-bottom:.5rem;
-  }
-  
-  .company-name{
-    font-size:1.3rem;
+
+    margin-bottom:.6rem;
+
+    line-height:1.15;
+
+}
+
+.company-name{
+
+    font-size:1.35rem;
+
     color:var(--primary);
-    font-weight:600;
-  }
-  
-  .job-location{
-    margin-top:.5rem;
-    color:var(--text-light);
-  }
-  
-  /* ==========================================================
-   Meta Grid
-  ========================================================== */
-  
-  .job-meta{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-  
-    gap:1rem;
-  
-    margin:2rem 0;
-  }
-  
-  .meta-card{
-    background:var(--surface-light);
-  
-    border:1px solid var(--border);
-  
-    border-radius:16px;
-  
-    padding:1rem;
-  }
-  
-  .meta-card h4{
-    color:var(--text-light);
-    font-size:.85rem;
-    margin-bottom:.4rem;
-  }
-  
-  .meta-card p{
-    color:var(--heading);
-    font-size:1rem;
+
     font-weight:700;
-  }
-  
-  /* ==========================================================
-   Apply Button
-  ========================================================== */
-  
-  .apply-btn{
-    width:100%;
-    max-width:260px;
-  
-    height:54px;
-  
-    border:none;
-    border-radius:14px;
-  
-    background:var(--primary);
-  
-    color:#fff;
-  
-    font-size:1rem;
-    font-weight:600;
-  
-    cursor:pointer;
-  
-    transition:
-        background .3s ease,
-        transform .3s ease;
-  }
-  
-  .apply-btn:hover{
-    background:var(--primary-dark);
-    transform:translateY(-2px);
-  }
-  
-  /* ==========================================================
-   Content Sections
-  ========================================================== */
-  
-  .job-section{
-    background:var(--surface);
-  
-    border:1px solid var(--border);
-  
-    border-radius:22px;
-  
-    padding:2rem;
-  
-    margin-bottom:2rem;
-  
-    box-shadow:0 10px 25px rgba(15,23,42,.05);
-  }
-  
-  .job-section h2{
-    margin-bottom:1rem;
-    color:var(--heading);
-    font-size:1.5rem;
-  }
-  
-  .job-section p{
-    color:var(--text);
-  
-    line-height:1.9;
-  
-    white-space:pre-line;
-  }
-  
-  /* ==========================================================
-   Footer Cards
-  ========================================================== */
-  
-  .job-footer{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-  
-    gap:1.5rem;
-  }
-  
-  .footer-card{
-    background:var(--surface);
-  
-    border:1px solid var(--border);
-  
-    border-radius:18px;
-  
-    padding:2rem;
-  
-    text-align:center;
-  
-    box-shadow:0 8px 25px rgba(15,23,42,.05);
-  }
-  
-  .footer-card h3{
-    color:var(--primary);
-    font-size:2rem;
-    margin-bottom:.5rem;
-  }
-  
-  .footer-card p{
+
+}
+
+.job-location{
+
+    margin-top:.6rem;
+
     color:var(--text-light);
-  }
-  
-  /* ==========================================================
-   Large Tablet
-  ========================================================== */
-  
-  @media (max-width:992px){
-  
+
+    font-size:1.05rem;
+
+}
+
+/* ==========================================================
+   Meta Grid
+========================================================== */
+
+.job-meta{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:1.2rem;
+
+    margin:2rem 0;
+
+}
+
+.meta-card{
+
+    background:var(--surface-light);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:1.3rem;
+
+    min-height:110px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.meta-card h4{
+
+    color:var(--text-light);
+
+    font-size:.9rem;
+
+    margin-bottom:.5rem;
+
+}
+
+.meta-card p{
+
+    color:var(--heading);
+
+    font-size:1.05rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   Apply Button
+========================================================== */
+
+.apply-btn{
+
+    width:100%;
+
+    max-width:280px;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    margin-bottom:2rem;
+
+}
+
+.apply-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   Content Sections
+========================================================== */
+
+.job-section{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:2rem;
+
+    margin-bottom:2rem;
+
+    box-shadow:0 10px 25px rgba(15,23,42,.05);
+
+}
+
+.job-section h2{
+
+    margin-bottom:1rem;
+
+    color:var(--heading);
+
+    font-size:1.6rem;
+
+    font-weight:700;
+
+}
+
+.job-section p{
+
+    color:var(--text);
+
+    line-height:1.9;
+
+    white-space:pre-line;
+
+}
+
+/* ==========================================================
+   Footer Cards
+========================================================== */
+
+.job-footer{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:1.5rem;
+
+}
+
+.footer-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:2rem;
+
+    min-height:170px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    box-shadow:0 8px 25px rgba(15,23,42,.05);
+
+    transition:.3s;
+
+}
+
+.footer-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.footer-card h3{
+
+    color:var(--primary);
+
+    font-size:2rem;
+
+    margin-bottom:.5rem;
+
+}
+
+.footer-card p{
+
+    color:var(--text-light);
+
+}
+
+/* ==========================================================
+   Tablet
+========================================================== */
+
+@media (max-width:992px){
+
     .job-meta{
+
         grid-template-columns:repeat(2,1fr);
+
     }
-  
-  }
-  
-  /* ==========================================================
-   Mobile
-  ========================================================== */
-  
-  @media (max-width:768px){
-  
-    .job-header{
-        padding:1.5rem;
-    }
-  
-    .job-title{
-        font-size:2rem;
-    }
-  
-    .job-meta{
-        grid-template-columns:1fr;
-    }
-  
-    .apply-btn{
-        max-width:none;
-    }
-  
-    .job-section{
-        padding:1.5rem;
-    }
-  
+
     .job-footer{
-        grid-template-columns:1fr;
+
+        grid-template-columns:repeat(2,1fr);
+
     }
-  
-  }
-  
-  /* ==========================================================
-   Small Mobile
-  ========================================================== */
-  
-  @media (max-width:480px){
-  
-    .company-logo{
-        width:70px;
-        height:70px;
+
+}
+
+/* ==========================================================
+   Mobile
+========================================================== */
+
+@media (max-width:768px){
+
+    .job-details-page{
+
+        padding:20px;
+
     }
-  
-    .job-section{
-        padding:1.25rem;
-    }
-  
-    .footer-card{
+
+    .job-header{
+
         padding:1.5rem;
+
     }
-  
-  }
+
+    .job-title{
+
+        font-size:2.1rem;
+
+    }
+
+    .company-name{
+
+        font-size:1.15rem;
+
+    }
+
+    .job-meta{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .apply-btn{
+
+        max-width:none;
+
+    }
+
+    .job-section{
+
+        padding:1.5rem;
+
+    }
+
+    .job-footer{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ==========================================================
+   Small Mobile
+========================================================== */
+
+@media (max-width:480px){
+
+    .job-details-page{
+
+        padding:15px;
+
+    }
+
+    .company-logo{
+
+        width:70px;
+
+        height:70px;
+
+    }
+
+    .job-title{
+
+        font-size:1.8rem;
+
+    }
+
+    .job-section{
+
+        padding:1.25rem;
+
+    }
+
+    .footer-card{
+
+        padding:1.5rem;
+
+        min-height:140px;
+
+    }
+
+}

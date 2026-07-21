@@ -47,6 +47,7 @@ import ForgotPassword from "../pages/Auth/ForgotPassword";
 import ResetPassword from "../pages/Auth/ResetPassword";
 import CandidateJobs from "../pages/Candidate/CandidateJobs";
 import CandidateJobDetails from "../pages/Candidate/CandidateJobDetails";
+import ResumeAnalyzer from "../pages/AIResume/ResumeAnalyzer";
 
 function AppRoutes() {
   return (
@@ -144,6 +145,11 @@ function AppRoutes() {
           <Route
             path="/ai-resume/:resumeId"
             element={<ResumeAnalysis />}
+          />
+
+          <Route
+              path="/ai-resume"
+              element={<ResumeAnalyzer />}
           />
 
           <Route

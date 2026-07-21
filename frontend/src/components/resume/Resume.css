@@ -57,18 +57,10 @@
     resize:vertical;
 }
 
-.resume-form input:focus,
-.resume-form textarea:focus{
-    border-color:var(--primary);
-    box-shadow:0 0 0 3px rgba(15,118,110,.15);
-}
 
-.resume-upload{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    flex-wrap:wrap;
-}
+/* ===========================
+   Buttons
+=========================== */
 
 .resume-actions{
     margin-top:30px;
@@ -91,6 +83,10 @@
 .resume-btn:hover{
     background:var(--primary-dark);
 }
+
+/* ===========================
+   Resume Cards
+=========================== */
 
 .resume-grid{
     display:grid;
@@ -154,156 +150,368 @@
     margin-bottom:10px;
 }
 
+/* ===========================
+   Tablet
+=========================== */
+
 @media(max-width:768px){
 
     .resume-page{
-    
-    margin:24px auto;
-    
-    padding:0 16px;
-    
+        margin:24px auto;
+        padding:0 16px;
     }
-    
+
     .resume-title{
-    
-    font-size:30px;
-    
+        font-size:30px;
     }
-    
+
     .resume-card{
-    
-    padding:22px;
-    
+        padding:22px;
     }
-    
+
     .resume-form{
-    
-    grid-template-columns:1fr;
-    
+        grid-template-columns:1fr;
     }
-    
-    .resume-upload{
-    
-    flex-direction:column;
-    
-    align-items:stretch;
-    
-    }
-    
-    .resume-upload input{
-    
-    width:100%;
-    
-    }
-    
+
     .resume-grid{
-    
-    grid-template-columns:1fr;
-    
+        grid-template-columns:1fr;
     }
-    
+
     .resume-actions{
-    
-    justify-content:center;
-    
+        justify-content:center;
     }
-    
+
     .resume-btn{
-    
-    width:100%;
-    
+        width:100%;
     }
-    
+
     .resume-buttons{
-    
-    flex-direction:column;
-    
+        flex-direction:column;
     }
-    
+
     .resume-buttons .btn,
     .resume-buttons a{
-    
-    width:100%;
-    
+        width:100%;
     }
-    
+
     .resume-buttons .btn{
-    
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    
-    }
-    
+        display:flex;
+        justify-content:center;
+        align-items:center;
     }
 
-    @media(max-width:480px){
+    .upload-content{
+        padding:28px 18px;
+    }
 
-        .resume-page{
-        
+    .upload-icon{
+        font-size:44px;
+    }
+
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media(max-width:480px){
+
+    .resume-page{
         padding:0 12px;
-        
-        }
-        
-        .resume-title{
-        
+    }
+
+    .resume-title{
         font-size:26px;
-        
-        }
-        
-        .resume-card{
-        
+    }
+
+    .resume-card{
         padding:18px;
-        
-        }
-        
-        .resume-card h2{
-        
+    }
+
+    .resume-card h2{
         font-size:22px;
-        
-        }
-        
-        .resume-form input,
-        .resume-form textarea{
-        
+    }
+
+    .resume-form input,
+    .resume-form textarea{
         padding:12px 14px;
-        
         font-size:14px;
-        
-        }
-        
-        .resume-item{
-        
+    }
+
+    .resume-item{
         padding:18px;
-        
-        }
-        
-        .resume-item h3{
-        
+    }
+
+    .resume-item h3{
         font-size:20px;
-        
-        }
-        
-        .resume-btn{
-        
+    }
+
+    .resume-btn{
         padding:12px;
-        
         font-size:14px;
-        
-        }
-        
-        .resume-buttons .btn{
-        
+    }
+
+    .resume-buttons .btn{
         padding:12px;
-        
         font-size:14px;
-        
-        }
-        
-        .empty-state{
-        
+    }
+
+    .upload-content{
+        padding:24px 16px;
+    }
+
+    .upload-icon{
+        font-size:38px;
+    }
+
+    .upload-content h4{
+        font-size:18px;
+    }
+
+
+    .empty-state{
         padding:40px 20px;
-        
-        }
-        
-        }
+    }
+
+}
+
+/* ==========================================================
+   MODERN RESUME UPLOAD
+========================================================== */
+
+.upload-box{
+    width:100%;
+    cursor:pointer;
+}
+
+.upload-box.dragging .upload-content{
+    border-color:var(--primary);
+    background:#ecfdf5;
+    transform:scale(1.01);
+}
+
+.upload-box.uploaded .upload-content{
+    border-color:#22c55e;
+    background:#f0fdf4;
+}
+
+.upload-content{
+    border:2px dashed #CBD5E1;
+    border-radius:18px;
+    padding:36px 24px;
+    text-align:center;
+    background:#F8FAFC;
+    transition:.3s ease;
+}
+
+.upload-content:hover{
+    border-color:var(--primary);
+    background:#F0FDFA;
+}
+
+.upload-icon{
+    font-size:52px;
+    margin-bottom:12px;
+}
+
+.upload-content h4{
+    margin:8px 0;
+    color:var(--heading);
+    font-size:22px;
+}
+
+.upload-content p{
+    margin-bottom:6px;
+    color:#64748B;
+}
+
+.upload-content span{
+    color:var(--primary);
+    font-weight:600;
+}
+
+/* Uploaded Resume */
+
+.upload-success{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+}
+
+.pdf-icon{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    background:#dcfce7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:36px;
+    flex-shrink:0;
+}
+
+.file-info{
+    text-align:left;
+}
+
+.file-info strong{
+    display:block;
+    font-size:18px;
+    color:var(--heading);
+    margin-bottom:4px;
+    word-break:break-word;
+}
+
+.file-info small{
+    color:#64748B;
+    font-size:14px;
+}
+
+/* Upload Buttons */
+
+.upload-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.upload-buttons button{
+    flex:1;
+    min-width:170px;
+}
+
+/* Upload Note */
+
+.upload-note{
+    color:#64748B;
+    font-size:14px;
+}
+
+/* Default Checkbox */
+
+.default-check{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+    font-weight:600;
+    color:var(--heading);
+}
+
+.default-check input{
+    width:18px;
+    height:18px;
+}
+
+/* Upload Animation */
+
+.upload-box.uploaded .pdf-icon{
+    animation:pop .35s ease;
+}
+
+@keyframes pop{
+
+    0%{
+        transform:scale(.8);
+        opacity:.5;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .upload-success{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .file-info{
+        text-align:center;
+    }
+
+    .upload-buttons{
+        flex-direction:column;
+    }
+
+    .upload-buttons button{
+        width:100%;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .upload-content{
+        padding:26px 18px;
+    }
+
+    .upload-icon{
+        font-size:42px;
+    }
+
+    .pdf-icon{
+        width:58px;
+        height:58px;
+        font-size:30px;
+    }
+
+    .file-info strong{
+        font-size:16px;
+    }
+
+}
+
+/* ==========================================================
+   INPUT WITH ICONS
+========================================================== */
+
+.input-group{
+    position:relative;
+    width:100%;
+}
+
+.input-group .input-icon{
+    position:absolute;
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#94A3B8;
+    font-size:16px;
+    transition:.3s;
+    pointer-events:none;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px 16px 14px 48px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#fff;
+    transition:.3s;
+}
+
+.input-group input:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(15,118,110,.15);
+}
+
+.input-group:focus-within .input-icon{
+    color:var(--primary);
+}
+.resume-subtitle{
+    margin-top:8px;
+    color:var(--text);
+    font-size:16px;
+}
+
+.resume-section-space{
+    height:32px;
+}

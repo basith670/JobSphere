@@ -46,14 +46,15 @@ export default function AICareerHub() {
       description:
         "Get ATS score and AI feedback for your resume.",
       icon: <FaFileAlt />,
-      path: "/resumes",
+      path: "/ai-resume",
     },
     {
-        title: "ATS Resume Score",
-        description: "Optimize your resume for recruiter screening.",
-        icon: <FaChartLine />,
-        path: "/ats-score",
-      },
+      title: "ATS Resume Score",
+      description:
+        "Optimize your resume for recruiter screening.",
+      icon: <FaChartLine />,
+      path: "/ats-score",
+    },
     {
       title: "Job Match",
       description:
@@ -98,9 +99,7 @@ export default function AICareerHub() {
             <span>AI Powered Career Assistant</span>
           </div>
 
-          <h1>
-            AI Career Hub
-          </h1>
+          <h1>AI Career Hub</h1>
 
           <p>
             Supercharge your career using AI tools designed
@@ -154,13 +153,9 @@ export default function AICareerHub() {
               {feature.icon}
             </div>
 
-            <h3>
-              {feature.title}
-            </h3>
+            <h3>{feature.title}</h3>
 
-            <p>
-              {feature.description}
-            </p>
+            <p>{feature.description}</p>
 
             <div className="feature-link">
               Launch Tool
