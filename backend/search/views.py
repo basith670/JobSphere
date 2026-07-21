@@ -59,7 +59,7 @@ class GlobalSearchAPIView(APIView):
         # ======================================================
 
         recruiter_jobs = Job.objects.filter(
-            company__user=request.user
+            company__owner=request.user
         ).filter(
             Q(title__icontains=query) |
             Q(location__icontains=query) |
@@ -67,7 +67,7 @@ class GlobalSearchAPIView(APIView):
         )[:5]
 
         applicants = Application.objects.filter(
-            job__company__user=request.user
+            job__company__owner=request.user
         ).filter(
             Q(applicant__first_name__icontains=query) |
             Q(applicant__last_name__icontains=query) |
@@ -77,7 +77,7 @@ class GlobalSearchAPIView(APIView):
         )[:5]
 
         companies = Company.objects.filter(
-            user=request.user
+            owner=request.user
         ).filter(
             Q(company_name__icontains=query) |
             Q(industry__icontains=query) |
@@ -128,7 +128,7 @@ class GlobalSearchAPIView(APIView):
                     "id": job.id,
                     "title": job.title,
                     "location": job.location,
-                    "status": job.status,
+                    "is_active": job.is_active,
                 }
                 for job in recruiter_jobs
             ],
