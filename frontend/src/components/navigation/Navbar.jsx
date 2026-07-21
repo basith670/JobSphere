@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  FaBriefcase,
   FaBars,
   FaTimes,
 } from "react-icons/fa";
@@ -60,10 +59,14 @@ export default function Navbar() {
             className="navbar-logo"
             onClick={() => setMenuOpen(false)}
           >
-            <FaBriefcase className="navbar-logo-icon" />
+            <img
+              src="/jobsphere-logo.png"
+              alt="JobSphere"
+              className="navbar-logo-image"
+            />
+
             <span>JobSphere</span>
           </Link>
-
           {/* Navigation Links */}
           <div
             className={`navbar-links ${

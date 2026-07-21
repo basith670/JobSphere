@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaBell } from "react-icons/fa";
 
 import {
@@ -14,6 +14,8 @@ export default function NotificationDropdown() {
   const [notifications, setNotifications] = useState([]);
   const [count, setCount] = useState(0);
   const [open, setOpen] = useState(false);
+
+  const notificationRef = useRef(null);
 
   const loadNotifications = async () => {
     try {
@@ -31,10 +33,33 @@ export default function NotificationDropdown() {
     loadNotifications();
   }, []);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        notificationRef.current &&
+        !notificationRef.current.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener(
+      "mousedown",
+      handleClickOutside
+    );
+
+    return () => {
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutside
+      );
+    };
+  }, []);
+
   const handleRead = async (id) => {
     try {
       await markNotificationRead(id);
-
       loadNotifications();
     } catch (error) {
       console.error(error);
@@ -44,7 +69,6 @@ export default function NotificationDropdown() {
   const handleReadAll = async () => {
     try {
       await markAllNotificationsRead();
-
       loadNotifications();
     } catch (error) {
       console.error(error);
@@ -52,7 +76,10 @@ export default function NotificationDropdown() {
   };
 
   return (
-    <div className="notification-wrapper">
+    <div
+      className="notification-wrapper"
+      ref={notificationRef}
+    >
       <button
         className="notification-btn"
         onClick={() => setOpen(!open)}
@@ -102,9 +129,7 @@ export default function NotificationDropdown() {
                   {notification.title}
                 </strong>
 
-                <p>
-                  {notification.message}
-                </p>
+                <p>{notification.message}</p>
 
                 <small>
                   {new Date(

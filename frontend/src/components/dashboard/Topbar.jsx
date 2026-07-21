@@ -17,19 +17,14 @@ import NotificationDropdown from "../../components/notifications/NotificationDro
 
 import "./Topbar.css";
 
-export default function Topbar({
-  setSidebarOpen,
-}) {
+export default function Topbar({ setSidebarOpen }) {
   const { logout } = useAuth();
-  const {
-    userProfile,
-    clearUser,
-  } = useUser();
+
+  const { userProfile, clearUser } = useUser();
 
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
-
   const [search, setSearch] = useState("");
 
   const [results, setResults] = useState({
@@ -43,7 +38,6 @@ export default function Topbar({
   const dropdownRef = useRef(null);
   const searchRef = useRef(null);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -70,7 +64,6 @@ export default function Topbar({
       );
   }, []);
 
-  // Global Search
   useEffect(() => {
     const timer = setTimeout(async () => {
       if (!search.trim()) {
@@ -95,39 +88,23 @@ export default function Topbar({
   }, [search]);
 
   const handleLogout = () => {
-
     logout();
-  
     clearUser();
-  
     navigate("/login");
-  
   };
 
   return (
     <header className="topbar">
       <div className="topbar-left">
-      <button
-          className="mobile-menu-btn"
-          onClick={() => setSidebarOpen(true)}
-        >
-          <FaBars />
-        </button>
-        <h2>
-          Welcome Back,{" "}
-          {userProfile?.first_name ||
-            userProfile?.username}{" "}
-          👋
-        </h2>
-
-        <p>
-          Ready to move one step closer to your next opportunity?
-        </p>
+          <button
+              className="sidebar-toggle"
+              onClick={() => setSidebarOpen(true)}
+          >
+              <FaBars />
+          </button>
       </div>
 
       <div className="topbar-right">
-
-        {/* Search */}
         <div
           className="search-box"
           ref={searchRef}
@@ -138,15 +115,12 @@ export default function Topbar({
             type="text"
             placeholder="Search jobs, applications, resumes..."
             value={search}
-            onChange={(e) =>
-              setSearch(e.target.value)
-            }
+            onChange={(e) => setSearch(e.target.value)}
             onFocus={() => setShowResults(true)}
           />
 
           {showResults && search && (
             <div className="search-dropdown">
-
               {results.jobs.length > 0 && (
                 <>
                   <h4>Jobs</h4>
@@ -222,15 +196,12 @@ export default function Topbar({
                     No results found
                   </div>
                 )}
-
             </div>
           )}
         </div>
 
-        {/* Notification */}
         <NotificationDropdown />
 
-        {/* Profile */}
         <div
           className="topbar-profile-dropdown"
           ref={dropdownRef}
@@ -302,7 +273,6 @@ export default function Topbar({
             </div>
           )}
         </div>
-
       </div>
     </header>
   );

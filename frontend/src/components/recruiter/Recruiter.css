@@ -5612,3 +5612,118 @@ Interview Modal
     }
 
 }
+
+/* ===========================================
+   Recruiter Global Search
+=========================================== */
+
+.navbar-search{
+    position:relative;
+}
+
+.search-dropdown{
+
+    position:absolute;
+
+    top:54px;
+    left:0;
+
+    width:100%;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+    border:1px solid #e5e7eb;
+
+    overflow:hidden;
+
+    z-index:99999;
+
+}
+
+.search-dropdown h4{
+
+    margin:0;
+
+    padding:12px 18px;
+
+    font-size:13px;
+
+    color:#64748b;
+
+    background:#f8fafc;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+}
+
+.search-item{
+
+    padding:14px 18px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    border-bottom:1px solid #f1f5f9;
+
+}
+
+.search-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.search-item:hover{
+
+    background:#ecfeff;
+
+}
+
+.search-item strong{
+
+    display:block;
+
+    color:#0f172a;
+
+    font-size:15px;
+
+}
+
+.search-item span{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:13px;
+
+    color:#64748b;
+
+}
+
+.search-empty{
+
+    padding:22px;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+}
+
+@media(max-width:768px){
+
+    .search-dropdown{
+
+        width:100%;
+
+    }
+
+}

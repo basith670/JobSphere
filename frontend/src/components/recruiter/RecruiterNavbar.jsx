@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 
+import { recruiterGlobalSearch } from "../../services/recruiterSearchService";
+
 import {
     FaSearch,
     FaUserCircle,
@@ -15,17 +17,22 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import NotificationDropdown from "../common/NotificationDropdown";
 
-import { useSearch } from "../../context/SearchContext";
-
 export default function RecruiterNavbar({
     sidebarOpen,
     setSidebarOpen,
 }) {
 
-    const {
-        searchTerm,
-        setSearchTerm,
-    } = useSearch();
+    const [search, setSearch] = useState("");
+
+    const [results, setResults] = useState({
+        recruiter_jobs: [],
+        applicants: [],
+        companies: [],
+    });
+    
+    const [showResults, setShowResults] = useState(false);
+    
+    const searchRef = useRef(null);
 
     const navigate = useNavigate();
 
@@ -38,31 +45,73 @@ export default function RecruiterNavbar({
     useEffect(() => {
 
         function handleClickOutside(event) {
-
+    
             if (
                 menuRef.current &&
                 !menuRef.current.contains(event.target)
             ) {
                 setShowMenu(false);
             }
-
+    
+            if (
+                searchRef.current &&
+                !searchRef.current.contains(event.target)
+            ) {
+                setShowResults(false);
+            }
+    
         }
-
+    
         document.addEventListener(
             "mousedown",
             handleClickOutside
         );
-
-        return () => {
-
+    
+        return () =>
             document.removeEventListener(
                 "mousedown",
                 handleClickOutside
             );
-
-        };
-
+    
     }, []);
+
+    useEffect(() => {
+
+        const timer = setTimeout(async () => {
+    
+            if (!search.trim()) {
+    
+                setResults({
+                    recruiter_jobs: [],
+                    applicants: [],
+                    companies: [],
+                });
+    
+                setShowResults(false);
+    
+                return;
+            }
+    
+            try {
+    
+                const data =
+                    await recruiterGlobalSearch(search);
+    
+                setResults(data);
+    
+                setShowResults(true);
+    
+            } catch (error) {
+    
+                console.error(error);
+    
+            }
+    
+        }, 300);
+    
+        return () => clearTimeout(timer);
+    
+    }, [search]);
 
     let placeholder = "Search...";
 
@@ -116,20 +165,112 @@ export default function RecruiterNavbar({
                 <FaBars />
             </button>
 
-            <div className="navbar-search">
+            <div
+    className="navbar-search"
+    ref={searchRef}
+>
 
-                <FaSearch className="search-icon" />
+    <FaSearch className="search-icon" />
 
-                <input
-                    type="text"
-                    value={searchTerm}
-                    onChange={(e) =>
-                        setSearchTerm(e.target.value)
-                    }
-                    placeholder={placeholder}
-                />
+    <input
+        type="text"
+        value={search}
+        placeholder="Search jobs, applicants, company..."
+        onChange={(e) =>
+            setSearch(e.target.value)
+        }
+        onFocus={() => {
+            if (search.trim()) {
+                setShowResults(true);
+            }
+        }}
+    />
 
-            </div>
+    {showResults && (
+        <div className="search-dropdown">
+
+            {results.recruiter_jobs.length > 0 && (
+                <>
+                    <h4>Jobs</h4>
+
+                    {results.recruiter_jobs.map((job) => (
+                        <div
+                            key={job.id}
+                            className="search-item"
+                            onClick={() => {
+                                navigate(`/recruiter/jobs/${job.id}`);
+                                setSearch("");
+                                setShowResults(false);
+                            }}
+                        >
+                            <strong>{job.title}</strong>
+
+                            <span>{job.location}</span>
+                        </div>
+                    ))}
+                </>
+            )}
+
+            {results.applicants.length > 0 && (
+                <>
+                    <h4>Applicants</h4>
+
+                    {results.applicants.map((applicant) => (
+                        <div
+                            key={applicant.id}
+                            className="search-item"
+                            onClick={() => {
+                                navigate("/recruiter/applicants");
+                                setSearch("");
+                                setShowResults(false);
+                            }}
+                        >
+                            <strong>{applicant.name}</strong>
+
+                            <span>
+                                {applicant.job}
+                            </span>
+                        </div>
+                    ))}
+                </>
+            )}
+
+            {results.companies.length > 0 && (
+                <>
+                    <h4>Company</h4>
+
+                    {results.companies.map((company) => (
+                        <div
+                            key={company.id}
+                            className="search-item"
+                            onClick={() => {
+                                navigate("/recruiter/companies");
+                                setSearch("");
+                                setShowResults(false);
+                            }}
+                        >
+                            <strong>{company.name}</strong>
+
+                            <span>
+                                {company.industry}
+                            </span>
+                        </div>
+                    ))}
+                </>
+            )}
+
+            {results.recruiter_jobs.length === 0 &&
+             results.applicants.length === 0 &&
+             results.companies.length === 0 && (
+                <div className="search-empty">
+                    No results found
+                </div>
+            )}
+
+        </div>
+    )}
+
+</div>
 
             <div className="navbar-right">
 

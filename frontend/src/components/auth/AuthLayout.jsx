@@ -14,19 +14,25 @@ export default function AuthLayout({
         <div className="blur blur-two"></div>
       </div>
 
-      {/* Logo */}
-      <div className="auth-logo">
+        {/* Logo */}
+        <div className="auth-logo">
 
-        <div className="logo-icon">
-          JS
+          <div className="logo-icon">
+
+            <img
+              src="/jobsphere-logo.png"
+              alt="JobSphere"
+              className="auth-logo-image"
+            />
+
+          </div>
+
+          <div>
+            <h2>JobSphere</h2>
+            <span>AI Recruitment Platform</span>
+          </div>
+
         </div>
-
-        <div>
-          <h2>JobSphere</h2>
-          <span>AI Recruitment Platform</span>
-        </div>
-
-      </div>
 
       {/* Center Content */}
       <div className="auth-center">
