@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://job-sphere-chi.vercel.app/sitemap.xml
